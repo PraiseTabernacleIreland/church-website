@@ -1,18 +1,8 @@
-import logo from "../logo.svg";
 import React from "react";
+import Hero from "../components/Hero";
 
 export const Photos = () => {
     return (
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Photos
-            </a>
-        </header>
+        <Hero backGroundImageSrc={'url(/assets/photos.jpg)'}/>
     )
 }

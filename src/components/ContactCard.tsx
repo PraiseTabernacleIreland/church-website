@@ -8,9 +8,13 @@ const ContactCard = ({ contact }) => {
             {/* Contact Image */}
             <CardMedia
                 component="img"
-                height="200"
+                height="100%"
                 image={contact.image}
                 alt={`${contact.name}'s profile`}
+                sx={{
+                    objectFit: 'contain',  // Ensures the image fits the container without cropping
+                    width: '100%',  // Ensure it spans the full width
+                }}
             />
 
             <CardContent>

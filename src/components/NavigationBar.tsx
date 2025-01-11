@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import logo from '../assets/logo.svg';
 import {Link, useLocation} from "react-router-dom";
-import {PageRoutes} from "../utils/routes";
+import {PageName, PageRoutes} from "../utils/routes";
 
 interface MenuButtonProps {
     text: string;
@@ -28,7 +28,7 @@ const MenuButton = (props: MenuButtonProps) => {
                     backgroundColor: isSelected ? '#e3f2fd' : 'transparent'
                 }}
             >
-                <Typography  color={isSelected ? 'primary' : 'textPrimary'}>
+                <Typography color={isSelected ? 'primary' : 'textPrimary'}>
                     {props.text.toUpperCase()}
                 </Typography>
             </Button>
@@ -45,18 +45,19 @@ const NavBar = () => {
                 backgroundColor: "#fff",
                 color: "#000",
                 boxShadow: "none",
-                borderBottom: "2px solid #6200ea",
                 width: '100%',
             }}
         >
             <Toolbar sx={{width: '100%'}}>
                 {/* Logo Section */}
                 <Box display="flex" alignItems="center" sx={{flexGrow: 0}}>
-                    <img
-                        src={logo}
-                        alt="Logo"
-                        style={{marginRight: "10px"}}
-                    />
+                    <Link to={PageRoutes[PageName.Home]} style={{textDecoration: 'none'}}>
+                        <img
+                            src={logo}
+                            alt="Logo"
+                            style={{marginRight: "10px"}}
+                        />
+                    </Link>
                 </Box>
 
                 {/* Menu Items */}

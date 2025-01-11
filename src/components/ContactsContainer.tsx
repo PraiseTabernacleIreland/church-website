@@ -7,7 +7,7 @@ import ContactForm from "./ContactForm";
 // Example contact data
 const contactDataList = [
     {
-        image: 'https://via.placeholder.com/200',
+        image: '/assets/people1.jpg',
         name: 'John Doe',
         email: 'johndoe@example.com',
         socialLinks: {
@@ -17,7 +17,7 @@ const contactDataList = [
         },
     },
     {
-        image: 'https://via.placeholder.com/200',
+        image: '/assets/people2.jpg',
         name: 'Jane Smith',
         email: 'janesmith@example.com',
         socialLinks: {
@@ -27,7 +27,7 @@ const contactDataList = [
         },
     },
     {
-        image: 'https://via.placeholder.com/200',
+        image: '/assets/people3.jpg',
         name: 'Alice Brown',
         email: 'alicebrown@example.com',
         socialLinks: {
