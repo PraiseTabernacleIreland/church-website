@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eb0c455-93a1-48de-a748-02b135aed258" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/sunrise.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/About.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Contact.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/EventsAndCalendar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Outreach.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Photos.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/ReportsAndDocuments.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ContactCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ContactForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ContactsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Contact.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -90,7 +82,7 @@
       <workItem from="1734727926764" duration="525000" />
       <workItem from="1734728485280" duration="8885000" />
       <workItem from="1735593456797" duration="598000" />
-      <workItem from="1736024950509" duration="7922000" />
+      <workItem from="1736024950509" duration="8749000" />
     </task>
     <servers />
   </component>
