@@ -11,7 +11,7 @@ const Hero = (props: HeroProps) => {
         <Box
             sx={{
                 position: 'relative',
-                height: props.height || '20vh', // Full height of the viewport
+                height: props.height || '30vh', // Full height of the viewport
                 backgroundImage: props.backGroundImageSrc, // Replace with your hero image URL
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
