@@ -4,7 +4,7 @@ import { Box, Typography, Grid, Card, CardMedia, CardContent } from "@mui/materi
 import Button from "@mui/material/Button";
 
 // Replace with your YouTube API key and channel ID
-const API_KEY = "*";
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 const CHANNEL_ID = "UCahHVAvlRT-fe7-JmGzZpTw";
 
 const YouTubePage = () => {
@@ -17,7 +17,7 @@ const YouTubePage = () => {
         const fetchVideos = async () => {
             try {
                 const response = await fetch(
-                    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10`
+                    `https://www.googleapis.com/youtube/v3/search?key=${GOOGLE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10`
                 );
                 const data = await response.json();
 
@@ -48,7 +48,7 @@ const YouTubePage = () => {
                     <iframe
                         width="100%"
                         height="500"
-                        src={`https://www.youtube.com/embed/${liveVideo.id.videoId}`}
+                        src={`https://www.youtube.com/embed/${liveVideo.id.videoId}?autoplay=1&mute=1`}
                         title={liveVideo.snippet.title}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

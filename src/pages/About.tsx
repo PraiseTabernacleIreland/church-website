@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Hero from "../components/Hero";
-import {Box, Typography, Tabs, Tab, Grid} from "@mui/material";
+import {Box, Typography, Tabs, Tab} from "@mui/material";
 
 // Tab Content Data
 const tabContent = [

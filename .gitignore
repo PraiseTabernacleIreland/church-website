@@ -22,7 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+.env
+
 *.iml
-.idea/
+.idea/workspace.xml
 .idea/*
 /.idea

@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import Hero from "../components/Hero";
-import {Box, Typography, Grid, Card, CardContent, Button, CardMedia} from '@mui/material';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; // Import styles for react-calendar
+import { Box, Typography, Grid, Card, CardMedia, Button, CardContent } from '@mui/material';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction'; // For click events and selection
 
 const events = [
     {title: "Church Conference", date: "2025-02-15", description: "A weekend conference for the congregation.", image: "revival1.jpg"},
@@ -12,20 +13,21 @@ const events = [
 ];
 
 const EventsPage = () => {
+
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-    // Event handler for selecting a date on the calendar
-    const onDateChange = (date) => setSelectedDate(date);
+    // Convert event data to FullCalendar format
+    const fullCalendarEvents = events.map(event => ({
+        title: event.title,
+        date: event.date,
+        description: event.description,
+        image: event.image,
+    }));
 
-    // Filter events for the selected date
-    const filteredEvents = events.filter((event) => {
-        const eventDate = new Date(event.date);
-        return (
-            eventDate.getDate() === selectedDate.getDate() &&
-            eventDate.getMonth() === selectedDate.getMonth() &&
-            eventDate.getFullYear() === selectedDate.getFullYear()
-        );
-    });
+    // Handle date click event (optional for more actions)
+    const handleDateClick = (info) => {
+        setSelectedDate(info.dateStr);
+    };
 
     return (
         <Box sx={{padding: 3}}>
@@ -56,27 +58,35 @@ const EventsPage = () => {
             </Grid>
 
             {/* Calendar Section */}
-            <Typography variant="h4" align="center" sx={{marginTop: 5}}>
-                Calendar of Events
+
+            <Typography variant="h4" align="center" sx={{ marginBottom: 2, marginTop: 2 }}>
+                Event Calendar
             </Typography>
 
-            <Box sx={{display: 'flex', justifyContent: 'center', marginTop: 3}}>
-                <Calendar onChange={onDateChange} value={selectedDate}/>
+            <Box sx={{ width: '80%', maxWidth: '900px', margin: '0 auto' }}>
+                <FullCalendar
+                    plugins={[dayGridPlugin, interactionPlugin]} // Use dayGrid for month view, interaction for event handling
+                    initialView="dayGridMonth"
+                    events={fullCalendarEvents} // Pass the events to FullCalendar
+                    dateClick={handleDateClick} // Handle date click (optional)
+                    eventClick={(info) => alert(`Event: ${info.event.title}`)} // Handle event click (optional)
+                />
             </Box>
 
             {/* Events on Selected Date */}
-            <Typography variant="h5" align="center" sx={{marginTop: 3}}>
-                Events on {selectedDate.toLocaleDateString()}
-            </Typography>
-            {filteredEvents.length === 0 ? (
-                <Typography variant="body1" align="center" sx={{marginTop: 2}}>
-                    No events planned for this day.
-                </Typography>
-            ) : (
-                <Grid container spacing={3} justifyContent="center" sx={{marginTop: 2}}>
-                    {filteredEvents.map((event, index) => (
+
+            <Grid container spacing={3} justifyContent="center">
+                {events
+                    .filter((event) => event.date === selectedDate.toISOString().split('T')[0]) // Filter events by selected date
+                    .map((event, index) => (
                         <Grid item xs={12} sm={6} md={4} key={index}>
-                            <Card sx={{height: 200}}>
+                            <Card sx={{ height: 300 }}>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={`/assets/${event.image}`} // Use a relevant image for the event
+                                    alt={event.title}
+                                />
                                 <CardContent>
                                     <Typography variant="h6">{event.title}</Typography>
                                     <Typography variant="body2" color="text.secondary">
@@ -87,8 +97,9 @@ const EventsPage = () => {
                             </Card>
                         </Grid>
                     ))}
-                </Grid>
-            )}
+            </Grid>
+
+
         </Box>
     );
 };
