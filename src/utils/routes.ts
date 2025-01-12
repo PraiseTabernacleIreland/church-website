@@ -10,6 +10,7 @@ export enum PageName {
     Photos = 'Photos',
     Contact = 'Contact',
     ReportsAndDocuments = 'Reports & Documents',
+    Give = 'Give',
 }
 
 export const PageRoutes: Route = {
@@ -19,5 +20,6 @@ export const PageRoutes: Route = {
     [PageName.Outreach]: "/outreach",
     [PageName.Photos]: "/photos",
     [PageName.Contact]: "/contact",
-    [PageName.ReportsAndDocuments]: "/reports"
+    [PageName.ReportsAndDocuments]: "/reports",
+    [PageName.Give]: "/give"
 }

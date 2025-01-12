@@ -12,6 +12,7 @@ import {ReportsAndDocuments} from "./pages/ReportsAndDocuments";
 import {PageName, PageRoutes} from "./utils/routes";
 import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
+import {Give} from "./pages/Give";
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                     <Route path={PageRoutes[PageName.Photos]} element={<Photos />} />
                     <Route path={PageRoutes[PageName.Contact]} element={<Contact />} />
                     <Route path={PageRoutes[PageName.ReportsAndDocuments]} element={<ReportsAndDocuments />} />
+                    <Route path={PageRoutes[PageName.Give]} element={<Give />} />
                 </Routes>
             </Box>
 

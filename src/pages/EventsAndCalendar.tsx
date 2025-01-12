@@ -94,11 +94,90 @@ const EventsPage = () => {
 };
 
 
+const cellGroups = [
+    {
+        name: "John Doe",
+        region: "North Dublin",
+        meetingTime: "Wednesdays at 7:00 PM",
+        zoomLink: "https://zoom.us/j/123456789",
+        image: "/assets/people1.jpg",
+    },
+    {
+        name: "Jane Smith",
+        region: "South Dublin",
+        meetingTime: "Thursdays at 6:30 PM",
+        zoomLink: "https://zoom.us/j/987654321",
+        image: "/assets/people2.jpg",
+    },
+    {
+        name: "Michael Johnson",
+        region: "West Dublin",
+        meetingTime: "Fridays at 8:00 PM",
+        zoomLink: "https://zoom.us/j/123987654",
+        image: "/assets/people3.jpg",
+    },
+    // Add more leaders here
+];
+
+const CellGroupLeadersPage = () => {
+    return (
+        <Box sx={{ padding: 3 }}>
+            <Typography variant="h4" align="center" gutterBottom>
+                Cell Groups
+            </Typography>
+            <Typography variant="body1" align="center" gutterBottom>
+                Meet our dedicated cell group leaders. Join their meetings to connect and grow together.
+            </Typography>
+
+            <Grid container spacing={3} justifyContent="center" sx={{ marginTop: 2 }}>
+                {cellGroups.map((leader, index) => (
+                    <Grid item xs={12} sm={6} md={4} key={index}>
+                        <Card>
+                            <CardMedia
+                                component="img"
+                                image={leader.image}
+                                alt={leader.name}
+                                height="100%"
+                                sx={{
+                                    objectFit: 'contain',  // Ensures the image fits the container without cropping
+                                    width: '100%',  // Ensure it spans the full width
+                                }}
+                            />
+                            <CardContent>
+                                <Typography variant="h6" gutterBottom>
+                                    {leader.name}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary" gutterBottom>
+                                    Region: {leader.region}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary" gutterBottom>
+                                    Meeting Time: {leader.meetingTime}
+                                </Typography>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    href={leader.zoomLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    fullWidth
+                                >
+                                    Join Zoom Meeting
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
+    );
+};
+
 export const EventsAndCalendar = () => {
     return (
         <>
             <Hero backGroundImageSrc={'url(/assets/events.jpg)'}/>
             <EventsPage/>
+            <CellGroupLeadersPage/>
         </>
     )
 }
