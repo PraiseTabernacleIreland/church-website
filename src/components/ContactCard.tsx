@@ -1,60 +1,60 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, IconButton, Box } from '@mui/material';
-import { Facebook, Instagram, Twitter } from '@mui/icons-material';
+import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 
 const ContactCard = ({ contact }) => {
     return (
-        <Card sx={{ maxWidth: 345, margin: '20px', boxShadow: 3 }}>
-            {/* Contact Image */}
-            <CardMedia
-                component="img"
-                height="100%"
-                image={contact.image}
-                alt={`${contact.name}'s profile`}
+        <Card sx={{ textAlign: 'center', padding: 3, borderRadius: "16px", boxShadow: 3 }}>
+
+            {/* Ministry or Group */}
+            <Typography variant="h6" sx={{ fontWeight: "bold", color: "#7b523a", mb: 1 }}>
+                {contact.ministry}
+            </Typography>
+
+            {/* Circular Image with Black & White Effect */}
+            <Box
                 sx={{
-                    objectFit: 'contain',  // Ensures the image fits the container without cropping
-                    width: '100%',  // Ensure it spans the full width
+                    width: "180px",
+                    height: "180px",
+                    margin: "0 auto",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    filter: "grayscale(100%)",
                 }}
-            />
+            >
+                <CardMedia
+                    component="img"
+                    image={contact.image}
+                    alt={contact.name}
+                    sx={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                    }}
+                />
+            </Box>
 
             <CardContent>
-                {/* Name */}
-                <Typography variant="h6" component="div" gutterBottom>
+                {/* Name & Title */}
+                <Typography variant="h5" sx={{ fontWeight: "bold", mt: 2 }}>
                     {contact.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
+                    {contact.title}
                 </Typography>
 
                 {/* Email */}
-                <Typography variant="body2" color="textSecondary" paragraph>
+                <Typography
+                    variant="body2"
+                    sx={{ mt: 1, color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+                    onClick={() => window.location.href = `mailto:${contact.email}`}
+                >
                     {contact.email}
                 </Typography>
 
-                {/* Social Media Links */}
-                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <IconButton
-                        href={contact.socialLinks.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="primary"
-                    >
-                        <Facebook />
-                    </IconButton>
-                    <IconButton
-                        href={contact.socialLinks.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="primary"
-                    >
-                        <Twitter />
-                    </IconButton>
-                    <IconButton
-                        href={contact.socialLinks.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="primary"
-                    >
-                        <Instagram />
-                    </IconButton>
-                </Box>
+                {/* Description */}
+                <Typography variant="body2" sx={{ mt: 2, color: "#555" }}>
+                    {contact.description}
+                </Typography>
             </CardContent>
         </Card>
     );

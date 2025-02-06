@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Grid } from '@mui/material';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
+        phone: '',
         message: '',
     });
+
+    const [captchaValue, setCaptchaValue] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,52 +21,93 @@ const ContactForm = () => {
         }));
     };
 
+    const handleCaptchaChange = (value) => {
+        setCaptchaValue(value);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission here (e.g., send data to an API)
-        console.log('Form Submitted:', formData);
+
+        if (!captchaValue) {
+            alert("Please complete the CAPTCHA before submitting.");
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        // Simulate form submission
+        setTimeout(() => {
+            console.log('Form Submitted:', formData);
+            alert("Form submitted successfully!");
+            setIsSubmitting(false);
+        }, 1000);
     };
 
     return (
         <Box sx={{ maxWidth: 600, margin: '0 auto', padding: 2 }}>
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
-                    {/* Full Name */}
+
+                    {/* Full Name (Required) */}
                     <Grid item xs={12}>
                         <TextField
                             label="Full Name"
                             name="fullName"
-                            variant="outlined"
+                            variant="standard"
                             fullWidth
+                            required
                             value={formData.fullName}
                             onChange={handleChange}
                         />
                     </Grid>
 
-                    {/* Email */}
+                    {/* Email (Required) */}
                     <Grid item xs={12}>
                         <TextField
                             label="Email"
                             name="email"
-                            variant="outlined"
+                            variant="standard"
                             fullWidth
+                            required
                             type="email"
                             value={formData.email}
                             onChange={handleChange}
                         />
                     </Grid>
 
-                    {/* Message */}
+                    {/* Phone Number (Not Required) */}
+                    <Grid item xs={12}>
+                        <TextField
+                            label="Phone Number"
+                            name="phone"
+                            variant="standard"
+                            fullWidth
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                        />
+                    </Grid>
+
+                    {/* Message (Required) */}
                     <Grid item xs={12}>
                         <TextField
                             label="Message"
                             name="message"
-                            variant="outlined"
+                            variant="standard"
                             fullWidth
                             multiline
                             rows={4}
+                            required
                             value={formData.message}
                             onChange={handleChange}
+                        />
+                    </Grid>
+
+                    {/* Google reCAPTCHA */}
+                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <ReCAPTCHA
+                            sitekey="YOUR_GOOGLE_RECAPTCHA_SITE_KEY"  // Replace with your actual reCAPTCHA site key
+                            onChange={handleCaptchaChange}
                         />
                     </Grid>
 
@@ -72,8 +118,9 @@ const ContactForm = () => {
                             variant="contained"
                             color="primary"
                             fullWidth
+                            disabled={isSubmitting}
                         >
-                            Submit
+                            {isSubmitting ? "Submitting..." : "Submit"}
                         </Button>
                     </Grid>
                 </Grid>

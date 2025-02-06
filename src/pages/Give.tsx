@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, Grid, Card, CardContent } from "@mui/material";
 import { QRCodeCanvas } from "qrcode.react";
+import Hero from "../components/Hero";
 
 const GivePage = () => {
     const paypalLink = "https://paypal.me/AFMIRELAND"; // Replace with your PayPal.me link
@@ -93,23 +94,7 @@ const GivePage = () => {
 export const Give = () => {
     return (
         <>
-            <Box
-                sx={{
-                    backgroundImage: "url(/assets/events.jpg)", // Replace with your background image
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    padding: "50px 0",
-                    color: "#fff",
-                    textAlign: "center",
-                }}
-            >
-                <Typography variant="h3" sx={{ fontWeight: "bold" }}>
-                    Give Generously
-                </Typography>
-                <Typography variant="h6">
-                    Together, we can make a difference in our community and beyond.
-                </Typography>
-            </Box>
+            <Hero backGroundImageSrc={'url(/assets/events.jpg)'} height={'60vh'}/>
             <GivePage />
         </>
     );

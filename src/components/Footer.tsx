@@ -1,6 +1,6 @@
 import React from "react";
-import {Box, Grid, Typography, TextField, Button} from "@mui/material";
-import {Facebook, Twitter, Google} from "@mui/icons-material";
+import {Box, Grid, Typography} from "@mui/material";
+import {Facebook, Instagram, Email, Phone, LocationCity, Pin, PinDrop} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 import {PageName, PageRoutes} from "../utils/routes";
 import logo from "../assets/logo.svg";
@@ -15,18 +15,30 @@ const Footer = () => {
                 marginTop: "2rem",
             }}
         >
-            <Grid container spacing={4}>
+            <Grid container sx={{
+                display: "flex", // Ensure it's a flex container
+                justifyContent: "space-evenly", // Evenly distribute grid items
+                alignItems: "flex-start",
+            }}>
                 {/* Quicklinks Section */}
-                <Grid item xs={12} sm={4}>
-                    <Typography variant="h6" gutterBottom>
+                <Grid
+                    item
+                    sx={{ textAlign: "left" }}
+                    marginLeft={1}
+                >
+                    <Typography sx={{ fontSize:24 }}>
                         Quicklinks
                     </Typography>
 
                     {Object.entries(PageRoutes)
                         .filter(([pageName, _]) => PageName.Home !== pageName)
                         .map(([pageName, path]) => (
-                            <Typography>
-                                <Link to={path} style={{color: "white", textDecoration: "none"}}>
+                            <Typography sx={{ fontSize:16 }}>
+                                <Link to={path} style={{
+                                    textDecoration: "none",
+                                    display: "block",
+                                    color: 'text.primary', // Default text color
+                                }}>
                                     {pageName}
                                 </Link>
                             </Typography>
@@ -34,52 +46,45 @@ const Footer = () => {
                 </Grid>
 
                 {/* Connect Section */}
-                <Grid item xs={12} sm={4}>
+                <Grid
+                    item
+                    sx={{textAlign: "left"}}
+                >
                     <Box>
                         <img
                             src={logo}
                             alt="Logo"
-                            style={{marginRight: "10px"}}
+                            style={{marginRight: "10px" }}
                         />
                     </Box>
-                    <Typography variant="subtitle2">APOSTOLIC FAITH MISSION</Typography>
-                    <Typography>© COPYRIGHT ABC 2024</Typography>
-                    <Typography>(209) 555-0104</Typography>
-                    <Typography>1901 Thornridge Cir. Shiloh, Hawaii 81063</Typography>
-                    <Typography>PRAISETABERNACLE@EXAMPLE.COM</Typography>
+                    <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+                        <Phone/>
+                        <Typography>(209) 555-0104</Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+                        <PinDrop/>
+                        <Typography>9 Portland Row, Mountjoy, Dublin 1</Typography>
+                    </Box>
+
+                    <Typography>©2025</Typography>
+                    {/*<a href="mailto:praise@example.com?subject=Hello&body=I wanted to reach out regarding..."*/}
+                    {/*   style={{textDecoration: 'none', color: 'inherit',  display: "block"}}>*/}
+                    {/*    Email: praise@example.com*/}
+                    {/*</a>*/}
+                </Grid>
+
+                <Grid
+                    item
+                    sx={{textAlign: "left"}}
+                >
+                    <Typography sx={{fontSize: 24}}>Connect</Typography>
                     <Box sx={{mt: 2}}>
                         <Facebook sx={{mr: 1}}/>
-                        <Twitter sx={{mr: 1}}/>
-                        <Google/>
+                        <Instagram sx={{mr: 1}}/>
+                        <Email sx={{mr: 1}}/>
                     </Box>
                 </Grid>
 
-                {/* Subscribe Section */}
-                <Grid item xs={12} sm={4}>
-                    <Typography variant="h6" gutterBottom>
-                        SUBSCRIBE TO GET LATEST UPDATES AND NEWS
-                    </Typography>
-                    <Box sx={{display: "flex", gap: 1, mt: 2}}>
-                        <TextField
-                            variant="outlined"
-                            placeholder="Yourmail@gmail.com"
-                            fullWidth
-                            InputProps={{
-                                style: {backgroundColor: "white", borderRadius: "4px"},
-                            }}
-                        />
-                        <Button
-                            variant="contained"
-                            sx={{
-                                backgroundColor: "white",
-                                color: "#4682B4",
-                                fontWeight: "bold",
-                            }}
-                        >
-                            Subscribe
-                        </Button>
-                    </Box>
-                </Grid>
             </Grid>
         </Box>
     );

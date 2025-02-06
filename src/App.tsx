@@ -6,13 +6,14 @@ import {Home} from "./pages/Home";
 import {About} from "./pages/About";
 import {EventsAndCalendar} from "./pages/EventsAndCalendar";
 import {Outreach} from "./pages/Outreach";
-import {Photos} from "./pages/Photos";
+import {Sermons} from "./pages/Sermons";
 import {Contact} from "./pages/Contact";
 import {ReportsAndDocuments} from "./pages/ReportsAndDocuments";
 import {PageName, PageRoutes} from "./utils/routes";
 import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
 import {Give} from "./pages/Give";
+import Team from "./pages/Team";
 
 function App() {
     return (
@@ -39,10 +40,11 @@ function App() {
                     <Route path={PageRoutes[PageName.About]} element={<About />} />
                     <Route path={PageRoutes[PageName.Events]} element={<EventsAndCalendar />} />
                     <Route path={PageRoutes[PageName.Outreach]} element={<Outreach />} />
-                    <Route path={PageRoutes[PageName.Photos]} element={<Photos />} />
+                    <Route path={PageRoutes[PageName.Sermons]} element={<Sermons />} />
                     <Route path={PageRoutes[PageName.Contact]} element={<Contact />} />
                     <Route path={PageRoutes[PageName.ReportsAndDocuments]} element={<ReportsAndDocuments />} />
                     <Route path={PageRoutes[PageName.Give]} element={<Give />} />
+                    <Route path={PageRoutes[PageName.Team]} element={<Team />} />
                 </Routes>
             </Box>
 

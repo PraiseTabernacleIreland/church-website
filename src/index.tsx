@@ -3,17 +3,37 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
+import {CssBaseline, ThemeProvider, createTheme} from "@mui/material";
+
+const headerTheme = {
+    fontFamily: '"Merriweather", serif', // Merriweather for H1 headers
+}
+
+const theme = createTheme({
+    typography: {
+        fontFamily: '"Montserrat", sans-serif', // Set Montserrat as the default font
+        h1: headerTheme,
+        h2: headerTheme,
+        h3: headerTheme,
+        h4: headerTheme,
+        h5: headerTheme,
+        h6: headerTheme,
+    },
+});
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-      <BrowserRouter>
-          <App />
-      </BrowserRouter>,
-  </React.StrictMode>
+    <React.StrictMode>
+        <BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <CssBaseline/>
+                <App/>
+            </ThemeProvider>
+        </BrowserRouter>,
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

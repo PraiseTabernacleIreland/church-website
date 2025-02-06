@@ -169,7 +169,7 @@ export default AboutPage;
 export const About = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/about.jpg)'}/>
+            <Hero backGroundImageSrc={'url(/assets/about.jpg)'} height={'60vh'}/>
             <AboutPage/>
         </>
     )

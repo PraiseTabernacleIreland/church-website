@@ -7,10 +7,11 @@ export enum PageName {
     About = 'About',
     Events = 'Events / Calendar',
     Outreach = 'Outreach',
-    Photos = 'Photos',
+    Sermons = 'Sermons',
     Contact = 'Contact',
     ReportsAndDocuments = 'Reports & Documents',
     Give = 'Give',
+    Team = 'Team',
 }
 
 export const PageRoutes: Route = {
@@ -18,8 +19,9 @@ export const PageRoutes: Route = {
     [PageName.About]: "/about",
     [PageName.Events]: "/events",
     [PageName.Outreach]: "/outreach",
-    [PageName.Photos]: "/photos",
+    [PageName.Sermons]: "/sermons",
     [PageName.Contact]: "/contact",
     [PageName.ReportsAndDocuments]: "/reports",
-    [PageName.Give]: "/give"
+    [PageName.Give]: "/give",
+    [PageName.Team]: "/team"
 }

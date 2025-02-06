@@ -1,118 +1,117 @@
 import React from "react";
-import Hero from "../components/Hero";
-import { Box, Typography, Grid, Card, CardContent, Button } from "@mui/material";
-import { AccessTime, YouTube, LocationOn } from "@mui/icons-material";
+import {Box, Chip} from "@mui/material";
+import ServiceTimes from "../components/ServiceTimes";
+import GetInvolved from "../components/GetInvolved";
+import Ministries from "../components/Ministries";
+import {Facebook, YouTube} from "@mui/icons-material";
+import TwoColumnLayout from "../components/TwoColumnLayout";
+import LatestSermon from "../components/LatestSermon";
+import GivingSummary from "../components/GivingSummary";
+import LatestEvent from "../components/LatestEvent";
+import PastorMessage from "../components/PastorMessage";
 
-const ServiceInfo = () => {
-    const youtubeLink = "https://www.youtube.com/channel/yourchannel"; // Replace with your YouTube channel link
-    const mapsLink = "https://www.google.com/maps?q=church+location"; // Replace with your Google Maps location link
-    const serviceTimes = [
-        { day: "Sunday", time: "10:00 AM" },
-        { day: "Wednesday", time: "7:00 PM" },
-        // Add more service times here
-    ];
-
+function HeroSection() {
     return (
-        <Box sx={{ padding: 3, backgroundColor: "#f5f5f5", borderRadius: 2 }}>
-            <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Church Service Information
-            </Typography>
+        <Box
+            sx={{
+                position: 'relative',
+                height: '80vh',
+                overflow: 'hidden',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+            }}
+        >
+            {/* Video background */}
+            <video
+                src="/assets/hero_1.mp4"  // Replace with your video URL
+                type="video/mp4"
+                autoPlay
+                loop
+                muted
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',  // Ensures the video covers the area without stretching
+                }}
+            />
 
-            <Grid container spacing={3} justifyContent="center">
-                {/* Service Times */}
-                <Grid item xs={12} sm={6} md={4}>
-                    <Card elevation={6} sx={{ height: "100%" }}>
-                        <CardContent sx={{ textAlign: "center", backgroundColor: "#1e88e5", color: "#fff", padding: 3 }}>
-                            <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-                                <AccessTime sx={{ fontSize: 30, verticalAlign: "middle", marginRight: 1 }} />
-                                Service Times
-                            </Typography>
-                            <ul style={{ paddingLeft: 20, listStyleType: "none" }}>
-                                {serviceTimes.map((service, index) => (
-                                    <li key={index} style={{ marginBottom: "10px" }}>
-                                        <Typography variant="body1" sx={{ fontSize: "16px", fontWeight: "bold" }}>
-                                            {service.day} - {service.time}
-                                        </Typography>
-                                    </li>
-                                ))}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </Grid>
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '10%', // Darkens only the top 10% of the hero section
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))', // Gradient from dark to transparent
+                    zIndex: 1, // Places the gradient above the video
+                }}
+            />
 
-                {/* YouTube Link */}
-                <Grid item xs={12} sm={6} md={4}>
-                    <Card elevation={6} sx={{ height: "100%" }}>
-                        <CardContent sx={{ textAlign: "center", backgroundColor: "#ff7043", color: "#fff", padding: 3 }}>
-                            <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-                                <YouTube sx={{ fontSize: 30, verticalAlign: "middle", marginRight: 1 }} />
-                                Watch Live on YouTube
-                            </Typography>
-                            <Typography variant="body1" sx={{ marginBottom: 2 }}>
-                                Join our services live on YouTube.
-                            </Typography>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                href={youtubeLink}
-                                target="_blank"
-                                sx={{
-                                    fontWeight: "bold",
-                                    textTransform: "none",
-                                    borderRadius: "30px",
-                                    padding: "10px 20px",
-                                    backgroundColor: "#fff",
-                                    color: "#ff7043",
-                                    '&:hover': { backgroundColor: "#ff5722", color: "#fff" }
-                                }}
-                            >
-                                Watch Live
-                            </Button>
-                        </CardContent>
-                    </Card>
-                </Grid>
+            {/* Hero content (Text, Buttons, etc.) */}
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: 'absolute',*/}
+            {/*        bottom: '20px', // Distance from the bottom of the Box*/}
+            {/*        right: '20px', // Distance from the right of the Box*/}
+            {/*        display: 'flex',  // Flexbox to align chips horizontally*/}
+            {/*        flexDirection: 'column', // Stack chips vertically*/}
+            {/*        gap: '10px',  // Space between the chips*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    <Chip*/}
+            {/*        icon={<Facebook/>}*/}
+            {/*        label="Watch on facebook"*/}
+            {/*        sx={{*/}
+            {/*            padding: '10px 20px',*/}
+            {/*            fontSize: '16px',*/}
+            {/*        }}*/}
+            {/*        color="primary"*/}
+            {/*        clickable*/}
+            {/*        onClick={() => {*/}
+            {/*        }}*/}
+            {/*        variant="outlined"*/}
+            {/*    />*/}
+            {/*    <Chip variant="outlined"*/}
+            {/*          clickable sx={{*/}
+            {/*        color: '#FF0000',*/}
+            {/*        borderColor: '#FF0000',*/}
+            {/*    }}*/}
+            {/*          icon={<YouTube color={'#FF0000'}/>} label="Watch on youtube"/>*/}
+            {/*</Box>*/}
 
-                {/* Maps Link */}
-                <Grid item xs={12} sm={6} md={4}>
-                    <Card elevation={6} sx={{ height: "100%" }}>
-                        <CardContent sx={{ textAlign: "center", backgroundColor: "#66bb6a", color: "#fff", padding: 3 }}>
-                            <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-                                <LocationOn sx={{ fontSize: 30, verticalAlign: "middle", marginRight: 1 }} />
-                                Get Directions
-                            </Typography>
-                            <Typography variant="body1" sx={{ marginBottom: 2 }}>
-                                Find our church location on Google Maps.
-                            </Typography>
-                            <Button
-                                variant="contained"
-                                color="secondary"
-                                href={mapsLink}
-                                target="_blank"
-                                sx={{
-                                    fontWeight: "bold",
-                                    textTransform: "none",
-                                    borderRadius: "30px",
-                                    padding: "10px 20px",
-                                    backgroundColor: "#fff",
-                                    color: "#66bb6a",
-                                    '&:hover': { backgroundColor: "#388e3c", color: "#fff" }
-                                }}
-                            >
-                                Open Maps
-                            </Button>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid>
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: "absolute",*/}
+            {/*        bottom: 0,*/}
+            {/*        left: 0,*/}
+            {/*        width: "100%",*/}
+            {/*        height: "80px", // Extend gradient for smoother transition*/}
+            {/*        background: "linear-gradient(to bottom, rgba(0, 0, 0, 0), #faf3e0)", // Match Service Times Section*/}
+            {/*        zIndex: 2,*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Box>
     );
-};
+}
 
 export const Home = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/church.png)'} height={'60vh'}/>
-            {/*<ServiceInfo/>*/}
+            <HeroSection/>
+            <PastorMessage />  {/* Add the message from the pastor here */}
+            <ServiceTimes/>
+            <Ministries/>
+            {/*<GetInvolved/>*/}
+            {/*<TwoColumnLayout/>*/}
+            {/*<LatestSermon />*/}
+            <LatestEvent />
+            {/*<GivingSummary />*/}
         </>
     )
 }

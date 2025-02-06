@@ -1,8 +1,10 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import {Box, Typography, Button} from '@mui/material';
 
 interface HeroProps {
     backGroundImageSrc: string;
+    title?: string;
+    message?: string;
     height?: string;
 }
 
@@ -10,29 +12,62 @@ const Hero = (props: HeroProps) => {
     return (
         <Box
             sx={{
-                position: 'relative',
-                height: props.height || '30vh', // Full height of the viewport
-                backgroundImage: props.backGroundImageSrc, // Replace with your hero image URL
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                textAlign: 'center',
-                color: '#fff', // Text color
-                padding: 3,
+                // position: 'relative',
+                // // height: props.height || '30vh', // Full height of the viewport
+                // // backgroundImage: props.backGroundImageSrc, // Replace with your hero image URL
+                // background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 10%), ${props.backGroundImageSrc}`, // Adjust the gradient and image
+                // backgroundSize: 'cover',
+                // backgroundPosition: 'center',
+                // display: 'flex',
+                // flexDirection: 'column',
+                // justifyContent: 'center',
+                // alignItems: 'center',
+                // textAlign: 'center',
+                // color: '#fff', // Text color
+                // zIndex: 0, // Ensure it stays behind the app bar
+                // paddingTop: '64px', // This accounts for the height of the fixed AppBar, so it doesn't overlap with the content
+                // height: props.height || "100vh", // Full viewport height
+                // backgroundAttachment: "fixed", // Key for the parallax effect
+                backgroundImage: props.backGroundImageSrc,
+                position: "relative",
+                height: props.height || "100vh", // Full viewport height
+                // backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) 70%, rgba(255, 255, 255, 1) 100%), ${props.backGroundImageSrc}`, // Extended gradient for smoother transition
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed", // Parallax effect
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                color: "#fff", // Text color
+                zIndex: 0, // Ensures it's behind the app bar
+                paddingTop: "64px", // Accounts for the fixed AppBar
             }}
         >
-            <Typography variant="h3" sx={{ fontWeight: 'bold', marginBottom: 2 }}>
-                Welcome to Our Church
-            </Typography>
-            <Typography variant="h6" sx={{ marginBottom: 4 }}>
-                Join us in our mission to serve and connect with others.
-            </Typography>
-            <Button variant="contained" color="primary" size="large">
-                Get Involved
-            </Button>
+            {props.title &&
+                (<Typography variant="h3" sx={{fontWeight: 'bold', marginBottom: 2}}>
+                    {props.title}
+                </Typography>)
+            }
+            {props.message && (
+                <Typography variant="h6" sx={{marginBottom: 4}}>
+                    {props.message}
+                </Typography>
+            )
+            }
+            {/* Bottom Gradient Transition */}
+            {/* Bottom Gradient Transition */}
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: "absolute",*/}
+            {/*        bottom: 0,*/}
+            {/*        left: 0,*/}
+            {/*        width: "100%",*/}
+            {/*        height: "200px", // Increased height for smoother gradient*/}
+            {/*        background: "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 1))", // Smoother gradient fade*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Box>
     );
 };

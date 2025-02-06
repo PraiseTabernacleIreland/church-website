@@ -3,103 +3,146 @@ import Hero from "../components/Hero";
 import { Box, Typography, Grid, Card, CardMedia, Button, CardContent } from '@mui/material';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction'; // For click events and selection
+import interactionPlugin from '@fullcalendar/interaction';
+import {useEvents} from "../hooks/useEvents"; // For click events and selection
 
-const events = [
-    {title: "Church Conference", date: "2025-02-15", description: "A weekend conference for the congregation.", image: "revival1.jpg"},
-    {title: "Easter Service", date: "2025-04-05", description: "Special service for Easter celebrations.", image: "revival2.jpg"},
-    {title: "Charity Run", date: "2025-05-20", description: "Join us for a charity run.", image: "revival3.jpg"},
-    // Add more events here
-];
 
 const EventsPage = () => {
-
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const { events } = useEvents();
 
     // Convert event data to FullCalendar format
-    const fullCalendarEvents = events.map(event => ({
+    const fullCalendarEvents = events.map((event) => ({
         title: event.title,
         date: event.date,
         description: event.description,
         image: event.image,
     }));
 
-    // Handle date click event (optional for more actions)
+    // Handle date click event
     const handleDateClick = (info) => {
-        setSelectedDate(info.dateStr);
+        const clickedDate = new Date(info.dateStr);
+        setSelectedDate(clickedDate);
     };
 
+    // Filter events for the selected date
+    const filteredEvents = events.filter(
+        (event) => event.date === selectedDate?.toISOString().split("T")[0]
+    );
+
     return (
-        <Box sx={{padding: 3}}>
-            {/* Upcoming Events Banners */}
-            <Typography variant="h4" align="center" gutterBottom>
-                Upcoming Events
-            </Typography>
-            <Grid container spacing={3} justifyContent="center">
-                {events.map((event, index) => (
-                    <Grid item xs={12} sm={6} md={4} key={index}>
-                        <Card sx={{height: 300}}>
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                image={`/assets/${event.image}`} // Use a relevant image for the banner
-                                alt={event.title}
-                            />
-                            <CardContent>
-                                <Typography variant="h6">{event.title}</Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {event.description}
-                                </Typography>
-                                <Button size="small" color="primary">Learn More</Button>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
+        <Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    gap: 4,
+                    padding: 3,
+                    alignItems: "flex-start",
+                    background: "linear-gradient(to bottom, #fdf6e3, #e0f7fa)"
+                }}
+            >
+                {/* Calendar Column */}
+                <Box
+                    sx={{
+                        flex: 1,
+                        maxWidth: "600px",
+                    }}
+                >
+                    <FullCalendar
+                        plugins={[dayGridPlugin, interactionPlugin]}
+                        initialView="dayGridMonth"
+                        events={fullCalendarEvents}
+                        dateClick={handleDateClick}
+                        eventClick={(info) => alert(`Event: ${info.event.title}`)}
+                    />
+                </Box>
 
-            {/* Calendar Section */}
-
-            <Typography variant="h4" align="center" sx={{ marginBottom: 2, marginTop: 2 }}>
-                Event Calendar
-            </Typography>
-
-            <Box sx={{ width: '80%', maxWidth: '900px', margin: '0 auto' }}>
-                <FullCalendar
-                    plugins={[dayGridPlugin, interactionPlugin]} // Use dayGrid for month view, interaction for event handling
-                    initialView="dayGridMonth"
-                    events={fullCalendarEvents} // Pass the events to FullCalendar
-                    dateClick={handleDateClick} // Handle date click (optional)
-                    eventClick={(info) => alert(`Event: ${info.event.title}`)} // Handle event click (optional)
-                />
-            </Box>
-
-            {/* Events on Selected Date */}
-
-            <Grid container spacing={3} justifyContent="center">
-                {events
-                    .filter((event) => event.date === selectedDate.toISOString().split('T')[0]) // Filter events by selected date
-                    .map((event, index) => (
-                        <Grid item xs={12} sm={6} md={4} key={index}>
-                            <Card sx={{ height: 300 }}>
+                {/* Events Column */}
+                <Box
+                    sx={{
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 4,
+                    }}
+                >
+                    {filteredEvents.length > 0 ? (
+                        filteredEvents.map((event, index) => (
+                            <Card
+                                key={index}
+                                sx={{
+                                    display: "flex", // Flexbox layout for alignment
+                                    justifyContent: "center", // Center content horizontally
+                                    alignItems: "center", // Center content vertically
+                                    overflow: "hidden", // Ensure no overflow is visible
+                                    position: "relative",
+                                    height: "300px", // Set the card height (adjust as needed)
+                                    width: "100%", // Full width of the container
+                                }}
+                            >
                                 <CardMedia
                                     component="img"
-                                    height="140"
-                                    image={`/assets/${event.image}`} // Use a relevant image for the event
+                                    image={event.image}
                                     alt={event.title}
+                                    sx={{
+                                        height: "100%", // Ensures full card height
+                                        width: "100%", // Ensures full card width
+                                        objectFit: "contain", // Scales the image without cropping
+                                        transform: "scale(0.8)", // Default scale (adjust as needed)
+                                        // transition: "transform 0.3s ease-in-out", // Smooth scaling
+                                        // transformOrigin: "center center", // Scaling happens from the center
+                                    }}
                                 />
                                 <CardContent>
-                                    <Typography variant="h6">{event.title}</Typography>
-                                    <Typography variant="body2" color="text.secondary">
+                                    <Typography
+                                        variant="h6"
+                                        sx={{
+                                            fontWeight: "bold",
+                                            mb: 1,
+                                        }}
+                                    >
+                                        {event.title}
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            color: "#555",
+                                            mb: 2,
+                                        }}
+                                    >
+                                        {new Date(event.date).toLocaleDateString("en-US", {
+                                            weekday: "long",
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        })}
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            color: "#777",
+                                        }}
+                                    >
                                         {event.description}
                                     </Typography>
-                                    <Button size="small" color="primary">Learn More</Button>
                                 </CardContent>
                             </Card>
-                        </Grid>
-                    ))}
-            </Grid>
-
-
+                        ))
+                    ) : (
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                color: "#777",
+                                textAlign: "center",
+                            }}
+                        >
+                            Select a date with events to view details.
+                        </Typography>
+                    )}
+                </Box>
+            </Box>
         </Box>
     );
 };
@@ -186,9 +229,9 @@ const CellGroupLeadersPage = () => {
 export const EventsAndCalendar = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/events.jpg)'}/>
+            <Hero backGroundImageSrc={'url(/assets/calendar_1.jpg)'} height={'40vh'}/>
             <EventsPage/>
-            <CellGroupLeadersPage/>
+            {/*<CellGroupLeadersPage/>*/}
         </>
     )
 }
