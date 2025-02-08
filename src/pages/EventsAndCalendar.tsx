@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Typography, Modal, CardMedia, CardContent, IconButton } from "@mui/material";
+import { Box, Typography, Modal, CardMedia, IconButton } from "@mui/material";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";

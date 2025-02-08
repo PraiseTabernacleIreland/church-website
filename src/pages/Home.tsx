@@ -1,12 +1,8 @@
 import React from "react";
-import {Box, Chip} from "@mui/material";
+import {Box} from "@mui/material";
 import ServiceTimes from "../components/ServiceTimes";
-import GetInvolved from "../components/GetInvolved";
 import Ministries from "../components/Ministries";
-import {Facebook, YouTube} from "@mui/icons-material";
-import TwoColumnLayout from "../components/TwoColumnLayout";
 import LatestSermon from "../components/LatestSermon";
-import GivingSummary from "../components/GivingSummary";
 import LatestEvent from "../components/LatestEvent";
 import PastorMessage from "../components/PastorMessage";
 

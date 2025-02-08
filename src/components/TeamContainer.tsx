@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Container, Tabs, Tab, Typography, Box } from '@mui/material';
+import { Grid, Container, Tabs, Tab, Box } from '@mui/material';
 import ContactCard from './ContactCard';
 import {useAppData} from "../contexts/AppDataContext";
 import {TeamName} from "../types";

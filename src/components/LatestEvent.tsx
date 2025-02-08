@@ -7,9 +7,9 @@ const LatestEvent = () => {
     const navigate = useNavigate();
     const { events } = useEvents();
 
-    const handleEventClick = (link) => {
-        navigate(link);
-    };
+    // const handleEventClick = (link) => {
+    //     navigate(link);
+    // };
 
     return (
         <Box

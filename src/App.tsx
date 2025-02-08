@@ -5,7 +5,6 @@ import {Routes, Route} from 'react-router-dom';
 import {Home} from "./pages/Home";
 import {About} from "./pages/about/About";
 import {EventsAndCalendar} from "./pages/EventsAndCalendar";
-import {Outreach} from "./pages/Outreach";
 import {Sermons} from "./pages/resources/Sermons";
 import {Contact} from "./pages/Contact";
 import {ReportsAndDocuments} from "./pages/resources/ReportsAndDocuments";
