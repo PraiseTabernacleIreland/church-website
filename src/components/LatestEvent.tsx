@@ -154,7 +154,7 @@ const LatestEvent = () => {
                             borderColor: "#7b523a",
                         },
                     }}
-                    onClick={() => navigate("/church-website/events")}
+                    onClick={() => navigate("/events")}
                 >
                     View Events Calendar
                 </Button>
