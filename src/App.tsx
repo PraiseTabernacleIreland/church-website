@@ -14,6 +14,10 @@ import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
 import {Give} from "./pages/Give";
 import Team from "./pages/Team";
+import {YouthMinistryPage} from "./pages/ministry/Youth";
+import {WorshipMinistryPage} from "./pages/ministry/Worship";
+import {EvangelismMinistryPage} from "./pages/ministry/Evangelism";
+import {ChildrenMinistryPage} from "./pages/ministry/Children";
 
 function App() {
     return (
@@ -39,12 +43,16 @@ function App() {
                     <Route path={PageRoutes[PageName.Home]} element={<Home />} />
                     <Route path={PageRoutes[PageName.About]} element={<About />} />
                     <Route path={PageRoutes[PageName.Events]} element={<EventsAndCalendar />} />
-                    <Route path={PageRoutes[PageName.Outreach]} element={<Outreach />} />
+                    <Route path={PageRoutes[PageName.Evangelism]} element={<Outreach />} />
                     <Route path={PageRoutes[PageName.Sermons]} element={<Sermons />} />
                     <Route path={PageRoutes[PageName.Contact]} element={<Contact />} />
                     <Route path={PageRoutes[PageName.ReportsAndDocuments]} element={<ReportsAndDocuments />} />
                     <Route path={PageRoutes[PageName.Give]} element={<Give />} />
                     <Route path={PageRoutes[PageName.Team]} element={<Team />} />
+                    <Route path={PageRoutes[PageName.Youth]} element={<YouthMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Children]} element={<ChildrenMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Evangelism]} element={<EvangelismMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Worship]} element={<WorshipMinistryPage />} />
                 </Routes>
             </Box>
 

@@ -1,50 +1,89 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import logo from '../assets/logo.svg';
-import {Link, useLocation} from "react-router-dom";
-import {PageName, PageRoutes} from "../utils/routes";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {NavigationRoutes, PageName, PageRoutes } from "../utils/routes";
 
 interface MenuButtonProps {
     text: string;
     route: string;
     isScrolled: boolean;
+    dropdownItems?: { text: string; route: string }[];
 }
 
 const MenuButton = (props: MenuButtonProps) => {
-    const location = useLocation(); // Get the current route
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-    // Check if the current route matches the button's route
     const isSelected = location.pathname === props.route;
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (props.dropdownItems) {
+            setAnchorEl(event.currentTarget);
+        } else {
+            navigate(props.route);
+        }
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
-        <Link to={props.route} style={{textDecoration: 'none',  fontFamily: '"Montserrat", sans-serif',}}>
+        <Box>
             <Button
+                onClick={handleClick}
                 color={isSelected ? 'primary' : 'inherit'}
                 style={{
-                    textDecoration: isSelected ? 'underline' : 'none', // Underline when selected
+                    textDecoration: isSelected ? 'underline' : 'none',
                     fontWeight: isSelected ? 'bold' : 'normal',
+                    fontFamily: '"Montserrat", sans-serif',
                 }}
             >
                 <Typography color={props.isScrolled ? 'black' : '#e3f2fd'}>
                     {props.text.toUpperCase()}
                 </Typography>
             </Button>
-        </Link>
-    )
-}
-
+            {props.dropdownItems && (
+                <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    {props.dropdownItems.map((item) => (
+                        <MenuItem key={item.route} onClick={handleClose}>
+                            <Link to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                {item.text}
+                            </Link>
+                        </MenuItem>
+                    ))}
+                </Menu>
+            )}
+            {/*{!props.dropdownItems && (*/}
+            {/*    <Link to={props.route} style={{ textDecoration: 'none' }}>*/}
+            {/*        <Typography color={props.isScrolled ? 'black' : '#e3f2fd'}>*/}
+            {/*            {props.text.toUpperCase()}*/}
+            {/*        </Typography>*/}
+            {/*    </Link>*/}
+            {/*)}*/}
+        </Box>
+    );
+};
 
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
 
-    // Listen for scroll event to update the background color of the AppBar
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 300) {
-                setIsScrolled(true); // Change background when scrolled down 50px
+                setIsScrolled(true);
             } else {
                 setIsScrolled(false);
             }
@@ -55,7 +94,7 @@ const NavBar = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [window.scrollY]);
+    }, []);
 
     return (
         <AppBar
@@ -82,34 +121,30 @@ const NavBar = () => {
                 },
             }}
         >
-            <Toolbar sx={{
-                width: '100%',
-                minHeight: 64,
-                // backgroundColor: isScrolled ? 'none' : 'rgba(0, 0, 0, 0.2)'
-            }}>
-                {/* Logo Section */}
-                <Box display="flex" alignItems="center" sx={{flexGrow: 0}}>
-                    <Link to={PageRoutes[PageName.Home]} style={{textDecoration: 'none'}}>
-                        <img
-                            src={logo}
-                            alt="Logo"
-                            style={{marginRight: "10px"}}
-                        />
+            <Toolbar sx={{ width: '100%', minHeight: 64 }}>
+                <Box display="flex" alignItems="center" sx={{ flexGrow: 0 }}>
+                    <Link to={PageRoutes[PageName.Home]} style={{ textDecoration: 'none' }}>
+                        <img src={logo} alt="Logo" style={{ marginRight: "10px" }} />
                     </Link>
                 </Box>
 
-                {/* Menu Items */}
                 <Box
                     sx={{
                         display: "flex",
                         gap: "20px",
                         alignItems: "center",
-                        flexGrow: 1, // Allow this to take up remaining space
-                        justifyContent: "center", // Align to the left (or 'center' for centered items)
+                        flexGrow: 1,
+                        justifyContent: "center",
                     }}
                 >
-                    {Object.entries(PageRoutes).map(([pageName, path]) => (
-                        <MenuButton text={pageName} route={path} key={path} isScrolled={isScrolled} />
+                    {NavigationRoutes.map((item) => (
+                        <MenuButton
+                            key={item.text}
+                            text={item.text}
+                            route={item.route}
+                            isScrolled={isScrolled}
+                            dropdownItems={item.dropdownItems}
+                        />
                     ))}
                 </Box>
             </Toolbar>

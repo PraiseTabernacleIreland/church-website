@@ -28,11 +28,21 @@ export interface ServiceButton {
     variant: string
 }
 
+export interface MinistryEvent {
+    image: string;
+    title: string;
+    description: string;
+}
+
 export interface Ministry {
-    name: string,
-    description: string,
+    heroImage: string;
     icon: React.ReactNode,
     backgroundImage: string,
+    name: string;
+    description: string;
+    events: MinistryEvent[]
+    joinInstructions: string;
+    route: string;
 }
 
 export interface Person {
