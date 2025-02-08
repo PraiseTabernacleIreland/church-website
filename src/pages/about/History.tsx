@@ -34,7 +34,7 @@ const ChurchHistory = () => {
                         <Grid item xs={12} md={6}>
                             <CardMedia
                                 component="img"
-                                image="/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg"
+                                image={`${process.env.PUBLIC_URL}/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`}
                                 alt="Missionaries Arrival in South Africa"
                                 sx={{ width: "100%", borderRadius: 2 }}
                             />
@@ -60,7 +60,7 @@ const ChurchHistory = () => {
 
                     <CardMedia
                         component="img"
-                        image="/assets/AFM-at-Word_And_Life_Boksburg.jpg"
+                        image={`${process.env.PUBLIC_URL}/assets/AFM-at-Word_And_Life_Boksburg.jpg`}
                         alt="Praise Tabernacle Current Location"
                         sx={{ width: "100%", borderRadius: 2, mt: 4 }}
                     />

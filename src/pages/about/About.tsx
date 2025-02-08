@@ -25,7 +25,7 @@ const tabContent = [
                     </ul>
                 </Typography>
                 <img
-                    src="/assets/beliefs.jpg"
+                    src={`${process.env.PUBLIC_URL}/assets/beliefs.jpg`}
                     alt="Beliefs"
                     style={{maxWidth: "100%", borderRadius: 8, margin: "20px 0"}}
                 />
@@ -44,7 +44,7 @@ const tabContent = [
                     The Lord opened the door in 2001 for Mrs. J. Chimbganda, widow of Pastor Chimbganda, to move from Zimbabwe to Ireland. Her family soon followed, including son Gerard T. Chimbganda. The Lord let them to plant a missionary AFM church in Ireland and the first meeting of Praise Tabernacle Apostolic Faith Ministries was held in July 2004. This church has experienced tremendous growth–starting with a meeting in a rented hotel basement, they grew to include a partnership with Drop Inn Ministries, opening a thrift store and moving into warehouse building. In 2015, the Lord directed Praise Tabernacle to move to the current location at St.
                 </Typography>
                 <img
-                    src="/assets/history.jpg"
+                    src={`${process.env.PUBLIC_URL}/assets/history.jpg`}
                     alt="Church History"
                     style={{maxWidth: "100%", borderRadius: 8, margin: "20px 0"}}
                 />
@@ -72,7 +72,7 @@ const tabContent = [
                     If you believe then you’re one confession away from the free gift of salvation, eternal life and adoption into God’s family. “I accept Jesus as my Lord and Savior”. That’s what a believer says to receive this free gift. Will you join us?
                 </Typography>
                 <img
-                    src="/assets/salvation.jpg"
+                    src={`${process.env.PUBLIC_URL}/assets/salvation.jpg`}
                     alt="Salvation"
                     style={{maxWidth: "100%", borderRadius: 8, margin: "20px 0"}}
                 />

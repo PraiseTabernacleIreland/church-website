@@ -22,7 +22,7 @@ function HeroSection() {
         >
             {/* Video background */}
             <video
-                src="/assets/hero_1.mp4"  // Replace with your video URL
+                src={`${process.env.PUBLIC_URL}/assets/hero_1.mp4`}  // Replace with your video URL
                 type="video/mp4"
                 autoPlay
                 loop

@@ -30,7 +30,7 @@ const PastorMessage = () => {
                         <Grid item xs={12} md={4}>
                             <CardMedia
                                 component="img"
-                                image="/assets/gerard.jpg"  // Replace with actual pastor image path
+                                image={`${process.env.PUBLIC_URL}/assets/gerard.jpg`}  // Replace with actual pastor image path
                                 alt="Pastor Gerard Chimbganda"
                                 sx={{
                                     width: "100%",

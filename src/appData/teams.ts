@@ -3,7 +3,7 @@ import {TeamName, Teams} from "../types";
 export const TEAMS: Teams = {
     [TeamName.Pastoral]: [
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Pastor',
             team: TeamName.Pastoral,
@@ -11,7 +11,7 @@ export const TEAMS: Teams = {
             description: 'Main Pastor',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Cell_Leaders,
@@ -21,7 +21,7 @@ export const TEAMS: Teams = {
     ],
     [TeamName.Administration]: [
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Cell_Leaders,
@@ -31,7 +31,7 @@ export const TEAMS: Teams = {
     ],
     [TeamName.Elders]: [
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Senior Pastor',
             team: TeamName.Elders,
@@ -39,7 +39,7 @@ export const TEAMS: Teams = {
             description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Elders,
@@ -47,7 +47,7 @@ export const TEAMS: Teams = {
             description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
         },
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Senior Pastor',
             team: TeamName.Elders,
@@ -55,7 +55,7 @@ export const TEAMS: Teams = {
             description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Elders,
@@ -65,7 +65,7 @@ export const TEAMS: Teams = {
     ],
     [TeamName.Deacons]: [
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Moses Ufumeli',
             title: 'Secretary',
             team: TeamName.Deacons,
@@ -73,7 +73,7 @@ export const TEAMS: Teams = {
             description: 'Manages church records and administrative operations.',
         },
         {
-            image: '/assets/jonah.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/jonah.jpg`,
             name: 'Jonah Mudehwe',
             title: 'Board Member',
             team: TeamName.Deacons,
@@ -81,7 +81,7 @@ export const TEAMS: Teams = {
             description: 'Oversees church policies and financial decisions.',
         },
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Senior Pastor',
             team: TeamName.Deacons,
@@ -89,7 +89,7 @@ export const TEAMS: Teams = {
             description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Deacons,
@@ -97,7 +97,7 @@ export const TEAMS: Teams = {
             description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
         },
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Senior Pastor',
             team: TeamName.Deacons,
@@ -105,7 +105,7 @@ export const TEAMS: Teams = {
             description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Deacons,
@@ -115,7 +115,7 @@ export const TEAMS: Teams = {
     ],
     [TeamName.Cell_Leaders]: [
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Cell Group Leader',
             team: TeamName.Cell_Leaders,
@@ -123,7 +123,7 @@ export const TEAMS: Teams = {
             description: 'Facilitates small group Bible studies and discipleship meetings.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Moses Ufumeli',
             title: 'Cell Group Leader',
             team: TeamName.Cell_Leaders,
@@ -131,7 +131,7 @@ export const TEAMS: Teams = {
             description: 'Provides guidance and support to small group members.',
         },
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Senior Pastor',
             team: TeamName.Cell_Leaders,
@@ -139,7 +139,7 @@ export const TEAMS: Teams = {
             description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Cell_Leaders,
@@ -147,7 +147,7 @@ export const TEAMS: Teams = {
             description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
         },
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Senior Pastor',
             team: TeamName.Cell_Leaders,
@@ -155,7 +155,7 @@ export const TEAMS: Teams = {
             description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Cell_Leaders,
@@ -163,7 +163,7 @@ export const TEAMS: Teams = {
             description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
         },
         {
-            image: '/assets/gerard.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/gerard.jpg`,
             name: 'Gerard Chimbganda',
             title: 'Senior Pastor',
             team: TeamName.Cell_Leaders,
@@ -171,7 +171,7 @@ export const TEAMS: Teams = {
             description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
         },
         {
-            image: '/assets/moses.jpg',
+            image: `${process.env.PUBLIC_URL}/assets/moses.jpg`,
             name: 'Alex Kadonzvo',
             title: 'Associate Pastor',
             team: TeamName.Cell_Leaders,
