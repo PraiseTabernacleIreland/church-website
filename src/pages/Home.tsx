@@ -27,6 +27,7 @@ function HeroSection() {
                 autoPlay
                 loop
                 muted
+                playsInline
                 style={{
                     position: 'absolute',
                     top: 0,
@@ -34,6 +35,7 @@ function HeroSection() {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',  // Ensures the video covers the area without stretching
+                    zIndex: -1,  // Pushes the video behind the content
                 }}
             />
 

@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    Box,
+    Button,
+    Menu,
+    MenuItem,
+    IconButton,
+    Drawer,
+    List,
+    ListItem,
+    ListItemText,
+    Collapse,
+    Divider, useMediaQuery,
+    useTheme
+} from "@mui/material";
+import { ExpandLess, ExpandMore, Menu as MenuIcon } from '@mui/icons-material';
 import logo from '../assets/logo.svg';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {NavigationRoutes, PageName, PageRoutes } from "../utils/routes";
+import { NavigationRoutes, PageName, PageRoutes } from "../utils/routes";
 
-interface MenuButtonProps {
-    text: string;
-    route: string;
-    isScrolled: boolean;
-    dropdownItems?: { text: string; route: string }[];
-}
-
-const MenuButton = (props: MenuButtonProps) => {
+// Menu Button for Desktop
+const MenuButton = ({ text, route, isScrolled, dropdownItems }) => {
     const location = useLocation();
     const navigate = useNavigate();
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
-    const isSelected = location.pathname === props.route;
+    const isSelected = location.pathname === route;
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        if (props.dropdownItems) {
+    const handleClick = (event) => {
+        if (dropdownItems) {
             setAnchorEl(event.currentTarget);
         } else {
-            navigate(props.route);
+            navigate(route);
         }
     };
 
@@ -47,108 +52,147 @@ const MenuButton = (props: MenuButtonProps) => {
                     fontFamily: '"Montserrat", sans-serif',
                 }}
             >
-                <Typography color={props.isScrolled ? 'black' : '#e3f2fd'}>
-                    {props.text.toUpperCase()}
+                <Typography color={isScrolled ? 'black' : '#e3f2fd'}>
+                    {text.toUpperCase()}
                 </Typography>
             </Button>
-            {props.dropdownItems && (
-                <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                >
-                    {props.dropdownItems.map((item) => (
-                        <MenuItem key={item.route} onClick={handleClose}>
-                            <Link to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                {item.text}
-                            </Link>
+
+            {dropdownItems && (
+                <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+                    {dropdownItems.map((item) => (
+                        <MenuItem key={item.route} onClick={handleClose} component={Link} to={item.route}>
+                            {item.text}
                         </MenuItem>
                     ))}
                 </Menu>
             )}
-            {/*{!props.dropdownItems && (*/}
-            {/*    <Link to={props.route} style={{ textDecoration: 'none' }}>*/}
-            {/*        <Typography color={props.isScrolled ? 'black' : '#e3f2fd'}>*/}
-            {/*            {props.text.toUpperCase()}*/}
-            {/*        </Typography>*/}
-            {/*    </Link>*/}
-            {/*)}*/}
         </Box>
     );
 };
 
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [openSubMenus, setOpenSubMenus] = useState({});
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 10) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+            setIsScrolled(window.scrollY > 10);
         };
-
         window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    return (
-        <AppBar
-            position="fixed"
-            style={{
-                top: 0,
-                left: 0,
-                right: 0,
-                backgroundColor: isScrolled ? '#fff' : 'transparent', // AppBar color change
-                color: isScrolled ? '#000' : 'white', // Change text color when scrolling
-                boxShadow: isScrolled ? 3 : 0, // Add shadow when scrolled
-                borderBottom: isScrolled ? '2px solid #ddd' : 'none', // Add border when scrolled
-                transition: 'background-color 0.3s, box-shadow 0.3s, color 0.3s, border-bottom 0.3s', // Smooth transition
-                zIndex: 1000, // Ensure it stays on top of other content
-                '--Paper-shadow': 'none',
-                '&:before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    zIndex: -1,
-                },
-            }}
-        >
-            <Toolbar sx={{ width: '100%', minHeight: 64 }}>
-                <Box display="flex" alignItems="center" sx={{ flexGrow: 0 }}>
-                    <Link to={PageRoutes[PageName.Home]} style={{ textDecoration: 'none' }}>
-                        <img src={logo} alt="Logo" style={{ marginRight: "10px" }} />
-                    </Link>
-                </Box>
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
 
-                <Box
-                    sx={{
-                        display: "flex",
-                        gap: "20px",
-                        alignItems: "center",
-                        flexGrow: 1,
-                        justifyContent: "center",
-                    }}
-                >
-                    {NavigationRoutes.map((item) => (
-                        <MenuButton
-                            key={item.text}
-                            text={item.text}
-                            route={item.route}
-                            isScrolled={isScrolled}
-                            dropdownItems={item.dropdownItems}
-                        />
-                    ))}
-                </Box>
-            </Toolbar>
-        </AppBar>
+    const handleSubMenuToggle = (text) => {
+        setOpenSubMenus((prev) => ({ ...prev, [text]: !prev[text] }));
+    };
+
+    const drawer = (
+        <Box onClick={handleDrawerToggle} sx={{ width: 250, paddingTop: 2 }}>
+            <img src={logo} alt="Logo" style={{ width: '80%', margin: '0 auto', display: 'block' }} />
+            <Divider sx={{ my: 2 }} />
+
+            <List>
+                {NavigationRoutes.map((item) => (
+                    <Box key={item.text}>
+                        <ListItem button onClick={() => item.dropdownItems ? handleSubMenuToggle(item.text) : null} component={Link} to={item.dropdownItems ? '#' : item.route}>
+                            <ListItemText primary={item.text} />
+                            {item.dropdownItems && (openSubMenus[item.text] ? <ExpandLess /> : <ExpandMore />)}
+                        </ListItem>
+                        {item.dropdownItems && (
+                            <Collapse in={openSubMenus[item.text]} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
+                                    {item.dropdownItems.map((subItem) => (
+                                        <ListItem button key={subItem.text} component={Link} to={subItem.route} sx={{ pl: 4 }}>
+                                            <ListItemText primary={subItem.text} />
+                                        </ListItem>
+                                    ))}
+                                </List>
+                            </Collapse>
+                        )}
+                    </Box>
+                ))}
+            </List>
+        </Box>
+    );
+
+    return (
+        <>
+            <AppBar
+                position="fixed"
+                sx={{
+                    backgroundColor: isScrolled ? '#fff' : 'transparent',
+                    color: isScrolled ? '#000' : 'white',
+                    boxShadow: isScrolled ? 3 : 0,
+                    borderBottom: isScrolled ? '2px solid #ddd' : 'none',
+                    transition: 'background-color 0.3s, box-shadow 0.3s, color 0.3s, border-bottom 0.3s',
+                    zIndex: 1000,
+                }}
+            >
+                <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Link to={PageRoutes[PageName.Home]} style={{ textDecoration: 'none' }}>
+                        <img src={logo} alt="Logo" style={{ height: '40px' }} />
+                    </Link>
+
+                    {/* Desktop Menu */}
+                    <Box sx={{
+                        // display: { xs: 'none', md: 'flex' },
+                        // gap: 2,
+                        // alignItems: "center",
+                        // display: "flex",
+                        // gap: "20px",
+                        // flexGrow: 1,
+                        // justifyContent: "center",
+                        ...(isMobile
+                            ? { display: { xs: 'none', md: 'flex' }, gap: 2 }
+                            : {
+                                alignItems: "center",
+                                display: "flex",
+                                gap: "20px",
+                                flexGrow: 1,
+                                justifyContent: "center",
+                            }),
+                    }}>
+                        {NavigationRoutes.map((item) => (
+                            <MenuButton
+                                key={item.text}
+                                text={item.text}
+                                route={item.route}
+                                isScrolled={isScrolled}
+                                dropdownItems={item.dropdownItems}
+                            />
+                        ))}
+                    </Box>
+
+                    {/* Mobile Menu Icon */}
+                    <IconButton
+                        color="inherit"
+                        edge="start"
+                        aria-label="menu"
+                        sx={{ display: { xs: 'block', md: 'none' } }}
+                        onClick={handleDrawerToggle}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
+
+            {/* Drawer for Mobile */}
+            <Drawer
+                anchor="right"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                ModalProps={{ keepMounted: true }}
+            >
+                {drawer}
+            </Drawer>
+        </>
     );
 };
 
