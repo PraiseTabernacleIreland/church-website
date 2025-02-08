@@ -15,8 +15,6 @@ const LatestSermon = () => {
 
     const latestSermon = videos[0];
 
-    console.log({latestSermon});
-
     return (
         <Box
             sx={{
@@ -96,7 +94,7 @@ const LatestSermon = () => {
                         variant="contained"
                         color="primary"
                         onClick={() => {
-                            navigate(`${PageRoutes[PageName.Sermons]}#latest-sermon`, {state: {sermon: latestSermon}});
+                            navigate(`${PageRoutes[PageName.Sermons]}#selected-video`, {state: {sermon: latestSermon}});
                         }}
                         sx={{
                             mr: 2,

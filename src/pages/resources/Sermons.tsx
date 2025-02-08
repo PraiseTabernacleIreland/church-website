@@ -1,87 +1,77 @@
 import Hero from "../../components/Hero";
-import React, {useEffect, useState} from "react";
-import {Box, Typography, Grid, Card, CardMedia, CardContent} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Typography, Grid, Card, CardMedia, CardContent } from "@mui/material";
 import Button from "@mui/material/Button";
-import {useYoutubeChannelDetails} from "../../hooks/useYoutubeChannelDetails";
+import { useYoutubeChannelDetails } from "../../hooks/useYoutubeChannelDetails";
 import { useLocation } from "react-router-dom";
-
 
 const YouTubePage = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
-    const {liveVideo, videos} = useYoutubeChannelDetails();
+    const { liveVideo, videos } = useYoutubeChannelDetails();
     const location = useLocation();
     const { sermon } = location.state || {};
 
+    // Handle selected video from home page or live video
     useEffect(() => {
-       if(liveVideo) setSelectedVideo({...sermon, id: 'liveVideo'});
-       if(sermon) setSelectedVideo({...sermon, id: 'latest-sermon'});
-    }, [sermon, liveVideo]);
+        if (sermon) {
+            setSelectedVideo(sermon);
+        } else if (liveVideo) {
+            setSelectedVideo(liveVideo);
+        }
+        // else if (videos.length > 0) {
+        //     setSelectedVideo(videos[0]); // Default to the latest video
+        // }
+    }, [sermon, liveVideo, videos]);
+
+    // Scroll to hash if present
+    // useEffect(() => {
+    //     if (location.hash) {
+    //         const element = document.getElementById(location.hash.substring(1));
+    //         if (element) {
+    //             element.scrollIntoView({ behavior: "smooth" });
+    //         }
+    //     }
+    // }, [location]);
 
     useEffect(() => {
-        if (location.hash) {
-            const element = document.getElementById(location.hash.substring(1));
+        if (selectedVideo) {
+            const element = document.getElementById('selected-video');
             if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         }
-    }, [location]);
+    }, [selectedVideo]);
 
     return (
-        <Box sx={{padding: 4, backgroundColor: "#f7f7f7", minHeight: "100vh"}}>
+        <Box sx={{ padding: 4, backgroundColor: "#f7f7f7", minHeight: "100vh" }}>
             {/* Live Video Section */}
-            {/*<Typography*/}
-            {/*    variant="h4"*/}
-            {/*    align="center"*/}
-            {/*    gutterBottom*/}
-            {/*    sx={{*/}
-            {/*        fontWeight: "bold",*/}
-            {/*        marginBottom: 4,*/}
-            {/*        color: "#333",*/}
-            {/*    }}>*/}
-            {/*    {liveVideo ? "Live Now" : (selectedVideo || sermon) ? "Now Playing" : ""}*/}
-            {/*</Typography>*/}
+            {liveVideo && !selectedVideo && (
+                <Box sx={{ marginBottom: 4, textAlign: "center" }} id="live-video">
+                    <iframe
+                        width="100%"
+                        height="500"
+                        src={`https://www.youtube.com/embed/${liveVideo.id.videoId}?autoplay=1&mute=1`}
+                        title={liveVideo.snippet.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        style={{
+                            borderRadius: "12px",
+                            boxShadow: "0 6px 30px rgba(0, 0, 0, 0.2)",
+                        }}
+                    ></iframe>
+                    <Typography variant="h5" sx={{ marginTop: 2, fontWeight: "bold", color: "#333" }}>
+                        {liveVideo.snippet.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: "#555" }}>
+                        {new Date(liveVideo.snippet.publishedAt).toLocaleDateString()}
+                    </Typography>
+                </Box>
+            )}
 
-            {/*{selectedVideo && (*/}
-            {/*    <Box sx={{marginBottom: 4, textAlign: "center"}} id={selectedVideo.id}>*/}
-            {/*        <iframe*/}
-            {/*            width="100%"*/}
-            {/*            height="500"*/}
-            {/*            src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&mute=1`}*/}
-            {/*            title={selectedVideo.snippet.title}*/}
-            {/*            frameBorder="0"*/}
-            {/*            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"*/}
-            {/*            allowFullScreen*/}
-            {/*            style={{*/}
-            {/*                borderRadius: "8px",*/}
-            {/*                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",*/}
-            {/*            }}*/}
-            {/*        ></iframe>*/}
-            {/*        <Typography variant="h5" sx={{marginTop: 2, fontWeight: "bold", color: "#333"}}>*/}
-            {/*            {selectedVideo.snippet.title}*/}
-            {/*        </Typography>*/}
-            {/*        <Typography variant="body2" sx={{color: "#555"}}>*/}
-            {/*            {new Date(selectedVideo.snippet.publishedAt).toLocaleDateString()}*/}
-            {/*        </Typography>*/}
-            {/*    </Box>*/}
-            {/*)}*/}
-
-            {/* Video Player */}
+            {/* Selected Video (from home page or gallery) */}
             {selectedVideo && (
-                <Box
-                    sx={{
-                        marginBottom: 4,
-                        textAlign: "center",
-                        padding: 3,
-                        borderRadius: "12px",
-                        background: "linear-gradient(to bottom right, #f9f9f9, #e0eafc)", // Subtle gradient background
-                        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.15)", // Stronger shadow for prominence
-                        // transition: "transform 0.3s ease-in-out",
-                        // "&:hover": {
-                        //     transform: "scale(1.02)", // Slight zoom on hover for interactivity
-                        // },
-                    }}
-                    id={selectedVideo.id}
-                >
+                <Box sx={{ marginBottom: 4, textAlign: "center" }} id="selected-video">
                     <iframe
                         width="100%"
                         height="500"
@@ -91,61 +81,18 @@ const YouTubePage = () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         style={{
-                            borderRadius: "12px", // Slightly more rounded corners
-                            boxShadow: "0 6px 30px rgba(0, 0, 0, 0.2)", // Deeper shadow for the video itself
+                            borderRadius: "12px",
+                            boxShadow: "0 6px 30px rgba(0, 0, 0, 0.2)",
                         }}
                     ></iframe>
-
-                    {/* Video Title */}
-                    <Typography
-                        variant="h5"
-                        sx={{
-                            marginTop: 3,
-                            fontWeight: "bold",
-                            color: "#2c3e50", // Darker color for stronger contrast
-                            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
-                        }}
-                    >
+                    <Typography variant="h5" sx={{ marginTop: 2, fontWeight: "bold", color: "#333" }}>
                         {selectedVideo.snippet.title}
                     </Typography>
-
-                    {/* Published Date */}
-                    <Typography
-                        variant="body2"
-                        sx={{
-                            color: "#7f8c8d",
-                            fontStyle: "italic", // Italicize the date for differentiation
-                            marginTop: 1,
-                        }}
-                    >
+                    <Typography variant="body2" sx={{ color: "#555" }}>
                         {new Date(selectedVideo.snippet.publishedAt).toLocaleDateString()}
                     </Typography>
                 </Box>
             )}
-
-            {/*{sermon && (*/}
-            {/*    <Box sx={{ marginBottom: 4, textAlign: "center" }} id={'latest-sermon'}>*/}
-            {/*        <iframe*/}
-            {/*            width="100%"*/}
-            {/*            height="500"*/}
-            {/*            src={`https://www.youtube.com/embed/${sermon.id.videoId}`}*/}
-            {/*            title={sermon.snippet.title}*/}
-            {/*            frameBorder="0"*/}
-            {/*            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"*/}
-            {/*            allowFullScreen*/}
-            {/*            style={{*/}
-            {/*                borderRadius: "8px",*/}
-            {/*                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",*/}
-            {/*            }}*/}
-            {/*        ></iframe>*/}
-            {/*        <Typography variant="h5" sx={{ marginTop: 2, fontWeight: "bold", color: "#333" }}>*/}
-            {/*            {sermon.snippet.title}*/}
-            {/*        </Typography>*/}
-            {/*        <Typography variant="body2" sx={{ color: "#555" }}>*/}
-            {/*            {new Date(sermon.snippet.publishedAt).toLocaleDateString()}*/}
-            {/*        </Typography>*/}
-            {/*    </Box>*/}
-            {/*)}*/}
 
             {/* Video Gallery */}
             <Grid container spacing={3}>
@@ -180,14 +127,8 @@ const YouTubePage = () => {
                                         fontWeight: "bold",
                                         color: "#333",
                                         mb: 1,
-                                        // overflow: "hidden",
-                                        // whiteSpace: "nowrap",
-                                        // textOverflow: "ellipsis",
-                                        whiteSpace: "normal",       // Ensure text wraps
-                                        overflow: "visible",        // No clipping
-                                        textOverflow: "unset",      // Disable ellipsis
-                                        wordBreak: "break-word",    // Break long words if needed
-                                        display: "block",           // Ensure it behaves like a block element
+                                        whiteSpace: "normal",
+                                        wordBreak: "break-word",
                                     }}
                                 >
                                     {video.snippet.title}
@@ -202,10 +143,9 @@ const YouTubePage = () => {
                                         textOverflow: "ellipsis",
                                     }}
                                 >
-                                    {new Date(video.snippet.publishedAt)
-                                        .toLocaleDateString("en-US", {
-                                            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-                                        })}
+                                    {new Date(video.snippet.publishedAt).toLocaleDateString("en-US", {
+                                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                                    })}
                                 </Typography>
                                 <Button
                                     size="small"
@@ -232,7 +172,7 @@ export const Sermons = () => {
     return (
         <>
             <Hero backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/sermon.jpg)`} height={'30vh'} title={'Sermons'} />
-            <YouTubePage/>
+            <YouTubePage />
         </>
-    )
-}
+    );
+};
