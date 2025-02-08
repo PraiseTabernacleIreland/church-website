@@ -1,6 +1,34 @@
 import {TeamName, Teams} from "../types";
 
 export const TEAMS: Teams = {
+    [TeamName.Pastoral]: [
+        {
+            image: '/assets/gerard.jpg',
+            name: 'Gerard Chimbganda',
+            title: 'Pastor',
+            team: TeamName.Pastoral,
+            email: 'gerargchimb@gmail.com',
+            description: 'Main Pastor',
+        },
+        {
+            image: '/assets/moses.jpg',
+            name: 'Alex Kadonzvo',
+            title: 'Associate Pastor',
+            team: TeamName.Cell_Leaders,
+            email: 'ufumelims@yahoo.co.uk',
+            description: 'Associate Pastor',
+        }
+    ],
+    [TeamName.Administration]: [
+        {
+            image: '/assets/moses.jpg',
+            name: 'Alex Kadonzvo',
+            title: 'Associate Pastor',
+            team: TeamName.Cell_Leaders,
+            email: 'ufumelims@yahoo.co.uk',
+            description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
+        },
+    ],
     [TeamName.Elders]: [
         {
             image: '/assets/gerard.jpg',
@@ -151,24 +179,5 @@ export const TEAMS: Teams = {
             description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
         },
     ],
-    [TeamName.Pastoral]: [
-        {
-            image: '/assets/moses.jpg',
-            name: 'Alex Kadonzvo',
-            title: 'Associate Pastor',
-            team: TeamName.Cell_Leaders,
-            email: 'ufumelims@yahoo.co.uk',
-            description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
-        },
-    ],
-    [TeamName.Administration]: [
-        {
-            image: '/assets/moses.jpg',
-            name: 'Alex Kadonzvo',
-            title: 'Associate Pastor',
-            team: TeamName.Cell_Leaders,
-            email: 'ufumelims@yahoo.co.uk',
-            description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
-        },
-    ]
+
 };

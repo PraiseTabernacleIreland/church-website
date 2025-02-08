@@ -78,9 +78,9 @@ const BeliefsPage = () => {
     return (
         <Box sx={{ background: "#f9f9f9", py: 8, px: 4 }}>
             <Container maxWidth="md">
-                <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4, textAlign: "center", color: "#7b523a" }}>
-                    What We Believe
-                </Typography>
+                {/*<Typography variant="h3" sx={{ fontWeight: "bold", mb: 4, textAlign: "center", color: "#7b523a" }}>*/}
+                {/*    What We Believe*/}
+                {/*</Typography>*/}
                 {beliefs.map((belief, index) => (
                     <Accordion
                         key={index}
@@ -129,7 +129,7 @@ export default BeliefsPage;
 export const Beliefs = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/about.jpg)'} height={'30vh'}/>
+            <Hero backGroundImageSrc={'url(/assets/about.jpg)'} height={'30vh'} title={'What We Believe'}/>
             <BeliefsPage/>
         </>
     )

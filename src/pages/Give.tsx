@@ -13,12 +13,12 @@ const GivePage = () => {
 
     return (
         <Box sx={{ padding: 3, textAlign: "center", backgroundColor: "#f7f7f7" }}>
-            <Typography variant="h4" gutterBottom sx={{ color: "#333" }}>
-                Support Our Mission
-            </Typography>
-            <Typography variant="body1" sx={{ marginBottom: 3, color: "#555" }}>
-                Your generosity helps us continue our mission to serve the community. Thank you for your support!
-            </Typography>
+            {/*<Typography variant="h4" gutterBottom sx={{ color: "#333" }}>*/}
+            {/*    Support Our Mission*/}
+            {/*</Typography>*/}
+            {/*<Typography variant="body1" sx={{ marginBottom: 3, color: "#555" }}>*/}
+            {/*    Your generosity helps us continue our mission to serve the community. Thank you for your support!*/}
+            {/*</Typography>*/}
 
             <Grid container spacing={4} justifyContent="center" sx={{ marginBottom: 5 }}>
                 <Grid item xs={12} md={6}>
@@ -94,7 +94,12 @@ const GivePage = () => {
 export const Give = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/events.jpg)'} height={'60vh'}/>
+            <Hero
+                backGroundImageSrc={'url(/assets/events.jpg)'}
+                height={'30vh'}
+                title={'Support Our Mission'}
+                message={'Your generosity helps us continue our mission to serve the community. Thank you for your support!'}
+            />
             <GivePage />
         </>
     );

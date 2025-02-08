@@ -5,7 +5,7 @@ import {useAppData} from "../contexts/AppDataContext";
 import {TeamName} from "../types";
 
 const TeamContainer = () => {
-    const [selectedTab, setSelectedTab] = useState(TeamName.Elders);
+    const [selectedTab, setSelectedTab] = useState(TeamName.Pastoral);
     const {teams} = useAppData();
 
     const handleTabChange = (event, newValue) => {
@@ -14,7 +14,7 @@ const TeamContainer = () => {
 
     return (
         <Container sx={{ paddingTop: '20px', textAlign: "center" }}>
-            <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 3 }}>Meet Our Team</Typography>
+            {/*<Typography variant="h4" sx={{ fontWeight: 'bold', mb: 3 }}>Meet Our Team</Typography>*/}
 
             {/* Tabs for Team Categories */}
             <Tabs

@@ -5,7 +5,11 @@ import TeamContainer from "../../components/TeamContainer";
 export const Team = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/contact.jpg)'} height={'40vh'}/>
+            <Hero
+                backGroundImageSrc={'url(/assets/contact.jpg)'}
+                height={'30vh'}
+                title={'Meet Our Team'}
+            />
             <TeamContainer/>
         </>
     )
