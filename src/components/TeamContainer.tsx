@@ -24,9 +24,7 @@ const TeamContainer = () => {
                 textColor="primary"
                 indicatorColor="primary"
             >
-                <Tab label="Elders" value="elders" />
-                <Tab label="Deacons" value="deacons" />
-                <Tab label="Cell Leaders" value="cellLeaders" />
+                {Object.keys(teams).map(teamName => <Tab label={teamName} value={teamName} />)}
             </Tabs>
 
             {/* Display Relevant Team Members Based on Selected Tab */}

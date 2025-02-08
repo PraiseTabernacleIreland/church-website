@@ -151,4 +151,24 @@ export const TEAMS: Teams = {
             description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
         },
     ],
+    [TeamName.Pastoral]: [
+        {
+            image: '/assets/moses.jpg',
+            name: 'Alex Kadonzvo',
+            title: 'Associate Pastor',
+            team: TeamName.Cell_Leaders,
+            email: 'ufumelims@yahoo.co.uk',
+            description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
+        },
+    ],
+    [TeamName.Administration]: [
+        {
+            image: '/assets/moses.jpg',
+            name: 'Alex Kadonzvo',
+            title: 'Associate Pastor',
+            team: TeamName.Cell_Leaders,
+            email: 'ufumelims@yahoo.co.uk',
+            description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
+        },
+    ]
 };
