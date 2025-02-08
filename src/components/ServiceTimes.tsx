@@ -1,10 +1,10 @@
 import {Box, Button, Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import React from "react";
+import {useAppData} from "../contexts/AppDataContext";
 
-const location = "Praise Tabernacle Apostolic Faith Mission, 1, 8 Portland Row, Mountjoy, Dublin";
-const url = `https://www.google.com/maps?q=${encodeURIComponent(location)}`;
-
-const ServiceTimesSection = () => (
+const ServiceTimesSection = () => {
+    const { services }  = useAppData();
+    return (
     <Box
         sx={{
             display: "flex",
@@ -43,35 +43,7 @@ const ServiceTimesSection = () => (
         </Typography>
         <Grid container spacing={4} justifyContent="center" sx={{ maxWidth: "1200px" }}>
             {/** Card Component */}
-            {[
-                {
-                    title: "Sunday Morning Worship",
-                    time: "10:00 AM - 2:00 PM",
-                    description: "A time to gather in worship and fellowship.",
-                    image: "/assets/img_3.png",
-                    buttons: [
-                        { text: "Join In-Person", link: url, variant: "contained" },
-                        { text: "Watch Online", link: "/sermons", variant: "outlined" },
-                    ],
-                    color: "#ad5a2f",
-                },
-                {
-                    title: "Wednesday Bible Study",
-                    time: "7:00 PM - 8:00 PM",
-                    description: "An evening of learning and spiritual growth.",
-                    image: "/assets/img_1.png",
-                    buttons: [{ text: "Join Online", link: "https://zoom.us/j/1234567890?pwd=yourpassword", variant: "outlined" }],
-                    color: "#785749",
-                },
-                {
-                    title: "Friday Prayer Meeting",
-                    time: "8:00 PM - 9:00 PM",
-                    description: "A dedicated time of prayer and reflection.",
-                    image: "/assets/img_2.png",
-                    buttons: [{ text: "Join Online", link: "https://zoom.us/j/1234567890?pwd=yourpassword", variant: "outlined" }],
-                    color: "#6d4b3a",
-                },
-            ].map((service, index) => (
+            {services.map((service, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                     <Card
                         sx={{
@@ -150,6 +122,7 @@ const ServiceTimesSection = () => (
             }}
         />
     </Box>
-);
+)
+};
 
 export default ServiceTimesSection;

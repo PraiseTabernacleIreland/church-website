@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import {useYoutubeChannelDetails} from "../hooks/useYoutubeChannelDetails";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const SermonsLink = '/sermons';
 
@@ -65,7 +65,6 @@ const LatestSermon = () => {
             />
 
 
-
             {/* Content */}
             <Box sx={{
                 display: "flex", // Activate Flexbox
@@ -98,7 +97,7 @@ const LatestSermon = () => {
                         variant="contained"
                         color="primary"
                         onClick={() => {
-                            navigate(`${SermonsLink}#latest-sermon`, { state: { sermon: latestSermon } });
+                            navigate(`${SermonsLink}#latest-sermon`, {state: {sermon: latestSermon}});
                         }}
                         sx={{
                             mr: 2,

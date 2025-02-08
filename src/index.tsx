@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {CssBaseline, ThemeProvider, createTheme} from "@mui/material";
+import {AppDataProvider} from "./contexts/AppDataContext";
 
 const headerTheme = {
     fontFamily: '"Merriweather", serif', // Merriweather for H1 headers
@@ -29,8 +30,10 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <ThemeProvider theme={theme}>
-                <CssBaseline/>
-                <App/>
+                <AppDataProvider>
+                    <CssBaseline/>
+                    <App/>
+                </AppDataProvider>
             </ThemeProvider>
         </BrowserRouter>,
     </React.StrictMode>

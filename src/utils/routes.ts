@@ -1,5 +1,5 @@
 interface Route {
-    [pageName: string]: string;
+    [pageName: string]: string | Route;
 }
 
 export enum PageName {
@@ -12,11 +12,20 @@ export enum PageName {
     ReportsAndDocuments = 'Reports & Documents',
     Give = 'Give',
     Team = 'Team',
+    Our_History = 'Our History',
+    Our_Beliefs = 'What we believe',
+    Resources = 'Resources',
+    Children = 'Children',
+    Worship = 'Worship',
+    Youth = 'Youth',
 }
 
 export const PageRoutes: Route = {
     [PageName.Home]: "/",
-    [PageName.About]: "/about",
+    // [PageName.About]: {
+    //     [PageName.Our_History]: "/about/history",
+    //     [PageName.Our_Beliefs]: "/about/beliefs",
+    // },
     [PageName.Events]: "/events",
     [PageName.Outreach]: "/outreach",
     [PageName.Sermons]: "/sermons",
