@@ -1,6 +1,3 @@
-import {useEffect, useState} from "react";
-
-
 const events = [
     {
         id: 1,
@@ -32,6 +29,38 @@ const events = [
         description: "A day for revival.",
         date: "2025-02-01",
         image: "/assets/revival_2025.jpg",
+        link: "/events/3",
+    },
+    {
+        id: 5,
+        title: "Revival Seminar",
+        description: "A day for revival.",
+        date: "2025-02-08",
+        image: "/assets/event_2.jpg",
+        link: "/events/3",
+    },
+    {
+        id: 6,
+        title: "Revival Seminar",
+        description: "A day for revival.",
+        date: "2025-02-09",
+        image: "/assets/event_3.jpg",
+        link: "/events/3",
+    },
+    {
+        id: 7,
+        title: "Revival Seminar",
+        description: "A day for revival and miracles",
+        date: "2025-02-09",
+        image: "/assets/event_4.jpg",
+        link: "/events/3",
+    },
+    {
+        id: 8,
+        title: "Revival Seminar",
+        description: "A day for revival and miracles",
+        date: "2025-02-10",
+        image: "/assets/event_5.jpg",
         link: "/events/3",
     },
 ];

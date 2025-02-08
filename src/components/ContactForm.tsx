@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Grid } from '@mui/material';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { TextField, Button, Box, Grid, Divider } from '@mui/material';
+import Typography from "@mui/material/Typography";
+import {LocationOn, Phone } from '@mui/icons-material';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -10,7 +11,6 @@ const ContactForm = () => {
         message: '',
     });
 
-    const [captchaValue, setCaptchaValue] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
@@ -21,17 +21,8 @@ const ContactForm = () => {
         }));
     };
 
-    const handleCaptchaChange = (value) => {
-        setCaptchaValue(value);
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (!captchaValue) {
-            alert("Please complete the CAPTCHA before submitting.");
-            return;
-        }
 
         setIsSubmitting(true);
 
@@ -45,6 +36,26 @@ const ContactForm = () => {
 
     return (
         <Box sx={{ maxWidth: 600, margin: '0 auto', padding: 2 }}>
+            <Typography variant="body1" sx={{ mb: 3, color: '#555' }}>
+                Our pastoral team is available to offer counsel, encouragement, and prayer whenever you need it.
+                Fill out the form below, give us a call, or visit us in person—we’re excited to connect with you!
+            </Typography>
+
+            <Divider sx={{ mb: 3 }} />
+
+            <Box sx={{ mb: 3 }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6} sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Phone sx={{ color: '#7b523a', mr: 1 }} />
+                        <Typography variant="body2">(209) 555-0104</Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={6} sx={{ display: 'flex', alignItems: 'center' }}>
+                        <LocationOn sx={{ color: '#7b523a', mr: 1 }} />
+                        <Typography variant="body2">9 Portland Row, Mountjoy, Dublin 1</Typography>
+                    </Grid>
+                </Grid>
+            </Box>
+
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
 
@@ -100,14 +111,6 @@ const ContactForm = () => {
                             required
                             value={formData.message}
                             onChange={handleChange}
-                        />
-                    </Grid>
-
-                    {/* Google reCAPTCHA */}
-                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <ReCAPTCHA
-                            sitekey="YOUR_GOOGLE_RECAPTCHA_SITE_KEY"  // Replace with your actual reCAPTCHA site key
-                            onChange={handleCaptchaChange}
                         />
                     </Grid>
 

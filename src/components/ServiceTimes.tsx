@@ -18,18 +18,18 @@ const ServiceTimesSection = () => {
         }}
     >
 
-        <Box
-            sx={{
-                position: "absolute",
-                // bottom: 0,
-                // left: 0,
-                top: 0,
-                width: "100%",
-                height: "100px", // Extend gradient for smoother transition
-                background: "linear-gradient(0deg, #faf3e0),rgba(0, 0, 0, 0) ", // Match Service Times Section
-                zIndex: 4,
-            }}
-        />
+        {/*<Box*/}
+        {/*    sx={{*/}
+        {/*        position: "absolute",*/}
+        {/*        // bottom: 0,*/}
+        {/*        // left: 0,*/}
+        {/*        top: 0,*/}
+        {/*        width: "100%",*/}
+        {/*        height: "100px", // Extend gradient for smoother transition*/}
+        {/*        background: "linear-gradient(0deg, #faf3e0),rgba(0, 0, 0, 0) ", // Match Service Times Section*/}
+        {/*        zIndex: 4,*/}
+        {/*    }}*/}
+        {/*/>*/}
         <Typography
             variant="h3"
             sx={{
@@ -110,17 +110,17 @@ const ServiceTimesSection = () => {
             ))}
         </Grid>
         {/* Bottom Gradient */}
-        <Box
-            sx={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "100%",
-                height: "100px",
-                background: "linear-gradient(to bottom, rgba(255, 255, 255, 0), #e3f2fd)", // Fades into Ministries section
-                zIndex: 2,
-            }}
-        />
+        {/*<Box*/}
+        {/*    sx={{*/}
+        {/*        position: "absolute",*/}
+        {/*        bottom: 0,*/}
+        {/*        left: 0,*/}
+        {/*        width: "100%",*/}
+        {/*        height: "100px",*/}
+        {/*        background: "linear-gradient(to bottom, rgba(255, 255, 255, 0), #e3f2fd)", // Fades into Ministries section*/}
+        {/*        zIndex: 2,*/}
+        {/*    }}*/}
+        {/*/>*/}
     </Box>
 )
 };

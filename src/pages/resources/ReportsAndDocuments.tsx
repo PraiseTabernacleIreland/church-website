@@ -122,7 +122,7 @@ export const ReportsAndDocuments = () => {
         <>
             <Hero
                 backGroundImageSrc={'url(/assets/reports.jpg)'}
-                height={'30vh'}
+                height={'40vh'}
                 title={'Reports & Documents'}
                 message={'Download our annual reports and official documents to stay informed about our activities, finances, and goals.'}
             />

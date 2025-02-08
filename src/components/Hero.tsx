@@ -28,10 +28,10 @@ const Hero = (props: HeroProps) => {
                 // paddingTop: '64px', // This accounts for the height of the fixed AppBar, so it doesn't overlap with the content
                 // height: props.height || "100vh", // Full viewport height
                 // backgroundAttachment: "fixed", // Key for the parallax effect
-                backgroundImage: props.backGroundImageSrc,
+                // backgroundImage: props.backGroundImageSrc,
                 position: "relative",
                 height: props.height || "100vh", // Full viewport height
-                // backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) 70%, rgba(255, 255, 255, 1) 100%), ${props.backGroundImageSrc}`, // Extended gradient for smoother transition
+                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) 70%, rgba(255, 255, 255, 1) 100%), ${props.backGroundImageSrc}`, // Extended gradient for smoother transition
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundAttachment: "fixed", // Parallax effect
@@ -43,6 +43,7 @@ const Hero = (props: HeroProps) => {
                 color: "#fff", // Text color
                 zIndex: 0, // Ensures it's behind the app bar
                 paddingTop: "64px", // Accounts for the fixed AppBar
+                // background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(/assets/contact.jpg)`,
             }}
         >
             {props.title &&
@@ -51,7 +52,16 @@ const Hero = (props: HeroProps) => {
                 </Typography>)
             }
             {props.message && (
-                <Typography variant="h6" sx={{marginBottom: 4}}>
+                <Typography
+                    // variant="h6"
+                    // sx={{marginBottom: 4}}
+                    variant="h6"
+                    sx={{
+                        marginBottom: 4,
+                        maxWidth: '800px',      // Limit the width of the text box
+                        width: '100%'           // Ensure responsiveness
+                    }}
+                >
                     {props.message}
                 </Typography>
             )

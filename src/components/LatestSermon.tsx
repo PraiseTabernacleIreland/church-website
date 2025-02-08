@@ -4,8 +4,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import {useYoutubeChannelDetails} from "../hooks/useYoutubeChannelDetails";
 import {useNavigate} from "react-router-dom";
-
-const SermonsLink = '/sermons';
+import {PageName, PageRoutes} from "../utils/routes";
 
 const LatestSermon = () => {
     const {videos, loading, error} = useYoutubeChannelDetails();
@@ -26,14 +25,14 @@ const LatestSermon = () => {
                 background: "#f0f7f9", // Matches the bottom gradient of the previous section
                 textAlign: "center",
                 position: "relative",
-                mt: "-50px", // Overlaps the gradient from the previous section to remove the gap
+                // mt: "-50px", // Overlaps the gradient from the previous section to remove the gap
                 height: "80vh", // Full-screen height
                 backgroundImage: `url(${latestSermon.snippet.thumbnails.high.url})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "flex-start",
+                justifyContent: "center",
                 padding: "0 10%", // Space for text on the left
                 color: "#fff",
                 textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)",
@@ -52,17 +51,17 @@ const LatestSermon = () => {
                 }}
             />
 
-            <Box
-                sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "500px", // Extended height for a smoother transition
-                    background: "linear-gradient(to bottom, #e3f2fd, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0))", // Less abrupt gradient
-                    zIndex: 1,
-                }}
-            />
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: "absolute",*/}
+            {/*        top: 0,*/}
+            {/*        left: 0,*/}
+            {/*        width: "100%",*/}
+            {/*        height: "500px", // Extended height for a smoother transition*/}
+            {/*        background: "linear-gradient(to bottom, #e3f2fd, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0))", // Less abrupt gradient*/}
+            {/*        zIndex: 1,*/}
+            {/*    }}*/}
+            {/*/>*/}
 
 
             {/* Content */}
@@ -97,7 +96,7 @@ const LatestSermon = () => {
                         variant="contained"
                         color="primary"
                         onClick={() => {
-                            navigate(`${SermonsLink}#latest-sermon`, {state: {sermon: latestSermon}});
+                            navigate(`${PageRoutes[PageName.Sermons]}#latest-sermon`, {state: {sermon: latestSermon}});
                         }}
                         sx={{
                             mr: 2,
@@ -111,7 +110,7 @@ const LatestSermon = () => {
                     <Button
                         variant="contained"
                         color="secondary"
-                        href={SermonsLink}
+                        href={PageRoutes[PageName.Sermons]}
                         sx={{
                             padding: "10px 20px",
                             color: "#fff",
@@ -129,17 +128,17 @@ const LatestSermon = () => {
             </Box>
 
             {/* Bottom Gradient Transition */}
-            <Box
-                sx={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    width: "100%",
-                    // height: "150px",
-                    background: "linear-gradient(to bottom, #f0f7f9, #ffffff)", // Matches the next section
-                    zIndex: 1,
-                }}
-            />
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: "absolute",*/}
+            {/*        bottom: 0,*/}
+            {/*        left: 0,*/}
+            {/*        width: "100%",*/}
+            {/*        // height: "150px",*/}
+            {/*        background: "linear-gradient(to bottom, #f0f7f9, #ffffff)", // Matches the next section*/}
+            {/*        zIndex: 1,*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Box>
     )
 };

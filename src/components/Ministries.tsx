@@ -68,16 +68,16 @@ const MinistriesSection = () => {
                 ))}
             </Grid>
             {/* Gradient Divider to Smooth Transition */}
-            <Box
-                sx={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "60px",
-                    background: "linear-gradient(to bottom, rgba(255, 255, 255, 0), #f9f9f9)", // Fade to the background color of the next section
-                }}
-            />
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: "absolute",*/}
+            {/*        bottom: 0,*/}
+            {/*        left: 0,*/}
+            {/*        width: "100%",*/}
+            {/*        height: "60px",*/}
+            {/*        background: "linear-gradient(to bottom, rgba(255, 255, 255, 0), #f9f9f9)", // Fade to the background color of the next section*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Box>
     );
 }

@@ -7,12 +7,10 @@ export const Contact = () => {
         <>
             <Hero
                 backGroundImageSrc={'url(/assets/contact.jpg)'}
-                height={'30vh'}
-                title="Contact Us Today"
+                height={'40vh'}
+                title="We’d Love to Hear From You"
+                message={'Whether you have a question, need prayer, or simply want to connect, we’re here for you.'}
             />
-            {/*<Typography variant="h4" sx={{ fontWeight: 'bold', mt: 6, mb: 3 }}>*/}
-            {/*    Contact Us Today*/}
-            {/*</Typography>*/}
 
             <ContactForm />
         </>

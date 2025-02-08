@@ -96,7 +96,7 @@ export const Give = () => {
         <>
             <Hero
                 backGroundImageSrc={'url(/assets/events.jpg)'}
-                height={'30vh'}
+                height={'40vh'}
                 title={'Support Our Mission'}
                 message={'Your generosity helps us continue our mission to serve the community. Thank you for your support!'}
             />

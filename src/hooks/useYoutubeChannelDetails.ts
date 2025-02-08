@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {getWithExpiry, setWithExpiry} from "../utils/storage";
 
 export interface YoutubeSearchResult {
     "kind": "youtube#searchResult",
@@ -43,38 +44,55 @@ export const useYoutubeChannelDetails = () => {
     const [error, setError] = useState<string | null>(null);
     useEffect(() => {
         const fetchVideos = async () => {
-            if (!GOOGLE_API_KEY || !CHANNEL_ID) {
-                setError("Missing Google API Key or Channel ID");
+
+            const cachedData = getWithExpiry('praise-data');
+
+            if (cachedData) {
+                console.log("Using cached data from localStorage");
+
+                setLiveVideo(cachedData.live || null); // Update live video
+                setVideos(cachedData.videos); // Update video list
+
                 setLoading(false);
-                return;
-            }
-
-            try {
-                setLoading(true);
-                const response = await fetch(
-                    `https://www.googleapis.com/youtube/v3/search?key=${GOOGLE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_NUMBER_OF_RESULTS}`
-                );
-
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch videos: ${response.statusText}`);
+            } else {
+                if (!GOOGLE_API_KEY || !CHANNEL_ID) {
+                    setError("Missing Google API Key or Channel ID");
+                    setLoading(false);
+                    return;
                 }
 
-                const data: YoutubeSearchResults = await response.json();
-
-                if (data.items) {
-                    // Find the live stream video
-                    const liveStream = data.items.find(
-                        (item) => item.snippet.liveBroadcastContent === "live"
+                try {
+                    setLoading(true);
+                    const response = await fetch(
+                        `https://www.googleapis.com/youtube/v3/search?key=${GOOGLE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_NUMBER_OF_RESULTS}`
                     );
 
-                    setLiveVideo(liveStream || null); // Update live video
-                    setVideos(data.items); // Update video list
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch videos: ${response.statusText}`);
+                    }
+
+                    const data: YoutubeSearchResults = await response.json();
+
+                    if (data.items) {
+                        // Find the live stream video
+                        const liveStream = data.items.find(
+                            (item) => item.snippet.liveBroadcastContent === "live"
+                        );
+
+                        setLiveVideo(liveStream || null); // Update live video
+                        setVideos(data.items); // Update video list
+
+                        setWithExpiry('praise-data', {
+                            live: liveStream,
+                            videos: data.items
+                        }, 3600000);
+                    }
+                } catch (error) {
+                    console.error("Error fetching YouTube videos:", error);
+                    setError((error as Error).message);
+                } finally {
+                    setLoading(false); // Ensure loading state is set to false
                 }
-            } catch (error) {
-                console.error("Error fetching YouTube videos:", error);
-                setError((error as Error).message);
-            } finally {
-                setLoading(false); // Ensure loading state is set to false
             }
         };
 

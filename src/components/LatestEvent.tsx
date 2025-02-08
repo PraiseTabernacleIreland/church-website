@@ -66,11 +66,11 @@ const LatestEvent = () => {
                                         objectFit: "cover", // Default state: cropped image
                                         width: "100%",
                                         height: "100%",
-                                        transition: "transform 0.8s ease, object-fit 0.8s ease", // Smooth transition
-                                        "&:hover": {
-                                            objectFit: "contain", // Show full image on hover
-                                            transform: "scale(1.2)", // Slight zoom to emphasize
-                                        },
+                                        // transition: "transform 0.8s ease, object-fit 0.8s ease", // Smooth transition
+                                        // "&:hover": {
+                                        //     objectFit: "contain", // Show full image on hover
+                                        //     transform: "scale(1.2)", // Slight zoom to emphasize
+                                        // },
                                     }}
                                 />
                             </Box>
@@ -156,7 +156,7 @@ const LatestEvent = () => {
                     }}
                     onClick={() => navigate("/events")}
                 >
-                    View All Events
+                    View Events Calendar
                 </Button>
             </Box>
         </Box>

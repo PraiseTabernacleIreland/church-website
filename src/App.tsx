@@ -20,6 +20,7 @@ import {EvangelismMinistryPage} from "./pages/ministry/Evangelism";
 import {ChildrenMinistryPage} from "./pages/ministry/Children";
 import { Beliefs } from "./pages/about/Beliefs";
 import { History } from "./pages/about/History";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                 minHeight: '100vh', // Ensure the App takes full height
             }}
         >
+            <ScrollToTop/>
             {/* NavigationBar stays at the top */}
             <NavigationBar />
 
@@ -47,7 +49,7 @@ function App() {
                     <Route path={PageRoutes[PageName.Our_History]} element={<History />} />
                     <Route path={PageRoutes[PageName.Our_Beliefs]} element={<Beliefs />} />
                     <Route path={PageRoutes[PageName.Events]} element={<EventsAndCalendar />} />
-                    <Route path={PageRoutes[PageName.Evangelism]} element={<Outreach />} />
+                    <Route path={PageRoutes[PageName.Evangelism]} element={<EvangelismMinistryPage />} />
                     <Route path={PageRoutes[PageName.Sermons]} element={<Sermons />} />
                     <Route path={PageRoutes[PageName.Contact]} element={<Contact />} />
                     <Route path={PageRoutes[PageName.ReportsAndDocuments]} element={<ReportsAndDocuments />} />

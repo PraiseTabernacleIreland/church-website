@@ -95,17 +95,17 @@ const PastorMessage = () => {
                 </Paper>
             </Container>
             {/* Gradient Fade to Merge into Service Times Section */}
-            <Box
-                sx={{
-                    position: "absolute",
-                    bottom: "-20px",
-                    left: 0,
-                    width: "100%",
-                    height: "70px",  // Adjust height for smoother blend
-                    background: "linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(253,246,227,1))",
-                    zIndex: 2,
-                }}
-            />
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: "absolute",*/}
+            {/*        bottom: "-20px",*/}
+            {/*        left: 0,*/}
+            {/*        width: "100%",*/}
+            {/*        height: "70px",  // Adjust height for smoother blend*/}
+            {/*        background: "linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(253,246,227,1))",*/}
+            {/*        zIndex: 2,*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Box>
     );
 };

@@ -109,7 +109,7 @@ export const Home = () => {
             <Ministries/>
             {/*<GetInvolved/>*/}
             {/*<TwoColumnLayout/>*/}
-            {/*<LatestSermon />*/}
+            <LatestSermon />
             <LatestEvent />
             {/*<GivingSummary />*/}
         </>

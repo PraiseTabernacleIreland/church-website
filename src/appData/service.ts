@@ -1,5 +1,6 @@
 import {Service} from "../types";
 import {ZOOM_LINK} from "../utils/constants";
+import {PageName, PageRoutes} from "../utils/routes";
 
 const location = "Praise Tabernacle Apostolic Faith Mission, 1, 8 Portland Row, Mountjoy, Dublin";
 const url = `https://www.google.com/maps?q=${encodeURIComponent(location)}`;
@@ -12,7 +13,7 @@ export const SERVICE_DATA: Service[] = [
         image: "/assets/img_3.png",
         buttons: [
             {text: "Join In-Person", link: url, variant: "contained"},
-            {text: "Watch Online", link: "/sermons", variant: "outlined"},
+            {text: "Watch Online", link: PageRoutes[PageName.Sermons], variant: "outlined"},
         ],
         color: "#ad5a2f",
     },
