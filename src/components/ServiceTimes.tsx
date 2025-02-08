@@ -1,4 +1,4 @@
-import {Box, Button, Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, CardMedia, Grid, Link, Typography} from "@mui/material";
 import React from "react";
 import {useAppData} from "../contexts/AppDataContext";
 
@@ -85,6 +85,7 @@ const ServiceTimesSection = () => {
                             <Box>
                                 {service.buttons.map((button, i) => (
                                     <Button
+                                        component={Link}
                                         key={i}
                                         variant={button.variant}
                                         size="small"
