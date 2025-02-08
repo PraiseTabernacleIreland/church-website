@@ -1,6 +1,6 @@
 import React from "react";
-import Hero from "../components/Hero";
-import TeamContainer from "../components/TeamContainer";
+import Hero from "../../components/Hero";
+import TeamContainer from "../../components/TeamContainer";
 
 export const Team = () => {
     return (

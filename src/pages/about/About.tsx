@@ -1,55 +1,9 @@
 import React, {useState} from "react";
-import Hero from "../components/Hero";
+import Hero from "../../components/Hero";
 import {Box, Typography, Tabs, Tab} from "@mui/material";
 
 // Tab Content Data
 const tabContent = [
-    {
-        label: "Message from the Pastor",
-        content: (
-            <>
-                <Box sx={{ position: 'relative' }}>
-                    <img
-                        src="/assets/gerard.jpg"
-                        alt="Pastor"
-                        style={{
-                            float: 'left',
-                            width: 80,
-                            height: 80,
-                            borderRadius: '50%',
-                            marginRight: 10
-                        }}
-                    />
-                    <Typography variant="h6" paragraph sx={{textAlign: "justify", fontStyle: 'italic', fontSize: '1.2rem', marginBottom: 1 }}>
-                        Welcome to Praise Tabernacle Apostolic Faith Mission’s website. I am Pastor Gerard T. Chimbganda and
-                        I want to tell you that God is good all the time! I hope you find the information you need from our
-                        website. Please feel free to call me directly or any of our board members or leaders.
-                        We are an assembly of believers in the Lord Jesus Christ. Our church is a member of Apostolic Faith
-                        Ministry (AFM) International, a global body of believers. By the grace the of God we planted our
-                        church in Ireland in 2004 and have grown into a loving and giving Christian family of believers.
-                        Part of the Great Commission is to go forth and preach the Good News of the gospel of Jesus Christ
-                        and we have that vision both locally and nationally. We are working to establish new assemblies
-                        across the island and striving to fan the flames of revival throughout Ireland. Building strong
-                        leadership within the nation begins with strong local pastors and we are working to establish a
-                        pastoral and missionary training facility to raise up ministers from within who are familiar with
-                        the needs and challenges of our community and republic.
-                        Jesus, the Son of the true and living God, gave His life to redeem your life and mine, and He was
-                        raised from the dead so that we can live forever with Him. This is the Good News of the Gospel, the
-                        message we share, and the reason we live. All are welcome to join us in this Great Commission and
-                        living the abundant life given to us by Jesus our Lord and Savior.
-                        Thank you for visiting our webpage. I hope to see in you in our services soon!
-
-                    </Typography>
-                    <Typography variant="h6" sx={{textAlign: "justify", fontWeight: 'bold', fontSize: '1rem' }}>
-                        Sincerely,
-
-                        Pastor Gerard T. Chimbganda
-                    </Typography>
-                </Box>
-
-            </>
-        ),
-    },
     {
         label: "What we believe",
         content: (

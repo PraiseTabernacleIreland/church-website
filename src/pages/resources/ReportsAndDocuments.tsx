@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Hero from "../components/Hero";
+import Hero from "../../components/Hero";
 import { MapContainer, TileLayer, Polygon, Popup, Marker, Circle, useMap, useMapEvents } from "react-leaflet";
 import { Geocoder } from "leaflet-control-geocoder";
 import "leaflet/dist/leaflet.css";

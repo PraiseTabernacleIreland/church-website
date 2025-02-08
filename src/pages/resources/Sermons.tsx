@@ -1,8 +1,8 @@
-import Hero from "../components/Hero";
+import Hero from "../../components/Hero";
 import React, {useEffect, useState} from "react";
 import {Box, Typography, Grid, Card, CardMedia, CardContent} from "@mui/material";
 import Button from "@mui/material/Button";
-import {useYoutubeChannelDetails} from "../hooks/useYoutubeChannelDetails";
+import {useYoutubeChannelDetails} from "../../hooks/useYoutubeChannelDetails";
 import { useLocation } from "react-router-dom";
 
 

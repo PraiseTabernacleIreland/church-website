@@ -3,21 +3,23 @@ import './App.css';
 import NavigationBar from "./components/NavigationBar";
 import {Routes, Route} from 'react-router-dom';
 import {Home} from "./pages/Home";
-import {About} from "./pages/About";
+import {About} from "./pages/about/About";
 import {EventsAndCalendar} from "./pages/EventsAndCalendar";
 import {Outreach} from "./pages/Outreach";
-import {Sermons} from "./pages/Sermons";
+import {Sermons} from "./pages/resources/Sermons";
 import {Contact} from "./pages/Contact";
-import {ReportsAndDocuments} from "./pages/ReportsAndDocuments";
+import {ReportsAndDocuments} from "./pages/resources/ReportsAndDocuments";
 import {PageName, PageRoutes} from "./utils/routes";
 import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
 import {Give} from "./pages/Give";
-import Team from "./pages/Team";
+import Team from "./pages/about/Team";
 import {YouthMinistryPage} from "./pages/ministry/Youth";
 import {WorshipMinistryPage} from "./pages/ministry/Worship";
 import {EvangelismMinistryPage} from "./pages/ministry/Evangelism";
 import {ChildrenMinistryPage} from "./pages/ministry/Children";
+import { Beliefs } from "./pages/about/Beliefs";
+import { History } from "./pages/about/History";
 
 function App() {
     return (
@@ -42,6 +44,8 @@ function App() {
                 <Routes>
                     <Route path={PageRoutes[PageName.Home]} element={<Home />} />
                     <Route path={PageRoutes[PageName.About]} element={<About />} />
+                    <Route path={PageRoutes[PageName.Our_History]} element={<History />} />
+                    <Route path={PageRoutes[PageName.Our_Beliefs]} element={<Beliefs />} />
                     <Route path={PageRoutes[PageName.Events]} element={<EventsAndCalendar />} />
                     <Route path={PageRoutes[PageName.Evangelism]} element={<Outreach />} />
                     <Route path={PageRoutes[PageName.Sermons]} element={<Sermons />} />
