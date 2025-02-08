@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/PraiseTabernacleIreland/church-website/static/css/main.073c9b0a.css",
-    "main.js": "/PraiseTabernacleIreland/church-website/static/js/main.2ad3d6bc.js",
-    "static/js/787.0bfccc2a.chunk.js": "/PraiseTabernacleIreland/church-website/static/js/787.0bfccc2a.chunk.js",
-    "static/media/logo.svg": "/PraiseTabernacleIreland/church-website/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/PraiseTabernacleIreland/church-website/static/css/main.e62cc432.css",
+    "main.js": "/PraiseTabernacleIreland/church-website/static/js/main.2c58e3ba.js",
+    "static/js/488.a612e3b9.chunk.js": "/PraiseTabernacleIreland/church-website/static/js/488.a612e3b9.chunk.js",
+    "static/media/logo.svg": "/PraiseTabernacleIreland/church-website/static/media/logo.c42602dda725738331b8fa2192559003.svg",
     "index.html": "/PraiseTabernacleIreland/church-website/index.html",
-    "main.073c9b0a.css.map": "/PraiseTabernacleIreland/church-website/static/css/main.073c9b0a.css.map",
-    "main.2ad3d6bc.js.map": "/PraiseTabernacleIreland/church-website/static/js/main.2ad3d6bc.js.map",
-    "787.0bfccc2a.chunk.js.map": "/PraiseTabernacleIreland/church-website/static/js/787.0bfccc2a.chunk.js.map"
+    "main.e62cc432.css.map": "/PraiseTabernacleIreland/church-website/static/css/main.e62cc432.css.map",
+    "main.2c58e3ba.js.map": "/PraiseTabernacleIreland/church-website/static/js/main.2c58e3ba.js.map",
+    "488.a612e3b9.chunk.js.map": "/PraiseTabernacleIreland/church-website/static/js/488.a612e3b9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.2ad3d6bc.js"
+    "static/css/main.e62cc432.css",
+    "static/js/main.2c58e3ba.js"
   ]
 }
