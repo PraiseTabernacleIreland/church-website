@@ -108,7 +108,7 @@ const ReportsAndDocumentsPage = () => {
 export const ReportsPage = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/reports-bg.jpg)'} height={'60vh'} />
+            <Hero backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/reports-bg.jpg)`} height={'60vh'} />
             <ReportsAndDocuments />
         </>
     );
@@ -121,7 +121,7 @@ export const ReportsAndDocuments = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={'url(/assets/reports.jpg)'}
+                backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/reports.jpg)`}
                 height={'40vh'}
                 title={'Reports & Documents'}
                 message={'Download our annual reports and official documents to stay informed about our activities, finances, and goals.'}

@@ -167,7 +167,7 @@ const HelpingCommunity = () => {
 export const Outreach = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/outreach.jpg)'} height={'60vh'}/>
+            <Hero backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/outreach.jpg)`} height={'60vh'}/>
             {/*<HeroSection/>*/}
             <HelpingCommunity/>
         </>

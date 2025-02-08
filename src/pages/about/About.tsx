@@ -123,7 +123,7 @@ export default AboutPage;
 export const About = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/about.jpg)'} height={'60vh'}/>
+            <Hero backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/about.jpg)`} height={'60vh'}/>
             <AboutPage/>
         </>
     )

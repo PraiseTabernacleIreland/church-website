@@ -76,7 +76,7 @@ export const History = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={'url(/assets/about.jpg)'}
+                backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/about.jpg)`}
                 height={'30vh'}
                 title={'Our Church History'}
             />

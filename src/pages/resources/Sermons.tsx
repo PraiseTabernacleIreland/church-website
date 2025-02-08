@@ -231,7 +231,7 @@ const YouTubePage = () => {
 export const Sermons = () => {
     return (
         <>
-            <Hero backGroundImageSrc={'url(/assets/sermon.jpg)'} height={'30vh'} title={'Sermons'} />
+            <Hero backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/sermon.jpg)`} height={'30vh'} title={'Sermons'} />
             <YouTubePage/>
         </>
     )
