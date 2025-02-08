@@ -13,7 +13,7 @@ export const SERVICE_DATA: Service[] = [
         image: `${process.env.PUBLIC_URL}/assets/img_3.png`,
         buttons: [
             {text: "Join In-Person", link: url, variant: "contained"},
-            {text: "Watch Online", link: PageRoutes[PageName.Sermons], variant: "outlined"},
+            {text: "Watch Online", link: `/church-website${PageRoutes[PageName.Sermons]}`, variant: "outlined"},
         ],
         color: "#ad5a2f",
     },

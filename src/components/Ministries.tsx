@@ -26,7 +26,7 @@ const MinistriesSection = () => {
                 {ministries.map((ministry, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index}>
                         <Card
-                            onClick={() => navigate(ministry.route)} // Replace alert with navigation logic
+                            onClick={() => navigate(`/church-website/${ministry.route}`)} // Replace alert with navigation logic
                             sx={{
                                 cursor: "pointer",
                                 height: "100%",

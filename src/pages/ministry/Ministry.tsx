@@ -70,7 +70,7 @@ const MinistryTemplate = (ministry: Ministry) => {
                 <Typography variant="body1" sx={{ mb: 4, fontSize: "18px", lineHeight: 1.6, color: "#555" }}>
                     {ministry.joinInstructions}
                 </Typography>
-                <Button variant="contained" color="primary" size="large" onClick={() => navigate(PageRoutes[PageName.Contact])}>
+                <Button variant="contained" color="primary" size="large" onClick={() => navigate(`/church-website/${PageRoutes[PageName.Contact]}`)}>
                     Get Involved
                 </Button>
             </Box>

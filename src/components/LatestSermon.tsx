@@ -110,7 +110,7 @@ const LatestSermon = () => {
                     <Button
                         variant="contained"
                         color="secondary"
-                        href={PageRoutes[PageName.Sermons]}
+                        href={`/church-website${PageRoutes[PageName.Sermons]}`}
                         sx={{
                             padding: "10px 20px",
                             color: "#fff",
