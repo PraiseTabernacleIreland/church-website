@@ -1,5 +1,5 @@
 import React from "react";
-import {Box} from "@mui/material";
+import {Box, Button, Typography} from "@mui/material";
 import ServiceTimes from "../components/ServiceTimes";
 import Ministries from "../components/Ministries";
 import LatestSermon from "../components/LatestSermon";
@@ -50,6 +50,38 @@ function HeroSection() {
                     zIndex: 1, // Places the gradient above the video
                 }}
             />
+
+            {/* Overlay Content */}
+            <Box
+                sx={{
+                    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    // padding: { xs: 2, md: 4 },
+                    // borderRadius: 2,
+                    // maxWidth: { xs: '90%', md: '60%' },
+                    // zIndex: 1000, // Places the gradient above the video
+
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    textAlign: 'center',
+                    padding: { xs: '0 20px', md: '0 40px' },
+                }}
+            >
+                <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 2, fontSize: { xs: '1.8rem', md: '3rem' } }}>
+                    Welcome to Praise Tabernacle
+                </Typography>
+                <Typography variant="h6" sx={{ mb: 3, lineHeight: 1.5, fontSize: { xs: '1rem', md: '1.25rem' } }}>
+                    A community of faith, love, and hope—where hearts are transformed, lives are uplifted, and God’s presence is felt. Join us as we worship, grow, and serve together.
+                </Typography>
+            </Box>
 
             {/* Hero content (Text, Buttons, etc.) */}
             {/*<Box*/}

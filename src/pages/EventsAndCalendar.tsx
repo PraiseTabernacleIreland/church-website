@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Typography, Modal, CardMedia, IconButton } from "@mui/material";
+import { Box, Typography, Modal, CardMedia, IconButton, useMediaQuery } from "@mui/material";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -10,6 +10,7 @@ import Hero from "../components/Hero";
 const EventsPage = () => {
     const [selectedEvent, setSelectedEvent] = useState(null);
     const { events } = useEvents();
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     const fullCalendarEvents = events.map(event => ({
         title: event.title,
@@ -34,27 +35,37 @@ const EventsPage = () => {
     };
 
     return (
-        <Box sx={{ backgroundColor: "#f5f7fa", minHeight: "100vh", py: 5 }}>
-            <Box sx={{ maxWidth: "900px", mx: "auto", p: 2, backgroundColor: "white", borderRadius: 3, boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)" }}>
+        <Box sx={{ backgroundColor: "#f5f7fa", minHeight: "100vh", py: 3, px: 2 }}>
+            <Box sx={{
+                maxWidth: "900px",
+                mx: "auto",
+                p: isMobile ? 1 : 3,
+                backgroundColor: "white",
+                borderRadius: 3,
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+                overflowX: "auto"  // Allow horizontal scroll if needed on smaller screens
+            }}>
                 <FullCalendar
                     plugins={[dayGridPlugin, interactionPlugin]}
-                    initialView="dayGridMonth"
+                    initialView={isMobile ? "dayGridWeek" : "dayGridMonth"}  // Default to weekly view on mobile
                     events={fullCalendarEvents}
                     eventClick={handleEventClick}
-                    height="auto"
                     headerToolbar={{
-                        start: "prev,next today",
+                        start: isMobile ? "prev,next" : "prev,next today",
                         center: "title",
-                        end: "dayGridMonth,dayGridWeek,dayGridDay",
+                        end: isMobile ? "" : "dayGridMonth,dayGridWeek,dayGridDay",
                     }}
                     eventDisplay="block"
-                    dayMaxEventRows={2}
+                    dayMaxEventRows={isMobile ? 1 : 2}  // Limit event rows on mobile
+                    height="auto"
                     contentHeight="auto"
                     eventBackgroundColor="#1976d2"
                     eventTextColor="#fff"
+                    aspectRatio={isMobile ? 1 : 1.5}  // Adjust aspect ratio for mobile
                 />
             </Box>
 
+            {/* Modal for Event Details */}
             <Modal open={!!selectedEvent} onClose={handleClose}>
                 <Box sx={{
                     position: 'absolute',
@@ -64,18 +75,14 @@ const EventsPage = () => {
                     width: { xs: '90%', md: '60%' },
                     bgcolor: 'background.paper',
                     boxShadow: 24,
-                    p: 4,
-                    borderRadius: 2
+                    p: 3,
+                    borderRadius: 2,
+                    maxHeight: '90vh',
+                    overflowY: 'auto'
                 }}>
-                    {/* Close Button */}
                     <IconButton
                         onClick={handleClose}
-                        sx={{
-                            position: 'absolute',
-                            top: 8,
-                            right: 8,
-                            color: 'grey.600',
-                        }}
+                        sx={{ position: 'absolute', top: 8, right: 8, color: 'grey.600' }}
                     >
                         <CloseIcon />
                     </IconButton>
@@ -89,15 +96,16 @@ const EventsPage = () => {
                                 sx={{
                                     width: "100%",
                                     height: "auto",
-                                    maxHeight: '400px',
+                                    maxHeight: '300px',
                                     objectFit: "contain",
-                                    mb: 2
+                                    mb: 2,
+                                    borderRadius: 2
                                 }}
                             />
-                            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
+                            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1, textAlign: 'center' }}>
                                 {selectedEvent.title}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: "#555", mb: 2 }}>
+                            <Typography variant="body2" sx={{ color: "#555", mb: 2, textAlign: 'center' }}>
                                 {new Date(selectedEvent.date).toLocaleDateString("en-US", {
                                     weekday: "long",
                                     year: "numeric",
@@ -105,7 +113,7 @@ const EventsPage = () => {
                                     day: "numeric",
                                 })}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: "#777" }}>
+                            <Typography variant="body2" sx={{ color: "#777", textAlign: 'justify' }}>
                                 {selectedEvent.description}
                             </Typography>
                         </>
@@ -122,7 +130,7 @@ export const EventsAndCalendar = () => {
             <Hero
                 backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/calendar_1.jpg)`}
                 height={'40vh'}
-                title={'Stay Connected with Our Events & Calendar'}
+                title={'Events & Calendar'}
                 message={'Explore our upcoming events and gatherings designed to inspire, uplift, and bring our community closer together.'}
             />
             <EventsPage />
