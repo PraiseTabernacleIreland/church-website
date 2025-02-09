@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import {useYoutubeChannelDetails} from "../hooks/useYoutubeChannelDetails";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {PageName, PageRoutes} from "../utils/routes";
 
 const LatestSermon = () => {
@@ -105,10 +105,10 @@ const LatestSermon = () => {
                     >
                         Watch Now
                     </Button>
+                    <Link to={PageRoutes[PageName.Sermons]} style={{ textDecoration: 'none' }}>
                     <Button
                         variant="contained"
                         color="secondary"
-                        href={`/church-website${PageRoutes[PageName.Sermons]}`}
                         sx={{
                             padding: "10px 20px",
                             color: "#fff",
@@ -122,6 +122,7 @@ const LatestSermon = () => {
                     >
                         View All Sermons
                     </Button>
+                    </Link>
                 </Box>
             </Box>
 
