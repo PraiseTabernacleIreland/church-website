@@ -1,7 +1,12 @@
-import React from "react";
-import { Box, Typography, Container, Grid, CardMedia, Paper } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, Container, Grid, CardMedia, Paper, Button } from "@mui/material";
 
 const PastorMessage = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleMessage = () => {
+        setIsExpanded(!isExpanded);
+    };
     return (
         <Box
             sx={{
@@ -48,6 +53,8 @@ const PastorMessage = () => {
                             <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, color: "#7b523a" }}>
                                 A Message from Our Pastor
                             </Typography>
+
+                            {/* First part of the message */}
                             <Typography
                                 variant="body1"
                                 sx={{
@@ -57,36 +64,65 @@ const PastorMessage = () => {
                                     textAlign: "justify",
                                 }}
                             >
-                                "Welcome to Praise Tabernacle Apostolic Faith Mission’s website. I am
-                                Pastor Gerard T. Chimbganda, and I want to tell you that God is good all the time!
-                                I hope you find the information you need here. We are an assembly of believers in the
-                                Lord Jesus Christ and a proud member of Apostolic Faith Ministry (AFM) International.
-
-                                By God’s grace, we planted our church in Ireland in 2004 and have since grown into
-                                a loving, giving Christian family. Our vision is to go forth and preach the Good News of
-                                the gospel of Jesus Christ—locally and nationally.
-
-                                As part of this Great Commission, we are striving to establish new assemblies across
-                                Ireland, fostering revival and spiritual leadership. Our mission is to equip ministers
-                                who understand the unique needs and challenges of our communities.
+                                "Welcome to Praise Tabernacle Apostolic Faith Mission’s website. I am Pastor Gerard T. Chimbganda,
+                                and I want to tell you that God is good all the time! I hope you find the information you need here.
                             </Typography>
-                            <Typography
-                                variant="body1"
+
+                            {/* Conditionally render the full message */}
+                            {isExpanded && (
+                                <>
+                                    <Typography
+                                        variant="body1"
+                                        sx={{
+                                            color: "#444",
+                                            fontSize: "18px",
+                                            lineHeight: 1.8,
+                                            textAlign: "justify",
+                                            mt: 2,
+                                        }}
+                                    >
+                                        We are an assembly of believers in the Lord Jesus Christ and a proud member of Apostolic Faith Ministry (AFM) International.
+
+                                        By God’s grace, we planted our church in Ireland in 2004 and have since grown into a loving, giving Christian family.
+                                        Our vision is to go forth and preach the Good News of the gospel of Jesus Christ—locally and nationally.
+
+                                        As part of this Great Commission, we are striving to establish new assemblies across Ireland, fostering revival and spiritual leadership.
+                                        Our mission is to equip ministers who understand the unique needs and challenges of our communities.
+
+                                        Jesus Christ, the Son of the Living God, gave His life for you and me. Through His resurrection, we have eternal life in Him.
+                                        This is the Good News of the Gospel, the message we share, and the reason we live.
+
+                                        All are welcome to join us as we walk in faith and live the abundant life He has given us.
+                                        Thank you for visiting our website. I look forward to seeing you in one of our services soon!"
+                                    </Typography>
+                                </>
+                            )}
+
+                            {/* Toggle Button */}
+                            <Button
+                                onClick={toggleMessage}
                                 sx={{
-                                    color: "#444",
-                                    fontSize: "18px",
-                                    lineHeight: 1.8,
-                                    textAlign: "justify",
-                                    mt: 2,
+                                    mt: 3,
+                                    px: 4,
+                                    py: 1,
+                                    borderRadius: '20px',
+                                    backgroundColor: '#7b523a',
+                                    color: '#fff',
+                                    fontWeight: 'bold',
+                                    textTransform: 'none',
+                                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+                                    transition: 'background-color 0.3s ease, transform 0.2s ease-in-out',
+                                    '&:hover': {
+                                        backgroundColor: '#5a3a28',
+                                        transform: 'scale(1.05)',  // Slight zoom effect on hover
+                                        boxShadow: '0 6px 15px rgba(0, 0, 0, 0.3)',
+                                    },
                                 }}
                             >
-                                Jesus Christ, the Son of the Living God, gave His life for you and me.
-                                Through His resurrection, we have eternal life in Him. This is the Good News of the Gospel,
-                                the message we share, and the reason we live.
+                                {isExpanded ? "Show Less" : "Read More"}
+                            </Button>
 
-                                All are welcome to join us as we walk in faith and live the abundant life He has given us.
-                                Thank you for visiting our website. I look forward to seeing you in one of our services soon!"
-                            </Typography>
+                            {/* Pastor's Name */}
                             <Typography variant="h6" sx={{ fontWeight: "bold", mt: 4, color: "#7b523a" }}>
                                 - Pastor Gerard Chimbganda
                             </Typography>
