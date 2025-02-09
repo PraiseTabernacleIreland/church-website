@@ -13,7 +13,8 @@ import {
     ListItem,
     ListItemText,
     Collapse,
-    Divider, useMediaQuery,
+    Divider,
+    useMediaQuery,
     useTheme
 } from "@mui/material";
 import { ExpandLess, ExpandMore, Menu as MenuIcon } from '@mui/icons-material';
@@ -94,22 +95,47 @@ const NavBar = () => {
     };
 
     const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ width: 250, paddingTop: 2 }}>
-            <img src={logo} alt="Logo" style={{ width: '80%', margin: '0 auto', display: 'block' }} />
+        <Box sx={{ width: '80vw', maxWidth: 300, paddingTop: 2, backgroundColor: '#fff', height: '100%' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+                <img src={logo} alt="Logo" style={{ width: '70%' }} />
+            </Box>
             <Divider sx={{ my: 2 }} />
-
             <List>
                 {NavigationRoutes.map((item) => (
                     <Box key={item.text}>
-                        <ListItem button onClick={() => item.dropdownItems ? handleSubMenuToggle(item.text) : null} component={Link} to={item.dropdownItems ? '#' : item.route}>
+                        <ListItem
+                            button
+                            onClick={() => item.dropdownItems ? handleSubMenuToggle(item.text) : handleDrawerToggle()}
+                            component={item.dropdownItems ? 'div' : Link}
+                            to={item.dropdownItems ? '#' : item.route}
+                            sx={{
+                                color: 'black',
+                                fontWeight: 'bold',
+                                fontFamily: '"Montserrat", sans-serif',
+                                '&:hover': { backgroundColor: '#f0f0f0' }
+                            }}
+                        >
                             <ListItemText primary={item.text} />
                             {item.dropdownItems && (openSubMenus[item.text] ? <ExpandLess /> : <ExpandMore />)}
                         </ListItem>
+
                         {item.dropdownItems && (
                             <Collapse in={openSubMenus[item.text]} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
                                     {item.dropdownItems.map((subItem) => (
-                                        <ListItem button key={subItem.text} component={Link} to={subItem.route} sx={{ pl: 4 }}>
+                                        <ListItem
+                                            button
+                                            key={subItem.text}
+                                            component={Link}
+                                            to={subItem.route}
+                                            sx={{
+                                                pl: 4,
+                                                color: '#555',
+                                                fontFamily: '"Montserrat", sans-serif',
+                                                '&:hover': { backgroundColor: '#f0f0f0' }
+                                            }}
+                                            onClick={handleDrawerToggle}
+                                        >
                                             <ListItemText primary={subItem.text} />
                                         </ListItem>
                                     ))}
@@ -142,13 +168,6 @@ const NavBar = () => {
 
                     {/* Desktop Menu */}
                     <Box sx={{
-                        // display: { xs: 'none', md: 'flex' },
-                        // gap: 2,
-                        // alignItems: "center",
-                        // display: "flex",
-                        // gap: "20px",
-                        // flexGrow: 1,
-                        // justifyContent: "center",
                         ...(isMobile
                             ? { display: { xs: 'none', md: 'flex' }, gap: 2 }
                             : {
