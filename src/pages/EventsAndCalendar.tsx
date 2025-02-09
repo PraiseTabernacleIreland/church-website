@@ -47,7 +47,7 @@ const EventsPage = () => {
             }}>
                 <FullCalendar
                     plugins={[dayGridPlugin, interactionPlugin]}
-                    initialView={isMobile ? "dayGridWeek" : "dayGridMonth"}  // Default to weekly view on mobile
+                    initialView={"dayGridMonth"}  // Default to weekly view on mobile
                     events={fullCalendarEvents}
                     eventClick={handleEventClick}
                     headerToolbar={{
