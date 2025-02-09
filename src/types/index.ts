@@ -25,7 +25,8 @@ export interface Service {
 export interface ServiceButton {
     text: string,
     link: string,
-    variant: string
+    variant: string,
+    isExternal: boolean,
 }
 
 export interface Ministry {

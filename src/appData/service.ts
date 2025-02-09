@@ -12,8 +12,8 @@ export const SERVICE_DATA: Service[] = [
         description: "A time to gather in worship and fellowship.",
         image: `${process.env.PUBLIC_URL}/assets/img_3.png`,
         buttons: [
-            {text: "Join In-Person", link: url, variant: "contained"},
-            {text: "Watch Online", link: `/church-website${PageRoutes[PageName.Sermons]}`, variant: "outlined"},
+            {text: "Join In-Person", link: url, variant: "contained", isExternal: true},
+            {text: "Watch Online", link: PageRoutes[PageName.Sermons], variant: "outlined", isExternal: false},
         ],
         color: "#ad5a2f",
     },
@@ -25,7 +25,8 @@ export const SERVICE_DATA: Service[] = [
         buttons: [{
             text: "Join Online",
             link: ZOOM_LINK,
-            variant: "outlined"
+            variant: "outlined",
+            isExternal: true
         }],
         color: "#785749",
     },
@@ -37,7 +38,8 @@ export const SERVICE_DATA: Service[] = [
         buttons: [{
             text: "Join Online",
             link: ZOOM_LINK,
-            variant: "outlined"
+            variant: "outlined",
+            isExternal: true
         }],
         color: "#6d4b3a",
     },

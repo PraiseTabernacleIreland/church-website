@@ -1,6 +1,56 @@
-import {Box, Button, Card, CardContent, CardMedia, Grid, Link, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import React from "react";
+import { Link } from 'react-router-dom';
 import {useAppData} from "../contexts/AppDataContext";
+
+
+const NavigationButton = ({ isExternal, index, button, service }) => {
+    return isExternal ? (
+        // For external links
+        <Button
+            component="a"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="secondary"
+            variant={button.variant}
+            size="small"
+            href={button.link}
+            sx={{
+                fontFamily: '"Montserrat", sans-serif',
+                backgroundColor: button.variant === "contained" ? service.color : "transparent",
+                color: button.variant === "contained" ? "#fff" : service.color,
+                border: button.variant === "outlined" ? `1px solid ${service.color}` : "none",
+                mr: index < service.buttons.length - 1 ? 1 : 0,
+                // "&:hover": {
+                //     backgroundColor: button.variant === "contained" ? "#843f29" : "rgba(0,0,0,0.05)",
+                // },
+            }}
+        >
+            {button.text}
+        </Button>
+    ) : (
+        // For internal routes
+        <Link to={button.link} style={{ textDecoration: 'none' }}>
+                <Button
+                    key={index}
+                    variant={button.variant}
+                    size="small"
+                    sx={{
+                        fontFamily: '"Montserrat", sans-serif',
+                        backgroundColor: button.variant === "contained" ? service.color : "transparent",
+                        color: button.variant === "contained" ? "#fff" : service.color,
+                        border: button.variant === "outlined" ? `1px solid ${service.color}` : "none",
+                        mr: index < service.buttons.length - 1 ? 1 : 0,
+                        // "&:hover": {
+                        //     backgroundColor: button.variant === "contained" ? "#843f29" : "rgba(0,0,0,0.05)",
+                        // },
+                    }}
+                >
+                    {button.text}
+                </Button>
+        </Link>
+    );
+};
 
 const ServiceTimesSection = () => {
     const { services }  = useAppData();
@@ -84,25 +134,7 @@ const ServiceTimesSection = () => {
                             </Typography>
                             <Box>
                                 {service.buttons.map((button, i) => (
-                                    <Button
-                                        component={Link}
-                                        key={i}
-                                        variant={button.variant}
-                                        size="small"
-                                        href={button.link}
-                                        sx={{
-                                            fontFamily: '"Montserrat", sans-serif',
-                                            backgroundColor: button.variant === "contained" ? service.color : "transparent",
-                                            color: button.variant === "contained" ? "#fff" : service.color,
-                                            border: button.variant === "outlined" ? `1px solid ${service.color}` : "none",
-                                            mr: i < service.buttons.length - 1 ? 1 : 0,
-                                            // "&:hover": {
-                                            //     backgroundColor: button.variant === "contained" ? "#843f29" : "rgba(0,0,0,0.05)",
-                                            // },
-                                        }}
-                                    >
-                                        {button.text}
-                                    </Button>
+                                    <NavigationButton button={button} index={i} service={service} isExternal={button.isExternal}/>
                                 ))}
                             </Box>
                         </CardContent>
