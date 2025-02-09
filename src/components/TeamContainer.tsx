@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Grid, Container, Tabs, Tab, Box } from '@mui/material';
+import { Grid, Container, Tabs, Tab, Box, useMediaQuery } from '@mui/material';
 import ContactCard from './ContactCard';
-import {useAppData} from "../contexts/AppDataContext";
-import {TeamName} from "../types";
+import { useTheme } from '@mui/material/styles';
+import { useAppData } from "../contexts/AppDataContext";
+import { TeamName } from "../types";
 
 const TeamContainer = () => {
     const [selectedTab, setSelectedTab] = useState(TeamName.Pastoral);
-    const {teams} = useAppData();
+    const { teams } = useAppData();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));  // Detect if screen is small
 
     const handleTabChange = (event, newValue) => {
         setSelectedTab(newValue);
@@ -14,22 +17,24 @@ const TeamContainer = () => {
 
     return (
         <Container sx={{ paddingTop: '20px', textAlign: "center" }}>
-            {/*<Typography variant="h4" sx={{ fontWeight: 'bold', mb: 3 }}>Meet Our Team</Typography>*/}
-
-            {/* Tabs for Team Categories */}
+            {/* Responsive Tabs for Team Categories */}
             <Tabs
                 value={selectedTab}
                 onChange={handleTabChange}
-                centered
+                variant={isMobile ? 'scrollable' : 'standard'}  // Scrollable tabs on mobile
+                scrollButtons={isMobile ? 'auto' : false}
+                centered={!isMobile}
                 textColor="primary"
                 indicatorColor="primary"
             >
-                {Object.keys(teams).map(teamName => <Tab label={teamName} value={teamName} />)}
+                {Object.keys(teams).map((teamName, index) => (
+                    <Tab label={teamName} value={teamName} key={index} sx={{ fontSize: isMobile ? '12px' : '16px' }} />
+                ))}
             </Tabs>
 
-            {/* Display Relevant Team Members Based on Selected Tab */}
+            {/* Display Team Members */}
             <Box sx={{ mt: 4 }}>
-                <Grid container spacing={4} justifyContent="center">
+                <Grid container spacing={isMobile ? 2 : 4} justifyContent="center">
                     {teams[selectedTab].map((contact, index) => (
                         <Grid item xs={12} sm={6} md={4} key={index}>
                             <ContactCard contact={contact} />
