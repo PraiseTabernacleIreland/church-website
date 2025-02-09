@@ -9,7 +9,7 @@ const reports = [
         year: 2024,
         documents: [
             { title: "AGM Minutes", file: `${process.env.PUBLIC_URL}/assets/AGM_1 December 2024_Agenda.pdf` },
-            { title: "Financial Report", file: "/assets/AFM Ireland_2023 audited accounts.pdf" },
+            { title: "Financial Report", file: `${process.env.PUBLIC_URL}/assets/AFM Ireland_2023 audited accounts.pdf` },
         ],
     },
     {
