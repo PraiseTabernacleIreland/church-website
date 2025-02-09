@@ -19,6 +19,8 @@ export enum PageName {
     Children = 'Children',
     Worship = 'Worship',
     Youth = 'Youth',
+    Men = 'Men',
+    Women = 'Women',
 }
 
 export const PageRoutes: Route = {
@@ -35,6 +37,8 @@ export const PageRoutes: Route = {
     [PageName.Children]: "/ministries/children",
     [PageName.Worship]: "/ministries/worship",
     [PageName.Evangelism]: "/ministries/evangelism",
+    [PageName.Men]: "/ministries/men",
+    [PageName.Women]: "/ministries/women",
 }
 
 export const NavigationRoutes = [
@@ -57,6 +61,8 @@ export const NavigationRoutes = [
             { text: PageName.Evangelism, route: PageRoutes[PageName.Evangelism] },
             { text: PageName.Worship, route: PageRoutes[PageName.Worship] },
             { text: PageName.Youth, route: PageRoutes[PageName.Youth] },
+            { text: PageName.Men, route: PageRoutes[PageName.Men] },
+            { text: PageName.Women, route: PageRoutes[PageName.Women] },
         ],
     },
     {

@@ -10,7 +10,7 @@ const MinistriesSection = () => {
             sx={{
                 py: 8,
                 px: 4,
-                background: "#e3f2fd", // Matches gradient fade from Service Times Section
+                background: "white", // Matches gradient fade from Service Times Section
                 textAlign: "center",
                 position: "relative",
             }}

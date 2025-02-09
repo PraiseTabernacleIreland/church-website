@@ -1,4 +1,4 @@
-import {ChildCare, Groups, MusicNote, VolunteerActivism} from "@mui/icons-material";
+import {ChildCare, Female, Groups, Male, MusicNote, VolunteerActivism} from "@mui/icons-material";
 import {Ministry} from "../types";
 import {PageName, PageRoutes} from "../utils/routes";
 
@@ -58,6 +58,30 @@ export const MINISTRIES: Ministry[] = [
             `${process.env.PUBLIC_URL}/assets/evangelism_1.jpg`,
             `${process.env.PUBLIC_URL}/assets/evangelism_2.jpg`,
             `${process.env.PUBLIC_URL}/assets/evangelism_3.jpg`,
+        ]
+    },
+    {
+        name: "Men's Ministry",
+        description: "Spiritual growth, leadership development, and brotherhood through fellowship, prayer, and community involvement.",
+        icon: <Male fontSize="large" sx={{color: "#fff"}}/>,
+        backgroundImage: "url('https://images.unsplash.com/photo-1584824486539-53bb4646bdbc')",
+        heroImage: `${process.env.PUBLIC_URL}/assets/men_fellowship.jpg`,
+        joinInstructions: "Be part of our regular gatherings, Bible studies, and service projects. Connect with the ministry leader after service or sign up online.",
+        route: PageRoutes[PageName.Men],
+        relatedImages: [
+            `${process.env.PUBLIC_URL}/assets/sermon.jpg`
+        ]
+    },
+    {
+        name: "Women's Ministry",
+        description: "Uplifting events that nurture both faith and fellowship.",
+        icon: <Female fontSize="large" sx={{color: "#fff"}}/>,
+        backgroundImage: "url('https://images.unsplash.com/photo-1584824486539-53bb4646bdbc')",
+        heroImage: `${process.env.PUBLIC_URL}/assets/women_fellowship.jpg`,
+        joinInstructions: "Join our weekly gatherings, special events, and community outreach programs. Speak with the ministry leader after service or register online to get involved",
+        route: PageRoutes[PageName.Women],
+        relatedImages: [
+            `${process.env.PUBLIC_URL}/assets/meeting.jpg`
         ]
     },
 ];

@@ -62,7 +62,7 @@ const ServiceTimesSection = () => {
             alignItems: "center",
             py: 8,
             px: 4,
-            background: "linear-gradient(to bottom, #fdf6e3, #e0f7fa)", // Smooth fade into the Ministries Section
+            background: "#e3f2fd", // Smooth fade into the Ministries Section
             textAlign: "center",
             position: "relative",
         }}

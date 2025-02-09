@@ -20,6 +20,8 @@ import {ChildrenMinistryPage} from "./pages/ministry/Children";
 import { Beliefs } from "./pages/about/Beliefs";
 import { History } from "./pages/about/History";
 import ScrollToTop from "./components/ScrollToTop";
+import {MenMinistryPage} from "./pages/ministry/Men";
+import {WomenMinistryPage} from "./pages/ministry/Women";
 
 function App() {
     return (
@@ -58,6 +60,9 @@ function App() {
                     <Route path={PageRoutes[PageName.Children]} element={<ChildrenMinistryPage />} />
                     <Route path={PageRoutes[PageName.Evangelism]} element={<EvangelismMinistryPage />} />
                     <Route path={PageRoutes[PageName.Worship]} element={<WorshipMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Worship]} element={<WorshipMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Men]} element={<MenMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Women]} element={<WomenMinistryPage />} />
                 </Routes>
             </Box>
 
