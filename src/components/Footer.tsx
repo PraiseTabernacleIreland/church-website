@@ -46,8 +46,9 @@ const Footer = () => {
                 </Grid>
 
                 {/* Contact Information */}
-                <Grid item xs={12} sm={4}>
-                    <Box sx={{ mb: 2 }}>
+                <Grid item xs={12} sm={4} sx={{ textAlign: { xs: "center", sm: "left" } }}>
+                    {/* Center the Logo */}
+                    <Box sx={{ mb: 2, display: "flex", justifyContent: { xs: "center", sm: "flex-start" } }}>
                         <img
                             src={logo}
                             alt="Church Logo"
@@ -58,11 +59,29 @@ const Footer = () => {
                             }}
                         />
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+
+                    {/* Center the Phone Info on Mobile */}
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: { xs: "center", sm: "flex-start" },
+                            mb: 1,
+                        }}
+                    >
                         <Phone sx={{ mr: 1, color: "#B1D0E0" }} />
                         <Typography variant="body2">(209) 555-0104</Typography>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+
+                    {/* Center the Address on Mobile */}
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: { xs: "center", sm: "flex-start" },
+                            mb: 1,
+                        }}
+                    >
                         <PinDrop sx={{ mr: 1, color: "#B1D0E0" }} />
                         <Typography variant="body2">9 Portland Row, Mountjoy, Dublin 1</Typography>
                     </Box>
