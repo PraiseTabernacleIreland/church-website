@@ -15,50 +15,45 @@ const PastorMessage = () => {
                 textAlign: "center",
                 py: 10,
                 px: 4,
-                width: "100vw", // Ensures it takes full width
+                width: "100vw",
             }}
         >
-
             <Container maxWidth="xl">
-                {/* Full-width centered header */}
                 <Paper
                     elevation={3}
                     sx={{
                         p: 6,
                         borderRadius: "16px",
-                        background: "white",
+                        background: "#f9fafb",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.1)",
                     }}
                 >
                     <Grid container spacing={6} alignItems="center" justifyContent="center">
-                        {/* Pastor's Image */}
                         <Grid item xs={12} md={4}>
                             <CardMedia
                                 component="img"
-                                image={`${process.env.PUBLIC_URL}/assets/gerard.jpg`}  // Replace with actual pastor image path
+                                image={`${process.env.PUBLIC_URL}/assets/gerard.jpg`}
                                 alt="Pastor Gerard Chimbganda"
                                 sx={{
                                     width: "100%",
                                     maxWidth: "300px",
                                     height: "auto",
-                                    borderRadius: "50%", // Makes the image circular
+                                    borderRadius: "50%",
                                     boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.15)",
-                                    margin: "0 auto", // Centers the image
+                                    margin: "0 auto",
                                 }}
                             />
                         </Grid>
 
-                        {/* Pastor's Message */}
                         <Grid item xs={12} md={8}>
-                            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, color: "#7b523a" }}>
+                            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, color: "#333" }}>
                                 A Message from Our Pastor
                             </Typography>
 
-                            {/* First part of the message */}
                             <Typography
                                 variant="body1"
                                 sx={{
-                                    color: "#444",
+                                    color: "#555",
                                     fontSize: "18px",
                                     lineHeight: 1.8,
                                     textAlign: "justify",
@@ -68,13 +63,12 @@ const PastorMessage = () => {
                                 and I want to tell you that God is good all the time! I hope you find the information you need here.
                             </Typography>
 
-                            {/* Conditionally render the full message */}
                             {isExpanded && (
                                 <>
                                     <Typography
                                         variant="body1"
                                         sx={{
-                                            color: "#444",
+                                            color: "#555",
                                             fontSize: "18px",
                                             lineHeight: 1.8,
                                             textAlign: "justify",
@@ -93,12 +87,11 @@ const PastorMessage = () => {
                                         This is the Good News of the Gospel, the message we share, and the reason we live.
 
                                         All are welcome to join us as we walk in faith and live the abundant life He has given us.
-                                        Thank you for visiting our website. I look forward to seeing you in one of our services soon!"
+                                        Thank you for visiting our website. I look forward to seeing you in one of our services soon!
                                     </Typography>
                                 </>
                             )}
 
-                            {/* Toggle Button */}
                             <Button
                                 onClick={toggleMessage}
                                 sx={{
@@ -106,15 +99,15 @@ const PastorMessage = () => {
                                     px: 4,
                                     py: 1,
                                     borderRadius: '20px',
-                                    backgroundColor: '#7b523a',
+                                    backgroundColor: '#055594',
                                     color: '#fff',
                                     fontWeight: 'bold',
                                     textTransform: 'none',
                                     boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
                                     transition: 'background-color 0.3s ease, transform 0.2s ease-in-out',
                                     '&:hover': {
-                                        backgroundColor: '#5a3a28',
-                                        transform: 'scale(1.05)',  // Slight zoom effect on hover
+                                        backgroundColor: '#033d6c',
+                                        transform: 'scale(1.05)',
                                         boxShadow: '0 6px 15px rgba(0, 0, 0, 0.3)',
                                     },
                                 }}
@@ -122,26 +115,13 @@ const PastorMessage = () => {
                                 {isExpanded ? "Show Less" : "Read More"}
                             </Button>
 
-                            {/* Pastor's Name */}
-                            <Typography variant="h6" sx={{ fontWeight: "bold", mt: 4, color: "#7b523a" }}>
+                            <Typography variant="h6" sx={{ fontWeight: "bold", mt: 4, color: "#333" }}>
                                 - Pastor Gerard Chimbganda
                             </Typography>
                         </Grid>
                     </Grid>
                 </Paper>
             </Container>
-            {/* Gradient Fade to Merge into Service Times Section */}
-            {/*<Box*/}
-            {/*    sx={{*/}
-            {/*        position: "absolute",*/}
-            {/*        bottom: "-20px",*/}
-            {/*        left: 0,*/}
-            {/*        width: "100%",*/}
-            {/*        height: "70px",  // Adjust height for smoother blend*/}
-            {/*        background: "linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(253,246,227,1))",*/}
-            {/*        zIndex: 2,*/}
-            {/*    }}*/}
-            {/*/>*/}
         </Box>
     );
 };

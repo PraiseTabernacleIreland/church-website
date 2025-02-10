@@ -3,22 +3,22 @@ import {useAppData} from "../contexts/AppDataContext";
 import {useNavigate} from "react-router-dom";
 
 const MinistriesSection = () => {
-    const {ministries} = useAppData()
+    const {ministries} = useAppData();
     const navigate = useNavigate();
     return (
         <Box
             sx={{
                 py: 8,
                 px: 4,
-                background: "white", // Matches gradient fade from Service Times Section
+                background: "#f0f4f8", // Slightly darker background for subtle contrast
                 textAlign: "center",
                 position: "relative",
             }}
         >
-            <Typography variant="h3" sx={{fontWeight: "bold", mb: 2}}>
+            <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2, color: "#333" }}>
                 Ready to Make a Difference?
             </Typography>
-            <Typography variant="body1" sx={{mb: 4, color: "text.secondary"}}>
+            <Typography variant="body1" sx={{ mb: 4, color: "#555" }}>
                 From volunteering to attending events, there's a place for you to get
                 involved and grow. Take the first step today!
             </Typography>
@@ -26,17 +26,20 @@ const MinistriesSection = () => {
                 {ministries.map((ministry, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index}>
                         <Card
-                            onClick={() => navigate(`${ministry.route}`)} // Replace alert with navigation logic
+                            onClick={() => navigate(`${ministry.route}`)}
                             sx={{
                                 cursor: "pointer",
                                 height: "100%",
                                 borderRadius: 2,
-                                boxShadow: 3,
+                                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
                                 transition: "transform 0.2s ease-in-out",
                                 backgroundImage: ministry.backgroundImage,
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
-                                "&:hover": {transform: "scale(1.05)"},
+                                "&:hover": {
+                                    transform: "scale(1.05)",
+                                    boxShadow: "0 6px 15px rgba(0, 0, 0, 0.2)",
+                                },
                             }}
                         >
                             <CardContent
@@ -46,20 +49,20 @@ const MinistriesSection = () => {
                                     flexDirection: "column",
                                     justifyContent: "center",
                                     alignItems: "center",
-                                    background: "rgba(0, 0, 0, 0.5)", // Dark overlay for text readability
+                                    background: "rgba(0, 0, 0, 0.4)", // Slightly lighter overlay for better harmony
                                     color: "#fff",
-                                    textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)", // Text shadow for better contrast
+                                    textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
                                 }}
                             >
-                                <Box sx={{mb: 2}}>{ministry.icon}</Box>
+                                <Box sx={{ mb: 2 }}>{ministry.icon}</Box>
                                 <Typography
                                     variant="h6"
-                                    sx={{fontWeight: "bold", mb: 1}}
+                                    sx={{ fontWeight: "bold", mb: 1 }}
                                     gutterBottom
                                 >
                                     {ministry.name}
                                 </Typography>
-                                <Typography variant="body2" sx={{textAlign: "center"}}>
+                                <Typography variant="body2" sx={{ textAlign: "center" }}>
                                     {ministry.description}
                                 </Typography>
                             </CardContent>
@@ -67,19 +70,8 @@ const MinistriesSection = () => {
                     </Grid>
                 ))}
             </Grid>
-            {/* Gradient Divider to Smooth Transition */}
-            {/*<Box*/}
-            {/*    sx={{*/}
-            {/*        position: "absolute",*/}
-            {/*        bottom: 0,*/}
-            {/*        left: 0,*/}
-            {/*        width: "100%",*/}
-            {/*        height: "60px",*/}
-            {/*        background: "linear-gradient(to bottom, rgba(255, 255, 255, 0), #f9f9f9)", // Fade to the background color of the next section*/}
-            {/*    }}*/}
-            {/*/>*/}
         </Box>
     );
-}
+};
 
 export default MinistriesSection;

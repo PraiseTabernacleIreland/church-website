@@ -1,20 +1,16 @@
 import { Button, Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import {useEvents} from "../hooks/useEvents";
+import { useEvents } from "../hooks/useEvents";
 
 const LatestEvent = () => {
     const navigate = useNavigate();
     const { events } = useEvents();
 
-    // const handleEventClick = (link) => {
-    //     navigate(link);
-    // };
-
     return (
         <Box
             sx={{
-                background: "#f9f9f9",
+                background: "#f0f4f8",  // Subtle darker background
                 textAlign: "center",
                 position: "relative",
                 py: 8,
@@ -25,10 +21,9 @@ const LatestEvent = () => {
             <Typography
                 variant="h3"
                 sx={{
-                    fontFamily: "'Merriweather', serif",
-                    color: "#7b523a",
                     fontWeight: "bold",
                     mb: 6,
+                    color: "#333",  // Neutral heading color
                 }}
             >
                 Upcoming Events
@@ -45,7 +40,7 @@ const LatestEvent = () => {
                                 overflow: "hidden",
                                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                                 "&:hover": {
-                                    transform: "scale(1.03)", // Slight card zoom on hover
+                                    transform: "scale(1.03)",
                                     boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
                                 },
                             }}
@@ -54,7 +49,7 @@ const LatestEvent = () => {
                             <Box
                                 sx={{
                                     position: "relative",
-                                    overflow: "hidden", // Ensures the image stays within the card
+                                    overflow: "hidden",
                                     height: "200px",
                                 }}
                             >
@@ -63,14 +58,9 @@ const LatestEvent = () => {
                                     image={event.image}
                                     alt={event.title}
                                     sx={{
-                                        objectFit: "cover", // Default state: cropped image
+                                        objectFit: "cover",
                                         width: "100%",
                                         height: "100%",
-                                        // transition: "transform 0.8s ease, object-fit 0.8s ease", // Smooth transition
-                                        // "&:hover": {
-                                        //     objectFit: "contain", // Show full image on hover
-                                        //     transform: "scale(1.2)", // Slight zoom to emphasize
-                                        // },
                                     }}
                                 />
                             </Box>
@@ -79,14 +69,14 @@ const LatestEvent = () => {
                                 sx={{
                                     textAlign: "center",
                                     padding: "20px",
-                                    background: "#fff",
+                                    background: "#ffffff",
                                 }}
                             >
                                 <Typography
                                     variant="h6"
                                     sx={{
                                         fontWeight: "bold",
-                                        color: "#7b523a",
+                                        color: "#333",  // Neutral title color
                                         mb: 1,
                                         overflow: "hidden",
                                         textOverflow: "ellipsis",
@@ -118,18 +108,6 @@ const LatestEvent = () => {
                                 >
                                     {event.description}
                                 </Typography>
-                                {/*<Button*/}
-                                {/*    variant="contained"*/}
-                                {/*    color="primary"*/}
-                                {/*    sx={{*/}
-                                {/*        textTransform: "none",*/}
-                                {/*        padding: "8px 16px",*/}
-                                {/*        fontWeight: "bold",*/}
-                                {/*    }}*/}
-                                {/*    onClick={() => handleEventClick(event.link)}*/}
-                                {/*>*/}
-                                {/*    View Details*/}
-                                {/*</Button>*/}
                             </CardContent>
                         </Card>
                     </Grid>
@@ -140,18 +118,17 @@ const LatestEvent = () => {
             <Box sx={{ mt: 6 }}>
                 <Button
                     variant="outlined"
-                    color="primary"
                     sx={{
                         textTransform: "none",
                         padding: "10px 24px",
                         borderRadius: "20px",
                         fontWeight: "bold",
-                        borderColor: "#7b523a",
-                        color: "#7b523a",
+                        borderColor: "#055594",
+                        color: "#055594",
                         "&:hover": {
-                            backgroundColor: "#7b523a",
-                            color: "#fff",
-                            borderColor: "#7b523a",
+                            backgroundColor: "#055594",
+                            color: "#ffffff",
+                            borderColor: "#055594",
                         },
                     }}
                     onClick={() => navigate("/events")}

@@ -3,7 +3,6 @@ import { Box, Typography, Container, Grid, Card, CardContent, Button, Accordion,
 import { Description as DescriptionIcon, Download as DownloadIcon, ExpandMore as ExpandMoreIcon, Folder as FolderIcon } from "@mui/icons-material";
 import Hero from "../../components/Hero";
 
-// Example reports data
 const reports = [
     {
         year: 2024,
@@ -33,7 +32,7 @@ const ReportsAndDocumentsPage = () => {
         <Box
             sx={{
                 position: "relative",
-                background: "linear-gradient(to bottom, rgba(250,250,250,1), rgba(255,255,255,1))",
+                background: "#f9f9f9",
                 textAlign: "center",
                 py: 10,
                 px: 4,
@@ -41,20 +40,16 @@ const ReportsAndDocumentsPage = () => {
             }}
         >
             <Container maxWidth="lg">
-                {/*<Typography variant="body1" sx={{ mb: 6, color: "#555" }}>*/}
-                {/*    Download our annual reports and official documents to stay informed about our activities, finances, and goals.*/}
-                {/*</Typography>*/}
-
                 {reports.map((report, index) => (
-                    <Accordion key={index} sx={{ mb: 3, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)" }}>
+                    <Accordion key={index} sx={{ mb: 3, boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)", borderRadius: "8px", backgroundColor: "#fff" }}>
                         <AccordionSummary
-                            expandIcon={<ExpandMoreIcon sx={{ color: "#7b523a" }} />}
+                            expandIcon={<ExpandMoreIcon sx={{ color: "#055594" }} />}
                             aria-controls={`panel${index}-content`}
                             id={`panel${index}-header`}
-                            sx={{ backgroundColor: "#f7f1e5", padding: "16px", borderRadius: "8px" }}
+                            sx={{ padding: "16px" }}
                         >
-                            <FolderIcon sx={{ mr: 2, color: "#7b523a" }} />
-                            <Typography variant="h6" sx={{ fontWeight: "bold", color: "#7b523a" }}>
+                            <FolderIcon sx={{ mr: 2, color: "#055594" }} />
+                            <Typography variant="h6" sx={{ fontWeight: "bold", color: "#055594" }}>
                                 {report.year} Documents
                             </Typography>
                         </AccordionSummary>
@@ -65,30 +60,35 @@ const ReportsAndDocumentsPage = () => {
                                         <Card
                                             sx={{
                                                 borderRadius: "12px",
-                                                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                                                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
                                                 transition: "transform 0.3s ease",
+                                                backgroundColor: "#fdfdfd",
                                                 "&:hover": {
-                                                    transform: "scale(1.05)",
-                                                    boxShadow: "0 6px 18px rgba(0, 0, 0, 0.15)",
+                                                    transform: "scale(1.03)",
+                                                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
                                                 },
                                             }}
                                         >
                                             <CardContent sx={{ textAlign: "center", padding: "20px" }}>
-                                                <DescriptionIcon sx={{ fontSize: 50, color: "#7b523a", mb: 2 }} />
+                                                <DescriptionIcon sx={{ fontSize: 50, color: "#055594", mb: 2 }} />
                                                 <Typography variant="h6" sx={{ fontWeight: "bold", color: "#333", mb: 1 }}>
                                                     {doc.title}
                                                 </Typography>
                                                 <Button
                                                     variant="contained"
-                                                    color="primary"
-                                                    startIcon={<DownloadIcon />}
-                                                    href={doc.file}
-                                                    download
                                                     sx={{
+                                                        backgroundColor: "#055594",
+                                                        color: "#fff",
                                                         textTransform: "none",
                                                         padding: "8px 16px",
                                                         fontWeight: "bold",
+                                                        "&:hover": {
+                                                            backgroundColor: "#04477a",
+                                                        },
                                                     }}
+                                                    startIcon={<DownloadIcon />}
+                                                    href={doc.file}
+                                                    download
                                                 >
                                                     Download
                                                 </Button>
@@ -116,7 +116,6 @@ export const ReportsPage = () => {
 
 export default ReportsAndDocumentsPage;
 
-
 export const ReportsAndDocuments = () => {
     return (
         <>
@@ -126,7 +125,7 @@ export const ReportsAndDocuments = () => {
                 title={'Reports & Documents'}
                 message={'Download our annual reports and official documents to stay informed about our activities, finances, and goals.'}
             />
-            <ReportsAndDocumentsPage/>
+            <ReportsAndDocumentsPage />
         </>
     );
 };
