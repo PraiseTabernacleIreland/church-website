@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, Grid, Card, CardContent, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { QRCodeCanvas } from "qrcode.react";
-import { AccountBalance, VolunteerActivism, HelpOutline } from "@mui/icons-material";
+import {AccountBalance, VolunteerActivism, HelpOutline, Info} from "@mui/icons-material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Hero from "../components/Hero";
 
@@ -86,7 +86,7 @@ const GivePage = () => {
             </Box>
 
             <Box sx={{ marginTop: 5, backgroundColor: "#e8f0fe", padding: 4, borderRadius: 2 }}>
-                <HelpOutline sx={{ fontSize: 50, color: "#1976d2", marginBottom: 2 }} />
+                <Info sx={{ fontSize: 50, color: "#1976d2", marginBottom: 2 }} />
                 <Typography variant="h5" sx={{ color: "#333", fontWeight: "bold", marginBottom: 2 }}>
                     Claim Tax Relief on Your Donations
                 </Typography>
