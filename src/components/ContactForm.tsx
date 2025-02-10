@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Grid, Divider } from '@mui/material';
 import Typography from "@mui/material/Typography";
-import {LocationOn, Phone } from '@mui/icons-material';
+import { LocationOn, Phone } from '@mui/icons-material';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -23,7 +23,6 @@ const ContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         setIsSubmitting(true);
 
         // Simulate form submission
@@ -36,6 +35,9 @@ const ContactForm = () => {
 
     return (
         <Box sx={{ maxWidth: 600, margin: '0 auto', padding: 2 }}>
+            <Typography variant="h5" sx={{ mb: 2, fontWeight: 'bold' }}>
+                Get in Touch
+            </Typography>
             <Typography variant="body1" sx={{ mb: 3, color: '#555' }}>
                 Our pastoral team is available to offer counsel, encouragement, and prayer whenever you need it.
                 Fill out the form below, give us a call, or visit us in person—we’re excited to connect with you!
@@ -46,20 +48,18 @@ const ContactForm = () => {
             <Box sx={{ mb: 3 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Phone sx={{ color: '#7b523a', mr: 1 }} />
-                        <Typography variant="body2">(209) 555-0104</Typography>
+                        <Phone sx={{ color: '#055594', mr: 1 }} />
+                        <Typography variant="body2" sx={{ color: '#333' }}>(209) 555-0104</Typography>
                     </Grid>
                     <Grid item xs={12} sm={6} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <LocationOn sx={{ color: '#7b523a', mr: 1 }} />
-                        <Typography variant="body2">9 Portland Row, Mountjoy, Dublin 1</Typography>
+                        <LocationOn sx={{ color: '#055594', mr: 1 }} />
+                        <Typography variant="body2" sx={{ color: '#333' }}>9 Portland Row, Mountjoy, Dublin 1</Typography>
                     </Grid>
                 </Grid>
             </Box>
 
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
-
-                    {/* Full Name (Required) */}
                     <Grid item xs={12}>
                         <TextField
                             label="Full Name"
@@ -72,7 +72,6 @@ const ContactForm = () => {
                         />
                     </Grid>
 
-                    {/* Email (Required) */}
                     <Grid item xs={12}>
                         <TextField
                             label="Email"
@@ -86,7 +85,6 @@ const ContactForm = () => {
                         />
                     </Grid>
 
-                    {/* Phone Number (Not Required) */}
                     <Grid item xs={12}>
                         <TextField
                             label="Phone Number"
@@ -99,7 +97,6 @@ const ContactForm = () => {
                         />
                     </Grid>
 
-                    {/* Message (Required) */}
                     <Grid item xs={12}>
                         <TextField
                             label="Message"
@@ -114,14 +111,21 @@ const ContactForm = () => {
                         />
                     </Grid>
 
-                    {/* Submit Button */}
                     <Grid item xs={12}>
                         <Button
                             type="submit"
                             variant="contained"
-                            color="primary"
                             fullWidth
                             disabled={isSubmitting}
+                            sx={{
+                                backgroundColor: '#055594',
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                textTransform: 'none',
+                                '&:hover': {
+                                    backgroundColor: '#033d6c',
+                                },
+                            }}
                         >
                             {isSubmitting ? "Submitting..." : "Submit"}
                         </Button>

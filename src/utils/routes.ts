@@ -21,6 +21,7 @@ export enum PageName {
     Youth = 'Youth',
     Men = 'Men',
     Women = 'Women',
+    Registration = 'Registration',
 }
 
 export const PageRoutes: Route = {
@@ -39,6 +40,7 @@ export const PageRoutes: Route = {
     [PageName.Evangelism]: "/ministries/evangelism",
     [PageName.Men]: "/ministries/men",
     [PageName.Women]: "/ministries/women",
+    [PageName.Registration]: "/registration",
 }
 
 export const NavigationRoutes = [

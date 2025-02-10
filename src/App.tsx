@@ -22,6 +22,7 @@ import { History } from "./pages/about/History";
 import ScrollToTop from "./components/ScrollToTop";
 import {MenMinistryPage} from "./pages/ministry/Men";
 import {WomenMinistryPage} from "./pages/ministry/Women";
+import {Registration} from "./pages/Registration";
 
 function App() {
     return (
@@ -63,6 +64,7 @@ function App() {
                     <Route path={PageRoutes[PageName.Worship]} element={<WorshipMinistryPage />} />
                     <Route path={PageRoutes[PageName.Men]} element={<MenMinistryPage />} />
                     <Route path={PageRoutes[PageName.Women]} element={<WomenMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Registration]} element={<Registration />} />
                 </Routes>
             </Box>
 
