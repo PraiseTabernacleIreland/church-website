@@ -23,7 +23,6 @@ const LatestSermon = () => {
                 background: "#f0f7f9", // Matches the bottom gradient of the previous section
                 textAlign: "center",
                 position: "relative",
-                // mt: "-50px", // Overlaps the gradient from the previous section to remove the gap
                 height: "80vh", // Full-screen height
                 backgroundImage: `url(${latestSermon.snippet.thumbnails.high.url})`,
                 backgroundSize: "cover",
@@ -36,7 +35,6 @@ const LatestSermon = () => {
                 textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)",
             }}
         >
-            {/* Top Gradient Transition */}
             <Box
                 sx={{
                     position: "absolute",
@@ -49,29 +47,15 @@ const LatestSermon = () => {
                 }}
             />
 
-            {/*<Box*/}
-            {/*    sx={{*/}
-            {/*        position: "absolute",*/}
-            {/*        top: 0,*/}
-            {/*        left: 0,*/}
-            {/*        width: "100%",*/}
-            {/*        height: "500px", // Extended height for a smoother transition*/}
-            {/*        background: "linear-gradient(to bottom, #e3f2fd, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0))", // Less abrupt gradient*/}
-            {/*        zIndex: 1,*/}
-            {/*    }}*/}
-            {/*/>*/}
-
-
-            {/* Content */}
             <Box sx={{
-                display: "flex", // Activate Flexbox
-                flexDirection: "column", // Ensure content stacks vertically
-                justifyContent: "center", // Centers content vertically
-                alignItems: "center", // Centers content horizontally
-                height: "100vh", // Full viewport height (or specific height if needed)
-                textAlign: "center", // Center-align text
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+                textAlign: "center",
                 zIndex: 2,
-                padding: "0 20px", // Add padding for smaller screens
+                padding: "0 20px",
             }}>
                 <Typography
                     variant="h2"
@@ -98,46 +82,30 @@ const LatestSermon = () => {
                         }}
                         sx={{
                             mr: 2,
-                            backgroundColor: "#007bff",
+                            backgroundColor: "#055594",
                             padding: "10px 20px",
-                            "&:hover": {backgroundColor: "#0056b3"},
+                            "&:hover": {backgroundColor: "#033d6c"},
                         }}
                     >
                         Watch Now
                     </Button>
                     <Link to={PageRoutes[PageName.Sermons]} style={{ textDecoration: 'none' }}>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        sx={{
-                            padding: "10px 20px",
-                            color: "#fff",
-                            borderColor: "#007bff",
-                            "&:hover": {
-                                borderColor: "#0056b3",
-                                color: "#007bff",
-                                backgroundColor: "#fff",
-                            },
-                        }}
-                    >
-                        View All Sermons
-                    </Button>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                padding: "10px 20px",
+                                backgroundColor: "#E52326",
+                                color: "#fff",
+                                "&:hover": {
+                                    backgroundColor: "#b71c1c",
+                                },
+                            }}
+                        >
+                            View All Sermons
+                        </Button>
                     </Link>
                 </Box>
             </Box>
-
-            {/* Bottom Gradient Transition */}
-            {/*<Box*/}
-            {/*    sx={{*/}
-            {/*        position: "absolute",*/}
-            {/*        bottom: 0,*/}
-            {/*        left: 0,*/}
-            {/*        width: "100%",*/}
-            {/*        // height: "150px",*/}
-            {/*        background: "linear-gradient(to bottom, #f0f7f9, #ffffff)", // Matches the next section*/}
-            {/*        zIndex: 1,*/}
-            {/*    }}*/}
-            {/*/>*/}
         </Box>
     )
 };
