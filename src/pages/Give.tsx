@@ -103,10 +103,12 @@ const GivePage = () => {
                     To claim, simply download and complete the CHY3 or CHY4 forms from the Revenue website and submit them to us.
                 </Typography>
                 <Button
+                    component="a"
                     variant="outlined"
                     color="primary"
                     href="https://www.revenue.ie/en/companies-and-charities/charities-and-sports-bodies/charitable-donation-scheme/claiming-tax-relief-on-donations.aspx"
                     target="_blank"
+                    rel="noopener noreferrer"
                     sx={{ marginTop: 2 }}
                 >
                     Learn More & Download Forms
