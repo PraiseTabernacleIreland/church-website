@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Typography, Button, Grid, Card, CardContent } from "@mui/material";
+import { Box, Typography, Button, Grid, Card, CardContent, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { QRCodeCanvas } from "qrcode.react";
-import { AccountBalance, Payment, VolunteerActivism } from "@mui/icons-material";
+import { AccountBalance, VolunteerActivism, HelpOutline } from "@mui/icons-material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Hero from "../components/Hero";
 
 const GivePage = () => {
@@ -18,7 +19,7 @@ const GivePage = () => {
                 <Grid item xs={12} md={6}>
                     <Card elevation={3} sx={{ backgroundColor: "#ffffff" }}>
                         <CardContent>
-                            <VolunteerActivism sx={{ fontSize: 50, color: "#4caf50", marginBottom: 2 }} />
+                            <VolunteerActivism sx={{ fontSize: 50, color: "#1976d2", marginBottom: 2 }} />
                             <Typography variant="h5" gutterBottom>
                                 Give via PayPal
                             </Typography>
@@ -74,7 +75,18 @@ const GivePage = () => {
                 </Grid>
             </Grid>
 
+            <Box sx={{ marginTop: 5, backgroundColor: "#f1f1f1", padding: 3 }}>
+                <Typography variant="h6" sx={{ color: "#333" }}>Other Ways to Give</Typography>
+                <Typography variant="body1" sx={{ color: "#555" }}>
+                    For any questions or assistance, please contact us at {" "}
+                    <a href="mailto:contact@yourchurch.com" style={{ color: "#1976d2", textDecoration: "none" }}>
+                        contact@yourchurch.com
+                    </a>.
+                </Typography>
+            </Box>
+
             <Box sx={{ marginTop: 5, backgroundColor: "#e8f0fe", padding: 4, borderRadius: 2 }}>
+                <HelpOutline sx={{ fontSize: 50, color: "#1976d2", marginBottom: 2 }} />
                 <Typography variant="h5" sx={{ color: "#333", fontWeight: "bold", marginBottom: 2 }}>
                     Claim Tax Relief on Your Donations
                 </Typography>
@@ -99,17 +111,62 @@ const GivePage = () => {
                 >
                     Learn More & Download Forms
                 </Button>
+
+                <Box sx={{ marginTop: 4 }}>
+                    <Typography variant="h6" sx={{ color: "#333", fontWeight: "bold", marginBottom: 2 }}>
+                        Frequently Asked Questions
+                    </Typography>
+                    {[
+                        {
+                            question: "Does allowing the church to claim tax relief on my donation affect my personal tax situation?",
+                            answer: "No, permitting the church to claim tax relief on your donation does not impact your personal tax liabilities or entitlements. The tax relief is claimed by the church and does not alter your personal tax position.",
+                        },
+                        {
+                            question: "What is the minimum donation amount required for the church to claim tax relief?",
+                            answer: "The minimum total donation amount is €250 in a calendar year. This can be a single donation or multiple contributions that add up to €250 or more within the year.",
+                        },
+                        {
+                            question: "Is there a maximum limit on the amount I can donate for tax relief purposes?",
+                            answer: "Yes, the maximum donation amount that qualifies for tax relief is €1,000,000 in any one year.",
+                        },
+                        {
+                            question: "How does the tax relief benefit the church?",
+                            answer: "When you donate €250, the church can claim an additional €112.32 from Revenue, making your total contribution €362.32. This extra funding significantly enhances the church's ability to support its activities and community services.",
+                        },
+                        {
+                            question: "What forms do I need to complete to enable the church to claim this tax relief?",
+                            answer: "To authorize the church to claim tax relief on your donation, you should complete either the CHY3 (Enduring Certificate) or CHY4 (Annual Certificate) form and submit it to the church.",
+                        },
+                        {
+                            question: "Will I receive any personal tax refund for my donation?",
+                            answer: "No, the tax relief is claimed by the church, not by individual donors. Therefore, you will not receive a personal tax refund for your donation.",
+                        },
+                        {
+                            question: "Does my donation qualify if I have a connection to the church?",
+                            answer: "If you are an employee or member of the church, or a member of another approved body connected to the church, your donation may still qualify for tax relief. However, relief will be restricted to 10% of your annual income.",
+                        },
+                        {
+                            question: "How is the tax relief calculated?",
+                            answer: "The tax relief is calculated by grossing up your donation at the specified rate of 31%. For example, a €250 donation is considered 69% of the total (100% - 31%), resulting in a gross donation of approximately €362.32. The church can then claim the difference of €112.32 as tax relief.",
+                        }
+                    ].map((faq, index) => (
+                        <Accordion key={index} sx={{ backgroundColor: "#f9fafb", marginBottom: 1 }}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls={`panel${index}-content`}
+                                id={`panel${index}-header`}
+                            >
+                                <Typography sx={{ fontWeight: "bold" }}>{faq.question}</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>{faq.answer}</Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    ))}
+                </Box>
             </Box>
 
-            <Box sx={{ marginTop: 5, backgroundColor: "#f1f1f1", padding: 3 }}>
-                <Typography variant="h6" sx={{ color: "#333" }}>Other Ways to Give</Typography>
-                <Typography variant="body1" sx={{ color: "#555" }}>
-                    For any questions or assistance, please contact us at {" "}
-                    <a href="mailto:contact@yourchurch.com" style={{ color: "#1976d2", textDecoration: "none" }}>
-                        contact@yourchurch.com
-                    </a>.
-                </Typography>
-            </Box>
+
         </Box>
     );
 };
