@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/church-website/static/css/main.e62cc432.css",
-    "main.js": "/church-website/static/js/main.aecfb36e.js",
+    "main.js": "/church-website/static/js/main.9f308d4f.js",
     "static/js/488.a612e3b9.chunk.js": "/church-website/static/js/488.a612e3b9.chunk.js",
     "static/media/logo.svg": "/church-website/static/media/logo.c42602dda725738331b8fa2192559003.svg",
     "index.html": "/church-website/index.html",
     "main.e62cc432.css.map": "/church-website/static/css/main.e62cc432.css.map",
-    "main.aecfb36e.js.map": "/church-website/static/js/main.aecfb36e.js.map",
+    "main.9f308d4f.js.map": "/church-website/static/js/main.9f308d4f.js.map",
     "488.a612e3b9.chunk.js.map": "/church-website/static/js/488.a612e3b9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e62cc432.css",
-    "static/js/main.aecfb36e.js"
+    "static/js/main.9f308d4f.js"
   ]
 }
