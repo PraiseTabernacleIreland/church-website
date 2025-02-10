@@ -13,13 +13,6 @@ const GivePage = () => {
 
     return (
         <Box sx={{ padding: 3, textAlign: "center", backgroundColor: "#f7f7f7" }}>
-            {/*<Typography variant="h4" gutterBottom sx={{ color: "#333" }}>*/}
-            {/*    Support Our Mission*/}
-            {/*</Typography>*/}
-            {/*<Typography variant="body1" sx={{ marginBottom: 3, color: "#555" }}>*/}
-            {/*    Your generosity helps us continue our mission to serve the community. Thank you for your support!*/}
-            {/*</Typography>*/}
-
             <Grid container spacing={4} justifyContent="center" sx={{ marginBottom: 5 }}>
                 <Grid item xs={12} md={6}>
                     <Card elevation={3} sx={{ backgroundColor: "#fff" }}>
@@ -77,6 +70,26 @@ const GivePage = () => {
                     </Card>
                 </Grid>
             </Grid>
+
+            <Box sx={{ marginTop: 5, backgroundColor: "#e8f0fe", padding: 4, borderRadius: 2 }}>
+                <Typography variant="h5" sx={{ color: "#333", fontWeight: "bold", marginBottom: 2 }}>
+                    Claim Tax Relief on Your Donations
+                </Typography>
+                <Typography variant="body1" sx={{ color: "#333", marginBottom: 2 }}>
+                    Did you know you can claim tax relief on your donations if you are a PAYE or self-assessed taxpayer in Ireland? This allows your generous contributions to go even further.
+                </Typography>
+                <Typography variant="body1" sx={{ color: "#333", marginBottom: 2 }}>
+                    To claim, simply download and complete the CHY3 or CHY4 forms from the Revenue website and submit them to us.
+                </Typography>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    href="https://www.revenue.ie/en/companies-and-charities/charities-and-sports-bodies/charitable-donation-scheme/claiming-tax-relief-on-donations.aspx"
+                    target="_blank"
+                >
+                    Learn More & Download Forms
+                </Button>
+            </Box>
 
             <Box sx={{ marginTop: 5, backgroundColor: "#f1f1f1", padding: 3 }}>
                 <Typography variant="h6" sx={{ color: "#333" }}>Other Ways to Give</Typography>
