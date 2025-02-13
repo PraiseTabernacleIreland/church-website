@@ -67,6 +67,10 @@ const ServiceTimesSection = () => {
                     color: "#333",
                     fontWeight: "bold",
                     mb: 6,
+                    textAlign: "left",
+                    width: "100%",
+                    maxWidth: "1200px",  // Match card container width
+                    pl: 2,
                 }}
             >
                 Join Us for Worship

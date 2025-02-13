@@ -7,7 +7,7 @@ export const Team = () => {
         <>
             <Hero
                 backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/contact.jpg)`}
-                height={'30vh'}
+                height={'40vh'}
                 title={'Meet Our Team'}
             />
             <TeamContainer/>

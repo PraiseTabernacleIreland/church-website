@@ -5,6 +5,7 @@ import Ministries from "../components/Ministries";
 import LatestSermon from "../components/LatestSermon";
 import LatestEvent from "../components/LatestEvent";
 import PastorMessage from "../components/PastorMessage";
+import StayConnected from "../components/StayConnected";
 
 function HeroSection() {
     return (
@@ -20,6 +21,17 @@ function HeroSection() {
                 backgroundColor: 'rgba(0, 0, 0, 0.5)'
             }}
         >
+            <Box
+                sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    // background: "rgba(0, 0, 0, 0.5)", // Dark overlay for readability
+                    backdropFilter: "blur(4px)", // Glassmorphic effect
+                }}
+            />
             {/* Video background */}
             <video
                 src={`${process.env.PUBLIC_URL}/assets/hero_1.mp4`}  // Replace with your video URL
@@ -140,6 +152,7 @@ export const Home = () => {
             {/*<GetInvolved/>*/}
             {/*<TwoColumnLayout/>*/}
             <LatestSermon />
+            <StayConnected />
             <LatestEvent />
             {/*<GivingSummary />*/}
         </>

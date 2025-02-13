@@ -1,7 +1,7 @@
-import { Button, Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Box, Typography, Button, Grid, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useEvents } from "../hooks/useEvents";
+import EventIcon from "@mui/icons-material/Event";
 
 const LatestEvent = () => {
     const navigate = useNavigate();
@@ -10,125 +10,152 @@ const LatestEvent = () => {
     return (
         <Box
             sx={{
-                background: "#f0f4f8",  // Subtle darker background
+                background: "linear-gradient(to bottom, #f4f7fb, #e8eff5)",
                 textAlign: "center",
                 position: "relative",
-                py: 8,
+                py: 10,
                 px: 4,
             }}
         >
             {/* Section Title */}
-            <Typography
-                variant="h3"
+            <Grid container spacing={4} alignItems="center">
+                <Grid item xs={12}>
+                    <Box sx={{ display: "flex", justifyContent: "flex-end", pr: { md: 4 } }}>
+                        <Typography
+                            variant="h3"
+                            sx={{
+                                fontWeight: "bold",
+                                mb: 6,
+                                color: "#333",
+                                textAlign: "right",
+                            }}
+                        >
+                            Upcoming Events
+                        </Typography>
+                    </Box>
+                </Grid>
+            </Grid>
+
+            {/* Timeline View */}
+            <Box
                 sx={{
-                    fontWeight: "bold",
-                    mb: 6,
-                    color: "#333",  // Neutral heading color
+                    maxWidth: "900px",
+                    mx: "auto",
+                    position: "relative",
+                    "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        left: "50%",
+                        top: 0,
+                        bottom: 0,
+                        width: "4px",
+                        backgroundColor: "#055594",
+                        transform: "translateX(-50%)",
+                    },
                 }}
             >
-                Upcoming Events
-            </Typography>
-
-            {/* Events Grid */}
-            <Grid container spacing={4} justifyContent="center">
-                {events.slice(0, 3).map((event) => (
-                    <Grid item xs={12} sm={6} md={4} key={event.id}>
-                        <Card
+                {events.slice(0, 2).map((event, index) => (
+                    <Box
+                        key={event.id}
+                        sx={{
+                            display: "flex",
+                            flexDirection: index % 2 === 0 ? "row-reverse" : "row",
+                            alignItems: "center",
+                            mb: 6,
+                            position: "relative",
+                        }}
+                    >
+                        {/* Date Badge */}
+                        <Box
                             sx={{
-                                borderRadius: "16px",
-                                boxShadow: "0 6px 15px rgba(0, 0, 0, 0.1)",
-                                overflow: "hidden",
-                                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                width: "50%",
+                                textAlign: index % 2 === 0 ? "left" : "right",
+                                pr: index % 2 === 0 ? 3 : 0,
+                                pl: index % 2 !== 0 ? 3 : 0,
+                            }}
+                        >
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                    fontWeight: "bold",
+                                    color: "#055594",
+                                    backgroundColor: "#e1efff",
+                                    padding: "6px 12px",
+                                    borderRadius: "20px",
+                                    display: "inline-block",
+                                }}
+                            >
+                                {new Date(event.date).toLocaleDateString("en-US", {
+                                    weekday: "long",
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })}
+                            </Typography>
+                        </Box>
+
+                        {/* Event Details */}
+                        <Box
+                            sx={{
+                                width: "50%",
+                                textAlign: index % 2 === 0 ? "right" : "left",
+                                position: "relative",
+                                padding: "20px",
+                                background: "#ffffff",
+                                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                                borderRadius: "12px",
+                                transition: "transform 0.3s ease",
                                 "&:hover": {
                                     transform: "scale(1.03)",
-                                    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
+                                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.2)",
                                 },
                             }}
                         >
-                            {/* Event Image */}
-                            <Box
-                                sx={{
-                                    position: "relative",
-                                    overflow: "hidden",
-                                    height: "200px",
-                                }}
-                            >
-                                <CardMedia
-                                    component="img"
-                                    image={event.image}
-                                    alt={event.title}
-                                    sx={{
-                                        objectFit: "cover",
-                                        width: "100%",
-                                        height: "100%",
-                                    }}
-                                />
-                            </Box>
-                            {/* Event Content */}
-                            <CardContent
-                                sx={{
-                                    textAlign: "center",
-                                    padding: "20px",
-                                    background: "#ffffff",
-                                }}
-                            >
-                                <Typography
-                                    variant="h6"
-                                    sx={{
-                                        fontWeight: "bold",
-                                        color: "#333",  // Neutral title color
-                                        mb: 1,
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis",
-                                        whiteSpace: "nowrap",
-                                    }}
-                                >
-                                    {event.title}
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    sx={{
-                                        color: "#555",
-                                        mb: 2,
-                                    }}
-                                >
-                                    {new Date(event.date).toLocaleDateString("en-US", {
-                                        weekday: "long",
-                                        year: "numeric",
-                                        month: "long",
-                                        day: "numeric",
-                                    })}
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    sx={{
-                                        color: "#777",
-                                        mb: 3,
-                                    }}
-                                >
-                                    {event.description}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
+                            <Typography variant="h6" sx={{ fontWeight: "bold", color: "#055594", mb: 1 }}>
+                                {event.title}
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: "#555", mb: 2 }}>
+                                {event.description}
+                            </Typography>
+                        </Box>
 
-            {/* Link to Events Page */}
+                        {/* Timeline Circle Indicator */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                left: "50%",
+                                transform: "translateX(-50%)",
+                                width: "24px",
+                                height: "24px",
+                                backgroundColor: "#E52326",
+                                borderRadius: "50%",
+                                border: "4px solid #fff",
+                                zIndex: 2,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <EventIcon sx={{ color: "#fff", fontSize: "16px" }} />
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+
+            {/* View More Events Button */}
             <Box sx={{ mt: 6 }}>
                 <Button
-                    variant="outlined"
+                    variant="contained"
                     sx={{
                         textTransform: "none",
-                        padding: "10px 24px",
-                        borderRadius: "20px",
+                        padding: "12px 28px",
+                        borderRadius: "24px",
                         fontWeight: "bold",
-                        borderColor: "#055594",
-                        color: "#055594",
+                        fontSize: "16px",
+                        backgroundColor: "#055594",
+                        color: "#fff",
                         "&:hover": {
-                            backgroundColor: "#055594",
-                            color: "#ffffff",
-                            borderColor: "#055594",
+                            backgroundColor: "#033d6c",
                         },
                     }}
                     onClick={() => navigate("/events")}

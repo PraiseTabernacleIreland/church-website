@@ -4,6 +4,7 @@ import { Box, Typography, Grid, Card, CardMedia, CardContent } from "@mui/materi
 import Button from "@mui/material/Button";
 import { useYoutubeChannelDetails } from "../../hooks/useYoutubeChannelDetails";
 import { useLocation } from "react-router-dom";
+import {decodeHTMLEntities} from "../../utils/strings";
 
 const YouTubePage = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -51,7 +52,7 @@ const YouTubePage = () => {
                         width="100%"
                         height="500"
                         src={`https://www.youtube.com/embed/${liveVideo.id.videoId}?autoplay=1&mute=1`}
-                        title={liveVideo.snippet.title}
+                        title={decodeHTMLEntities(liveVideo.snippet.title)}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -61,7 +62,7 @@ const YouTubePage = () => {
                         }}
                     ></iframe>
                     <Typography variant="h5" sx={{ marginTop: 2, fontWeight: "bold", color: "#333" }}>
-                        {liveVideo.snippet.title}
+                        {decodeHTMLEntities(liveVideo.snippet.title)}
                     </Typography>
                     <Typography variant="body2" sx={{ color: "#555" }}>
                         {new Date(liveVideo.snippet.publishedAt).toLocaleDateString()}
@@ -76,7 +77,7 @@ const YouTubePage = () => {
                         width="100%"
                         height="500"
                         src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
-                        title={selectedVideo.snippet.title}
+                        title={decodeHTMLEntities(selectedVideo.snippet.title)}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -86,7 +87,7 @@ const YouTubePage = () => {
                         }}
                     ></iframe>
                     <Typography variant="h5" sx={{ marginTop: 2, fontWeight: "bold", color: "#333" }}>
-                        {selectedVideo.snippet.title}
+                        {decodeHTMLEntities(selectedVideo.snippet.title)}
                     </Typography>
                     <Typography variant="body2" sx={{ color: "#555" }}>
                         {new Date(selectedVideo.snippet.publishedAt).toLocaleDateString()}
@@ -112,7 +113,7 @@ const YouTubePage = () => {
                                 component="img"
                                 height="200"
                                 image={video.snippet.thumbnails.high.url}
-                                alt={video.snippet.title}
+                                alt={decodeHTMLEntities(video.snippet.title)}
                                 onClick={() => setSelectedVideo(video)}
                                 sx={{
                                     cursor: "pointer",
@@ -131,7 +132,7 @@ const YouTubePage = () => {
                                         wordBreak: "break-word",
                                     }}
                                 >
-                                    {video.snippet.title}
+                                    {decodeHTMLEntities(video.snippet.title)}
                                 </Typography>
                                 <Typography
                                     variant="body2"

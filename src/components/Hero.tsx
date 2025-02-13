@@ -43,9 +43,22 @@ const Hero = (props: HeroProps) => {
                 color: "#fff", // Text color
                 zIndex: 0, // Ensures it's behind the app bar
                 paddingTop: "64px", // Accounts for the fixed AppBar
+                backgroundRepeat: "no-repeat",
                 // background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(/assets/contact.jpg)`,
             }}
         >
+            <Box
+                sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    // background: "rgba(5, 85, 148, 0.3)", // Lighter for subtle effect
+                    backdropFilter: "blur(4px)", // Softens the background
+                    zIndex: -1,
+                }}
+            />
             {props.title &&
                 (<Typography variant="h3" sx={{fontWeight: 'bold', marginBottom: 2}}>
                     {props.title}
