@@ -2,10 +2,9 @@ import { Box, Typography, Grid, Button } from "@mui/material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import {FACEBOOK_LINK, INSTAGRAM_LINK, YOUTUBE_CHANNEL} from "../utils/constants";
 
-const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@yourchannel";
-const FACEBOOK_PAGE_URL = "https://www.facebook.com/yourpage";
-const INSTAGRAM_PAGE_URL = "https://www.instagram.com/yourpage";
+const YOUTUBE_CHANNEL_URL = `https://www.youtube.com/${YOUTUBE_CHANNEL}`;
 
 const StayConnected = () => {
     return (
@@ -80,7 +79,7 @@ const StayConnected = () => {
                             <Button
                                 variant="contained"
                                 startIcon={<FacebookIcon />}
-                                href={FACEBOOK_PAGE_URL}
+                                href={FACEBOOK_LINK}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 sx={{
@@ -102,7 +101,7 @@ const StayConnected = () => {
                             <Button
                                 variant="contained"
                                 startIcon={<InstagramIcon />}
-                                href={INSTAGRAM_PAGE_URL}
+                                href={INSTAGRAM_LINK}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 sx={{
