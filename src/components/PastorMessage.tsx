@@ -53,7 +53,7 @@ const PastorMessage = () => {
                         </Grid>
 
                         <Grid item xs={12} md={8}>
-                            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, color: "#055594" }}>
+                            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, color: "black" }}>
                                 A Message from Our Pastor
                             </Typography>
 
@@ -122,7 +122,7 @@ const PastorMessage = () => {
                                 {isExpanded ? "Show Less" : "Read More"}
                             </Button>
 
-                            <Typography variant="h6" sx={{ fontWeight: "bold", mt: 4, color: "#055594" }}>
+                            <Typography variant="h6" sx={{ fontWeight: "bold", mt: 4, color: "black" }}>
                                 - Pastor Gerard Chimbganda
                             </Typography>
                         </Grid>
