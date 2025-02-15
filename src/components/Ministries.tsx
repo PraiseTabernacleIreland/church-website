@@ -4,7 +4,7 @@ import { Groups, Church, School, ExpandMore, ExpandLess } from "@mui/icons-mater
 import { useNavigate } from "react-router-dom";
 import { PageRoutes, PageName } from "../utils/routes";
 
-// Define CSS patterns with better contrast
+// Define CSS patterns and styles for better contrast
 const connectGroups = [
     {
         title: "Ministries",
@@ -44,18 +44,29 @@ const connectGroups = [
 ];
 
 const ConnectSection = () => {
-    const [expanded, setExpanded] = useState(null);
+    const [expandedGroup, setExpandedGroup] = useState(null);
+    const [expandedItems, setExpandedItems] = useState({});
     const navigate = useNavigate();
 
-    const handleToggle = (index) => {
-        setExpanded(expanded === index ? null : index);
+    // Toggle Groups (Only one can be open at a time)
+    const handleGroupToggle = (groupIndex) => {
+        setExpandedGroup(expandedGroup === groupIndex ? null : groupIndex);
+        setExpandedItems({}); // Collapse all inner items when switching groups
+    };
+
+    // Toggle Items within a group
+    const handleItemToggle = (groupIndex, itemIndex) => {
+        setExpandedItems((prevState) => ({
+            ...prevState,
+            [`${groupIndex}-${itemIndex}`]: !prevState[`${groupIndex}-${itemIndex}`],
+        }));
     };
 
     return (
         <Box sx={{ py: 10, px: { xs: 2, md: 4 }, textAlign: "center" }}>
             {/* Section Title & Call-to-Action */}
             <Box sx={{ mb: 6, maxWidth: "800px", mx: "auto" }}>
-                <Typography variant="h3" sx={{ fontWeight: "bold", color: "#333", mb: 2, letterSpacing: "0.5px" }}>
+                <Typography variant="h3" sx={{ fontWeight: "bold", color: "#333", mb: 2 }}>
                     Get Involved & Grow
                 </Typography>
                 <Typography variant="body1" sx={{ color: "#555", mb: 3 }}>
@@ -65,82 +76,84 @@ const ConnectSection = () => {
 
             {/* Main Grid Layout */}
             <Grid container spacing={4} justifyContent="center">
-                {connectGroups.map((group, index) => (
-                    <Grid item xs={12} md={4} key={index}>
+                {connectGroups.map((group, groupIndex) => (
+                    <Grid item xs={12} md={4} key={groupIndex}>
                         <Paper
                             sx={{
                                 p: 4,
                                 borderRadius: 3,
                                 boxShadow: "0px 6px 14px rgba(0, 0, 0, 0.12)",
                                 textAlign: "center",
-                                height: "100%",
                                 position: "relative",
-                                overflow: "hidden",
+                                overflow: "visible", // FIX: Prevents content cutoff
+                                minHeight: "auto", // FIX: Ensures height expands properly
                                 background: `${group.background}, ${group.pattern}`,
                                 backgroundSize: "cover, 150px 150px",
                                 backgroundBlendMode: "overlay, normal",
                                 color: group.textColor,
-                                // "&:hover": {
-                                //     transform: "scale(1.03)",
-                                //     transition: "transform 0.3s ease-in-out",
-                                // }
+                                height: "auto", // ✅ Ensures it grows with content
                             }}
                         >
-                            {/* Subtle Text Overlay */}
-                            <Box
+                            {/* Group Title - Click to Expand */}
+                            <Button
+                                fullWidth
+                                onClick={() => handleGroupToggle(groupIndex)}
                                 sx={{
-                                    position: "absolute",
-                                    top: 0,
-                                    left: 0,
-                                    width: "100%",
-                                    height: "100%",
-                                    background: "rgba(255, 255, 255, 0.3)", // Light overlay for contrast
-                                    zIndex: 1,
+                                    fontSize: "20px",
+                                    fontWeight: "bold",
+                                    textTransform: "none",
+                                    // backgroundColor: "rgba(255, 255, 255, 0.3)",
+                                    borderRadius: "8px",
+                                    py: 2,
+                                    mb: 2,
+                                    color: group.textColor,
+                                    "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.4)" }
                                 }}
-                            />
+                            >
+                                {group.title}
+                                {expandedGroup === groupIndex ? <ExpandLess sx={{ ml: 1 }} /> : <ExpandMore sx={{ ml: 1 }} />}
+                            </Button>
 
-                            {/* Content */}
-                            <Box sx={{ position: "relative", zIndex: 2 }}>
-                                <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, letterSpacing: "0.3px" }}>
-                                    {group.title}
-                                </Typography>
-                                {group.items.map((item, idx) => (
-                                    <Box key={idx} sx={{ mb: 2 }}>
-                                        <Button
-                                            fullWidth
-                                            onClick={() => handleToggle(`${index}-${idx}`)}
-                                            sx={{
-                                                display: "flex",
-                                                justifyContent: "space-between",
-                                                alignItems: "center",
-                                                backgroundColor: "rgba(255, 255, 255, 0.3)",
-                                                borderRadius: "50px",
-                                                px: 3,
-                                                py: 1.5,
-                                                fontWeight: "bold",
-                                                textTransform: "none",
-                                                color: group.textColor,
-                                                "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.4)", transform: "scale(1.02)", transition: "0.2s" }
-                                            }}
-                                        >
-                                            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                            {/* Collapsible Items within the Group */}
+                            <Collapse in={expandedGroup === groupIndex} timeout="250">
+                                <Box sx={{
+                                    position: "relative",
+                                    zIndex: 2,
+                                    pb: 4,
+                                    minHeight: "auto",  // ✅ Dynamically expands with content
+                                    overflow: "visible" // ✅ Ensures no content gets cut off
+                                }}> {/* FIX: Added padding-bottom */}
+                                    {group.items.map((item, itemIndex) => (
+                                        <Box key={itemIndex} sx={{ mb: 2 }}>
+                                            <Button
+                                                fullWidth
+                                                onClick={() => handleItemToggle(groupIndex, itemIndex)}
+                                                sx={{
+                                                    display: "flex",
+                                                    justifyContent: "space-between",
+                                                    alignItems: "center",
+                                                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                                                    borderRadius: "50px",
+                                                    px: 3,
+                                                    py: 1.5,
+                                                    fontWeight: "bold",
+                                                    textTransform: "none",
+                                                    color: group.textColor
+                                                }}
+                                            >
                                                 {item.icon} <Typography>{item.name}</Typography>
-                                            </Box>
-                                            {expanded === `${index}-${idx}` ? <ExpandLess sx={{ color: group.textColor }} /> : <ExpandMore sx={{ color: group.textColor }} />}
-                                        </Button>
-                                        <Collapse in={expanded === `${index}-${idx}`} timeout="250">
-                                            <Box sx={{ mt: 1, p: 2, background: "rgba(255, 255, 255, 0.9)", borderRadius: "8px", boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)", transition: "0.3s" }}>
-                                                <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
-                                                    {item.description}
-                                                </Typography>
-                                                <Button fullWidth variant="contained" sx={{ mt: 1, borderRadius: "20px", backgroundColor: "#055594" }} onClick={() => navigate(item.route)}>
-                                                    Learn More
-                                                </Button>
-                                            </Box>
-                                        </Collapse>
-                                    </Box>
-                                ))}
-                            </Box>
+                                                {expandedItems[`${groupIndex}-${itemIndex}`] ? <ExpandLess /> : <ExpandMore />}
+                                            </Button>
+                                            <Collapse in={expandedItems[`${groupIndex}-${itemIndex}`]} timeout="250">
+                                                <Box sx={{ p: 2, background: "rgba(255, 255, 255, 0.9)", borderRadius: "8px" }}>
+                                                    <Typography variant="body2">{item.description}</Typography>
+                                                    <Button fullWidth variant="contained" onClick={() => navigate(item.route)}>Learn More</Button>
+                                                </Box>
+                                            </Collapse>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Collapse>
                         </Paper>
                     </Grid>
                 ))}

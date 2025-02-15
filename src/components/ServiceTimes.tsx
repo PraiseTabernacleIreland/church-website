@@ -17,8 +17,9 @@ const NavigationButton = ({ isExternal, index, button, service }) => {
                 backgroundColor: button.variant === "contained" ? "#055594" : "transparent",
                 color: button.variant === "contained" ? "#fff" : "#055594",
                 border: button.variant === "outlined" ? `1px solid #055594` : "none",
-                mr: index < service.buttons.length - 1 ? 1 : 0,
+                mr: { xs: 0, sm: 1 },
                 mb: 1,
+                width: { xs: "100%", sm: "auto" }, // Makes buttons full-width on mobile
                 '&:hover': {
                     backgroundColor: button.variant === "contained" ? "#033d6c" : "rgba(0, 0, 0, 0.05)",
                 },
@@ -36,8 +37,9 @@ const NavigationButton = ({ isExternal, index, button, service }) => {
                     backgroundColor: button.variant === "contained" ? "#055594" : "transparent",
                     color: button.variant === "contained" ? "#fff" : "#055594",
                     border: button.variant === "outlined" ? `1px solid #055594` : "none",
-                    mr: index < service.buttons.length - 1 ? 1 : 0,
+                    mr: { xs: 0, sm: 1 },
                     mb: 1,
+                    width: { xs: "100%", sm: "auto" }, // Makes buttons full-width on mobile
                     '&:hover': {
                         backgroundColor: button.variant === "contained" ? "#033d6c" : "rgba(0, 0, 0, 0.05)",
                     },
@@ -74,11 +76,11 @@ const ServiceTimesSection = () => {
                     textAlign: "center",
                 }}
             >
-                Join Us for Worship
+                Join Us for Worship & Prayer
             </Typography>
 
             {/* FIRST ROW - Sunday Service + Details */}
-            <Grid container spacing={4} justifyContent="center" sx={{ maxWidth: "1200px"}}>
+            <Grid container spacing={4} justifyContent="center" sx={{ maxWidth: "1200px" }}>
                 <Grid item xs={12}>
                     <Paper
                         sx={{
@@ -105,19 +107,9 @@ const ServiceTimesSection = () => {
                                 left: 0,
                                 width: "100%",
                                 height: "100%",
-                                background: "rgba(0, 0, 0, 0.6)",  // 🔥 Increased Darkness
+                                background: "rgba(0, 0, 0, 0.6)", // Increased Darkness
                                 zIndex: 1,
                             },
-                            "::after": {
-                                content: '""',
-                                position: "absolute",
-                                bottom: 0,
-                                left: 0,
-                                width: "100%",
-                                height: "50%",  // 🔥 Gradient Effect
-                                background: "linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)",
-                                zIndex: 2,
-                            }
                         }}
                     >
                         {/* Content Wrapper */}
@@ -131,7 +123,7 @@ const ServiceTimesSection = () => {
                             <Typography variant="body1" sx={{ mb: 3, textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)" }}>
                                 {services[0].description}
                             </Typography>
-                            <Box>
+                            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
                                 {services[0].buttons.map((button, i) => (
                                     <NavigationButton button={button} index={i} service={services[0]} isExternal={button.isExternal} />
                                 ))}
@@ -139,33 +131,21 @@ const ServiceTimesSection = () => {
 
                             {/* Sunday Service Details */}
                             <Grid container spacing={4} justifyContent="center" sx={{ mt: 4, width: "100%" }}>
-                                <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
-                                    <School sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />
-                                    <Typography variant="h6" sx={{ fontWeight: "bold", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.6)" }}>
-                                        Sunday School
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: "#f5f5f5" }}>
-                                        We offer engaging Sunday School sessions for kids of all ages during each service.
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
-                                    <LocalParking sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />
-                                    <Typography variant="h6" sx={{ fontWeight: "bold", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.6)" }}>
-                                        Parking
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: "#f5f5f5" }}>
-                                        Dedicated parking available onsite, with additional spaces nearby.
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
-                                    <Coffee sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />
-                                    <Typography variant="h6" sx={{ fontWeight: "bold", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.6)" }}>
-                                        Coffee & Fellowship
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: "#f5f5f5" }}>
-                                        Stay after the service for coffee and connection in our welcoming space.
-                                    </Typography>
-                                </Grid>
+                                {[
+                                    { icon: <School sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />, title: "Sunday School", desc: "We offer engaging Sunday School sessions for kids of all ages during each service." },
+                                    { icon: <LocalParking sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />, title: "Parking", desc: "Dedicated parking available onsite, with additional spaces nearby." },
+                                    { icon: <Coffee sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />, title: "Coffee & Fellowship", desc: "Stay after the service for coffee and connection in our welcoming space." }
+                                ].map((item, index) => (
+                                    <Grid item xs={12} sm={4} key={index} sx={{ textAlign: "center" }}>
+                                        {item.icon}
+                                        <Typography variant="h6" sx={{ fontWeight: "bold", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.6)" }}>
+                                            {item.title}
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: "#f5f5f5" }}>
+                                            {item.desc}
+                                        </Typography>
+                                    </Grid>
+                                ))}
                             </Grid>
                         </Box>
                     </Paper>

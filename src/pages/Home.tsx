@@ -153,8 +153,9 @@ export const Home = () => {
             {/*<TwoColumnLayout/>*/}
             <LatestSermon />
             <StayConnected />
-            <LatestEvent />
+
             <Ministries/>
+            <LatestEvent />
             {/*<GivingSummary />*/}
         </>
     )

@@ -63,7 +63,7 @@ const PastorMessage = () => {
                                     color: "#444",
                                     fontSize: "18px",
                                     lineHeight: 1.8,
-                                    textAlign: "justify",
+                                    textAlign: "center",
                                 }}
                             >
                                 "Welcome to Praise Tabernacle Apostolic Faith Mission’s website. I am Pastor Gerard T. Chimbganda,
@@ -78,7 +78,7 @@ const PastorMessage = () => {
                                             color: "#444",
                                             fontSize: "18px",
                                             lineHeight: 1.8,
-                                            textAlign: "justify",
+                                            textAlign: "center",
                                             mt: 2,
                                         }}
                                     >
@@ -94,7 +94,7 @@ const PastorMessage = () => {
                                         This is the Good News of the Gospel, the message we share, and the reason we live.
 
                                         All are welcome to join us as we walk in faith and live the abundant life He has given us.
-                                        Thank you for visiting our website. I look forward to seeing you in one of our services soon!
+                                        Thank you for visiting our website. I look forward to seeing you in one of our services soon!"
                                     </Typography>
                                 </>
                             )}
