@@ -7,15 +7,21 @@ const PastorMessage = () => {
     const toggleMessage = () => {
         setIsExpanded(!isExpanded);
     };
+
     return (
         <Box
             sx={{
                 position: "relative",
-                background: "linear-gradient(to bottom, rgba(250,250,250,1), rgba(255,255,255,1))",
                 textAlign: "center",
                 py: 10,
                 px: 4,
                 width: "100vw",
+                background: "#F9FAFB",
+                backgroundImage: `
+                    radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px),
+                    radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)`,
+                backgroundSize: "20px 20px",
+                backgroundPosition: "0 0, 10px 10px",
             }}
         >
             <Container maxWidth="xl">
@@ -24,7 +30,8 @@ const PastorMessage = () => {
                     sx={{
                         p: 6,
                         borderRadius: "16px",
-                        background: "#f9fafb",
+                        background: "rgba(255, 255, 255, 0.97)", // Ensure contrast
+                        backdropFilter: "blur(8px)", // Soft effect
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.1)",
                     }}
                 >
@@ -46,14 +53,14 @@ const PastorMessage = () => {
                         </Grid>
 
                         <Grid item xs={12} md={8}>
-                            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, color: "#333" }}>
+                            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, color: "#055594" }}>
                                 A Message from Our Pastor
                             </Typography>
 
                             <Typography
                                 variant="body1"
                                 sx={{
-                                    color: "#555",
+                                    color: "#444",
                                     fontSize: "18px",
                                     lineHeight: 1.8,
                                     textAlign: "justify",
@@ -68,7 +75,7 @@ const PastorMessage = () => {
                                     <Typography
                                         variant="body1"
                                         sx={{
-                                            color: "#555",
+                                            color: "#444",
                                             fontSize: "18px",
                                             lineHeight: 1.8,
                                             textAlign: "justify",
@@ -98,24 +105,24 @@ const PastorMessage = () => {
                                     mt: 3,
                                     px: 4,
                                     py: 1,
-                                    borderRadius: '20px',
-                                    backgroundColor: '#055594',
-                                    color: '#fff',
-                                    fontWeight: 'bold',
-                                    textTransform: 'none',
-                                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-                                    transition: 'background-color 0.3s ease, transform 0.2s ease-in-out',
-                                    '&:hover': {
-                                        backgroundColor: '#033d6c',
-                                        transform: 'scale(1.05)',
-                                        boxShadow: '0 6px 15px rgba(0, 0, 0, 0.3)',
+                                    borderRadius: "20px",
+                                    backgroundColor: "#055594",
+                                    color: "#fff",
+                                    fontWeight: "bold",
+                                    textTransform: "none",
+                                    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+                                    transition: "background-color 0.3s ease, transform 0.2s ease-in-out",
+                                    "&:hover": {
+                                        backgroundColor: "#033d6c",
+                                        transform: "scale(1.05)",
+                                        boxShadow: "0 6px 15px rgba(0, 0, 0, 0.3)",
                                     },
                                 }}
                             >
                                 {isExpanded ? "Show Less" : "Read More"}
                             </Button>
 
-                            <Typography variant="h6" sx={{ fontWeight: "bold", mt: 4, color: "#333" }}>
+                            <Typography variant="h6" sx={{ fontWeight: "bold", mt: 4, color: "#055594" }}>
                                 - Pastor Gerard Chimbganda
                             </Typography>
                         </Grid>

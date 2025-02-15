@@ -21,19 +21,35 @@ const LatestSermon = () => {
                 py: 8,
                 px: 4,
                 textAlign: "center",
-                background: "#FFFFFF", // New background color for better contrast
+                background: "#FFFFFF",
                 boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
                 mx: "auto",
-                // maxWidth: "1200px"
+                position: "relative",
+                overflow: "hidden",
+                "::before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundImage: `radial-gradient(circle, rgba(0,0,0,0.04) 10%, transparent 10%)`,
+                    backgroundSize: "30px 30px", // Subtle dotted pattern
+                    opacity: 0.6,
+                    zIndex: 0,
+                },
             }}
         >
             {/* Title */}
-            <Typography variant="h3" sx={{ fontWeight: "bold", mb: 3 }}>
+            <Typography
+                variant="h3"
+                sx={{ fontWeight: "bold", mb: 3, position: "relative", zIndex: 1 }}
+            >
                 Latest Sermon
             </Typography>
 
             {/* Video Section */}
-            <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", mb: 3, position: "relative", zIndex: 1 }}>
                 <Box sx={{ width: "90%", maxWidth: "1000px", position: "relative" }}>
                     <iframe
                         width="100%"
@@ -44,7 +60,7 @@ const LatestSermon = () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         style={{
-                            borderRadius: "0px", // Removed rounded corners
+                            borderRadius: "12px",
                             boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.15)"
                         }}
                     />

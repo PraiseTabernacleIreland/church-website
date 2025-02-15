@@ -1,87 +1,66 @@
-import {ChildCare, Female, Groups, Male, MusicNote, VolunteerActivism} from "@mui/icons-material";
-import {Ministry} from "../types";
-import {PageName, PageRoutes} from "../utils/routes";
+import { Ministry, MinistryName } from "../types";
+import { PageName, PageRoutes } from "../utils/routes";
 
-export const MINISTRIES: Ministry[] = [
-    {
-        name: "Children Ministry",
-        description: "Serving and educating the youngest members of our community.",
-        icon: <ChildCare fontSize="large" sx={{color: "#fff"}}/>,
-        backgroundImage: `url('${process.env.PUBLIC_URL}/assets/children.jpg')`,
-        heroImage: `${process.env.PUBLIC_URL}/assets/children.jpg`,
-        joinInstructions: "If you love working with children and want to make a difference in their spiritual journey, join us today!",
-        route: PageRoutes[PageName.Children],
+export const MINISTRIES: { [ministryName in MinistryName]: Ministry } = {
+    [MinistryName.Media]: {
+        name: PageName.Media,
+        description: "Enhancing worship and outreach through media and technology.",
+        heroImage: `${process.env.PUBLIC_URL}/assets/media_ministry.jpg`,
+        joinInstructions: "If you are passionate about media production, photography, or live streaming, join our team and help bring worship to life.",
+        route: PageRoutes[PageName.Media],
         relatedImages: [
-            `${process.env.PUBLIC_URL}/assets/children.jpg`,
-            `${process.env.PUBLIC_URL}/assets/children_2.jpg`,
+            `${process.env.PUBLIC_URL}/assets/media_1.jpg`,
+            `${process.env.PUBLIC_URL}/assets/media_2.jpg`,
+            `${process.env.PUBLIC_URL}/assets/media_3.jpg`,
         ]
     },
-    {
-        name: "Worship Ministry",
-        description: "Leading worship and praise services with music and song.",
-        icon: <MusicNote fontSize="large" sx={{color: "#fff"}}/>,
-        backgroundImage: `url('${process.env.PUBLIC_URL}/assets/worship.jpg')`,
-        heroImage: `${process.env.PUBLIC_URL}/assets/worship.jpg`,
-        joinInstructions: "If you have a heart for worship and musical talents, we welcome you to join our choir and worship team.",
+
+    [MinistryName.Worship]: {
+        name: PageName.Worship,
+        description: "Leading the congregation in spirit-filled worship through music and song.",
+        heroImage: `${process.env.PUBLIC_URL}/assets/worship_ministry.jpg`,
+        joinInstructions: "If you have a gift in singing, playing instruments, or leading worship, we invite you to be part of our dynamic worship team.",
         route: PageRoutes[PageName.Worship],
         relatedImages: [
             `${process.env.PUBLIC_URL}/assets/choir_1.jpg`,
-            `${process.env.PUBLIC_URL}/assets/choir_2.jpg`
+            `${process.env.PUBLIC_URL}/assets/choir_2.jpg`,
         ]
     },
-    {
-        name: "Youth Ministry",
-        description: "Helping teens grow in faith and leadership.",
-        icon: <Groups fontSize="large" sx={{color: "#fff"}}/>,
-        backgroundImage: `url('${process.env.PUBLIC_URL}/assets/youth.jpg')`,
-        heroImage: `${process.env.PUBLIC_URL}/assets/youth.jpg`,
-        joinInstructions: "Are you a young person looking for a vibrant community? Join our youth ministry and grow with us.",
-        route: PageRoutes[PageName.Youth],
+
+    [MinistryName.Hospitality]: {
+        name: PageName.Hospitality,
+        description: "Creating a warm and welcoming atmosphere for all members and visitors.",
+        heroImage: `${process.env.PUBLIC_URL}/assets/hospitality_ministry.jpg`,
+        joinInstructions: "If you love making people feel welcome and serving others, join our hospitality team and make a lasting impact.",
+        route: PageRoutes[PageName.Hospitality],
         relatedImages: [
-            `${process.env.PUBLIC_URL}/assets/youth_1.jpg`,
-            `${process.env.PUBLIC_URL}/assets/youth_2.jpg`,
-            `${process.env.PUBLIC_URL}/assets/youth_3.jpg`,
-            `${process.env.PUBLIC_URL}/assets/youth_4.jpg`,
-            `${process.env.PUBLIC_URL}/assets/youth_5.jpg`,
+            `${process.env.PUBLIC_URL}/assets/hospitality_1.jpg`,
+            `${process.env.PUBLIC_URL}/assets/hospitality_2.jpg`,
         ]
     },
-    {
-        name: "Evangelism Ministry",
-        description: "Serving the community through outreach and charity.",
-        icon: <VolunteerActivism fontSize="large" sx={{color: "#fff"}}/>,
-        backgroundImage: "url('https://images.unsplash.com/photo-1584824486539-53bb4646bdbc')",
-        heroImage: "https://images.unsplash.com/photo-1584824486539-53bb4646bdbc",
-        joinInstructions: "Passionate about sharing the Gospel? Join our evangelism team and be a part of God's mission.",
+
+    [MinistryName.Evangelism]: {
+        name: PageName.Evangelism,
+        description: "Spreading the Gospel and reaching out to the lost with love and faith.",
+        heroImage: `${process.env.PUBLIC_URL}/assets/evangelism_ministry.jpg`,
+        joinInstructions: "Are you passionate about sharing the Good News? Join our evangelism team and help lead people to Christ.",
         route: PageRoutes[PageName.Evangelism],
         relatedImages: [
-            `${process.env.PUBLIC_URL}/assets/evangelism.jpg`,
             `${process.env.PUBLIC_URL}/assets/evangelism_1.jpg`,
             `${process.env.PUBLIC_URL}/assets/evangelism_2.jpg`,
             `${process.env.PUBLIC_URL}/assets/evangelism_3.jpg`,
         ]
     },
-    {
-        name: "Men's Ministry",
-        description: "Spiritual growth, leadership development, and brotherhood through fellowship, prayer, and community involvement.",
-        icon: <Male fontSize="large" sx={{color: "#fff"}}/>,
-        backgroundImage: "url('https://images.unsplash.com/photo-1584824486539-53bb4646bdbc')",
-        heroImage: `${process.env.PUBLIC_URL}/assets/men_fellowship.jpg`,
-        joinInstructions: "Be part of our regular gatherings, Bible studies, and service projects. Connect with the ministry leader after service or sign up online.",
-        route: PageRoutes[PageName.Men],
+
+    [MinistryName.Intercession]: {
+        name: PageName.Intercession,
+        description: "Standing in the gap through prayer and spiritual warfare.",
+        heroImage: `${process.env.PUBLIC_URL}/assets/intercession_ministry.jpg`,
+        joinInstructions: "If you believe in the power of prayer and intercession, join us in lifting up the church, community, and world in prayer.",
+        route: PageRoutes[PageName.Intercession],
         relatedImages: [
-            `${process.env.PUBLIC_URL}/assets/sermon.jpg`
+            `${process.env.PUBLIC_URL}/assets/prayer_1.jpg`,
+            `${process.env.PUBLIC_URL}/assets/prayer_2.jpg`,
         ]
     },
-    {
-        name: "Women's Ministry",
-        description: "Uplifting events that nurture both faith and fellowship.",
-        icon: <Female fontSize="large" sx={{color: "#fff"}}/>,
-        backgroundImage: "url('https://images.unsplash.com/photo-1584824486539-53bb4646bdbc')",
-        heroImage: `${process.env.PUBLIC_URL}/assets/women_fellowship.jpg`,
-        joinInstructions: "Join our weekly gatherings, special events, and community outreach programs. Speak with the ministry leader after service or register online to get involved",
-        route: PageRoutes[PageName.Women],
-        relatedImages: [
-            `${process.env.PUBLIC_URL}/assets/meeting.jpg`
-        ]
-    },
-];
+};

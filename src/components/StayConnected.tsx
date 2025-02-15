@@ -2,11 +2,11 @@ import { Box, Typography, Grid, Button } from "@mui/material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import {FACEBOOK_LINK, INSTAGRAM_LINK, YOUTUBE_CHANNEL} from "../utils/constants";
+import { FACEBOOK_LINK, INSTAGRAM_LINK, YOUTUBE_CHANNEL } from "../utils/constants";
 
 const YOUTUBE_CHANNEL_URL = `https://www.youtube.com/${YOUTUBE_CHANNEL}`;
 
-const StayConnected = () => {
+const SocialEngagement = () => {
     return (
         <Box
             sx={{
@@ -14,15 +14,16 @@ const StayConnected = () => {
                 backgroundImage: `url(${process.env.PUBLIC_URL}/assets/img_3.png)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                py: { xs: 8, md: 12 },
+                py: { xs: 10, md: 12 },
                 px: { xs: 4, md: 8 },
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                minHeight: "450px",
+                minHeight: "500px",
+                textAlign: "center",
             }}
         >
-            {/* Soft Gradient Overlay */}
+            {/* Dark Overlay for Contrast */}
             <Box
                 sx={{
                     position: "absolute",
@@ -30,46 +31,59 @@ const StayConnected = () => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    background: "linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7))",
+                    background: "rgba(0, 0, 0, 0.5)", // Semi-transparent black overlay
                     zIndex: 1,
                 }}
             />
 
             <Grid container spacing={6} alignItems="center" sx={{ maxWidth: "1200px", position: "relative", zIndex: 2 }}>
-                {/* Left Section - Message */}
+                {/* Left Section - Call to Action */}
                 <Grid item xs={12} md={6} sx={{ textAlign: { xs: "center", md: "left" } }}>
-                    <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2, color: "#333" }}>
-                        Stay Connected
+                    <Typography
+                        variant="h3"
+                        sx={{
+                            fontWeight: "bold",
+                            mb: 2,
+                            color: "#fff" // Improved contrast
+                        }}
+                    >
+                        Stay Updated, Stay Inspired
                     </Typography>
-                    <Typography variant="body1" sx={{ mb: 3, fontSize: "18px", lineHeight: 1.7, color: "#444" }}>
-                        Follow us online and be part of our growing faith community. Watch sermons, join discussions,
-                        and stay updated on upcoming events.
+                    <Typography
+                        variant="body1"
+                        sx={{ mb: 3, fontSize: "18px", lineHeight: 1.7, color: "#f0f0f0" }}
+                    >
+                        Engage with us beyond Sundays! Be part of the conversation, watch powerful messages, and get the latest updates on upcoming events.
                     </Typography>
-                    <Typography variant="body2" sx={{ fontSize: "16px", fontWeight: "bold", color: "#555" }}>
-                        Join us and never miss a message!
+                    <Typography
+                        variant="body2"
+                        sx={{ fontSize: "16px", fontWeight: "bold", color: "#e1e1e1" }}
+                    >
+                        Follow us and never miss a moment.
                     </Typography>
                 </Grid>
 
-                {/* Right Section - Social Media Buttons */}
-                <Grid item xs={12} md={6} sx={{ textAlign: "center" }}>
+                {/* Right Section - Social Media Links */}
+                <Grid item xs={12} md={6}>
                     <Grid container spacing={2} justifyContent="center">
                         <Grid item xs={12} sm={4}>
                             <Button
                                 variant="contained"
-                                startIcon={<YouTubeIcon />}
+                                startIcon={<YouTubeIcon sx={{ fontSize: 32 }} />}
                                 href={YOUTUBE_CHANNEL_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 sx={{
                                     width: "100%",
-                                    backgroundColor: "#E52326",
+                                    backgroundColor: "#CC0000",
                                     color: "#fff",
                                     fontWeight: "bold",
                                     textTransform: "none",
-                                    py: 1.5,
+                                    py: 1.8,
                                     borderRadius: "8px",
-                                    transition: "transform 0.2s ease-in-out",
-                                    "&:hover": { backgroundColor: "#b71c1c", transform: "scale(1.05)" },
+                                    fontSize: "16px",
+                                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                    "&:hover": { backgroundColor: "#990000", transform: "scale(1.05)", boxShadow: "0 4px 12px rgba(255,255,255,0.3)" },
                                 }}
                             >
                                 YouTube
@@ -78,20 +92,21 @@ const StayConnected = () => {
                         <Grid item xs={12} sm={4}>
                             <Button
                                 variant="contained"
-                                startIcon={<FacebookIcon />}
+                                startIcon={<FacebookIcon sx={{ fontSize: 32 }} />}
                                 href={FACEBOOK_LINK}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 sx={{
                                     width: "100%",
-                                    backgroundColor: "#055594",
+                                    backgroundColor: "#4267B2",
                                     color: "#fff",
                                     fontWeight: "bold",
                                     textTransform: "none",
-                                    py: 1.5,
+                                    py: 1.8,
                                     borderRadius: "8px",
-                                    transition: "transform 0.2s ease-in-out",
-                                    "&:hover": { backgroundColor: "#033d6c", transform: "scale(1.05)" },
+                                    fontSize: "16px",
+                                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                    "&:hover": { backgroundColor: "#30497B", transform: "scale(1.05)", boxShadow: "0 4px 12px rgba(255,255,255,0.3)" },
                                 }}
                             >
                                 Facebook
@@ -100,7 +115,7 @@ const StayConnected = () => {
                         <Grid item xs={12} sm={4}>
                             <Button
                                 variant="contained"
-                                startIcon={<InstagramIcon />}
+                                startIcon={<InstagramIcon sx={{ fontSize: 32 }} />}
                                 href={INSTAGRAM_LINK}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -110,10 +125,11 @@ const StayConnected = () => {
                                     color: "#fff",
                                     fontWeight: "bold",
                                     textTransform: "none",
-                                    py: 1.5,
+                                    py: 1.8,
                                     borderRadius: "8px",
-                                    transition: "transform 0.2s ease-in-out",
-                                    "&:hover": { backgroundColor: "#b71c1c", transform: "scale(1.05)" },
+                                    fontSize: "16px",
+                                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                    "&:hover": { backgroundColor: "#b71c1c", transform: "scale(1.05)", boxShadow: "0 4px 12px rgba(255,255,255,0.3)" },
                                 }}
                             >
                                 Instagram
@@ -126,4 +142,4 @@ const StayConnected = () => {
     );
 };
 
-export default StayConnected;
+export default SocialEngagement;

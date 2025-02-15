@@ -1,8 +1,21 @@
 export enum MinistryName {
-    Youth = 'Youth',
-    Outreach = 'Outreach',
+    Evangelism = 'Evangelism',
+    Media = 'Media',
     Worship = 'Worship',
-    Children = 'Children',
+    Hospitality = 'Hospitality',
+    Intercession = 'Intercession',
+}
+
+export enum FellowshipName {
+    Men = 'Men',
+    Women = 'Women',
+    Youth = 'Youth',
+    Family = 'Family'
+}
+
+export enum GrowthGroupName {
+    CellGroups = 'CellGroups',
+    SundaySchool = 'SundaySchool'
 }
 
 export enum TeamName {
@@ -31,13 +44,37 @@ export interface ServiceButton {
 
 export interface Ministry {
     heroImage: string;
-    icon: React.ReactNode;
-    backgroundImage: string;
     name: string;
     description: string;
     relatedImages: string[];  // Array of image URLs for past events
     joinInstructions: string;
     route: string;
+}
+
+export interface Fellowship {
+    about: string;
+    heroImage: string;
+    name: string;
+    description: string;
+    activities: {
+        image: string;
+        name: string;
+        description: string;
+    }[];
+    joinInstructions: string;
+}
+
+export interface GrowthGroup {
+    heroImage: string;
+    name: string;
+    description: string;
+    whyItMatters: string;
+    activities: {
+        image: string;
+        name: string;
+        description: string;
+    }[],
+    joinInstructions: string;
 }
 
 export interface Person {
@@ -55,7 +92,9 @@ export type Teams = {
 
 export interface AppData {
     services: Service[];
-    ministries: Ministry[];
+    ministries: { [ministryName in MinistryName]: Ministry } ;
+    fellowships: { [fellowshipName in FellowshipName]: Fellowship } ;
+    growthGroups: { [growthGroupName in GrowthGroupName]: GrowthGroup } ;
     teams: Teams
 }
 

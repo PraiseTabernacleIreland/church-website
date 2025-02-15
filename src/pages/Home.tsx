@@ -148,12 +148,13 @@ export const Home = () => {
             <HeroSection/>
             <PastorMessage />  {/* Add the message from the pastor here */}
             <ServiceTimes/>
-            <Ministries/>
+
             {/*<GetInvolved/>*/}
             {/*<TwoColumnLayout/>*/}
             <LatestSermon />
             <StayConnected />
             <LatestEvent />
+            <Ministries/>
             {/*<GivingSummary />*/}
         </>
     )

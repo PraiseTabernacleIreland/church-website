@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Grid, Divider } from "@mui/material";
+import { Box, Typography, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useEvents } from "../hooks/useEvents";
 import EventIcon from "@mui/icons-material/Event";
@@ -10,17 +10,23 @@ const LatestEvent = () => {
     return (
         <Box
             sx={{
-                background: "linear-gradient(to bottom, #f4f7fb, #e8eff5)",
                 textAlign: "center",
                 position: "relative",
                 py: 10,
                 px: 4,
+                overflow: "hidden",
+                backgroundColor: "#f4f7fb",
+                backgroundImage: `
+                    radial-gradient(circle, rgba(255,255,255,0.8) 10%, rgba(0,0,0,0) 10%),
+                    radial-gradient(circle, rgba(255,255,255,0.6) 10%, rgba(0,0,0,0) 10%)`,
+                backgroundSize: "60px 60px",
+                backgroundPosition: "0 0, 30px 30px",
             }}
         >
             {/* Section Title */}
             <Grid container spacing={4} alignItems="center">
                 <Grid item xs={12}>
-                    <Box sx={{ display: "flex", justifyContent: "flex-end", pr: { md: 4 } }}>
+                    <Box sx={{ display: "flex", justifyContent: "flex-end", pr: { md: 4 }, position: "relative", zIndex: 1 }}>
                         <Typography
                             variant="h3"
                             sx={{
@@ -42,6 +48,7 @@ const LatestEvent = () => {
                     maxWidth: "900px",
                     mx: "auto",
                     position: "relative",
+                    zIndex: 1,
                     "&::before": {
                         content: '""',
                         position: "absolute",
@@ -143,7 +150,7 @@ const LatestEvent = () => {
             </Box>
 
             {/* View More Events Button */}
-            <Box sx={{ mt: 6 }}>
+            <Box sx={{ mt: 6, position: "relative", zIndex: 1 }}>
                 <Button
                     variant="contained"
                     sx={{

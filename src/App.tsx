@@ -13,16 +13,21 @@ import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
 import {Give} from "./pages/Give";
 import Team from "./pages/about/Team";
-import {YouthMinistryPage} from "./pages/ministry/Youth";
-import {WorshipMinistryPage} from "./pages/ministry/Worship";
-import {EvangelismMinistryPage} from "./pages/ministry/Evangelism";
-import {ChildrenMinistryPage} from "./pages/ministry/Children";
+import {WorshipMinistryPage} from "./pages/connect/ministry/Worship";
+import {EvangelismMinistryPage} from "./pages/connect/ministry/Evangelism";
 import { Beliefs } from "./pages/about/Beliefs";
 import { History } from "./pages/about/History";
 import ScrollToTop from "./components/ScrollToTop";
-import {MenMinistryPage} from "./pages/ministry/Men";
-import {WomenMinistryPage} from "./pages/ministry/Women";
 import {Registration} from "./pages/Registration";
+import {SundaySchoolPage} from "./pages/connect/growth/SundaySchool";
+import {YouthFellowshipPage} from "./pages/connect/fellowships/Youth";
+import {MenFellowshipPage} from "./pages/connect/fellowships/Men";
+import {WomenFellowshipPage} from "./pages/connect/fellowships/Women";
+import {FamilyFellowshipPage} from "./pages/connect/fellowships/Family";
+import {HospitalityMinistryPage} from "./pages/connect/ministry/Hopsitality";
+import {IntercessionMinistryPage} from "./pages/connect/ministry/Intercession";
+import {MediaMinistryPage} from "./pages/connect/ministry/Media";
+import {CellGroupsPage} from "./pages/connect/growth/CellGroups";
 
 function App() {
     return (
@@ -51,20 +56,28 @@ function App() {
                     <Route path={PageRoutes[PageName.Our_History]} element={<History />} />
                     <Route path={PageRoutes[PageName.Our_Beliefs]} element={<Beliefs />} />
                     <Route path={PageRoutes[PageName.Events]} element={<EventsAndCalendar />} />
-                    <Route path={PageRoutes[PageName.Evangelism]} element={<EvangelismMinistryPage />} />
                     <Route path={PageRoutes[PageName.Sermons]} element={<Sermons />} />
                     <Route path={PageRoutes[PageName.Contact]} element={<Contact />} />
                     <Route path={PageRoutes[PageName.ReportsAndDocuments]} element={<ReportsAndDocuments />} />
                     <Route path={PageRoutes[PageName.Give]} element={<Give />} />
                     <Route path={PageRoutes[PageName.Team]} element={<Team />} />
-                    <Route path={PageRoutes[PageName.Youth]} element={<YouthMinistryPage />} />
-                    <Route path={PageRoutes[PageName.Children]} element={<ChildrenMinistryPage />} />
-                    <Route path={PageRoutes[PageName.Evangelism]} element={<EvangelismMinistryPage />} />
-                    <Route path={PageRoutes[PageName.Worship]} element={<WorshipMinistryPage />} />
-                    <Route path={PageRoutes[PageName.Worship]} element={<WorshipMinistryPage />} />
-                    <Route path={PageRoutes[PageName.Men]} element={<MenMinistryPage />} />
-                    <Route path={PageRoutes[PageName.Women]} element={<WomenMinistryPage />} />
                     <Route path={PageRoutes[PageName.Registration]} element={<Registration />} />
+                    <Route path={PageRoutes[PageName.Registration]} element={<Registration />} />
+                    <Route path={PageRoutes[PageName.Registration]} element={<Registration />} />
+                    {/* Fellowship */}
+                    <Route path={PageRoutes[PageName.Men]} element={<MenFellowshipPage />} />
+                    <Route path={PageRoutes[PageName.Women]} element={<WomenFellowshipPage />} />
+                    <Route path={PageRoutes[PageName.Family]} element={<FamilyFellowshipPage />} />
+                    <Route path={PageRoutes[PageName.Youth]} element={<YouthFellowshipPage />} />
+                    {/* Growth */}
+                    <Route path={PageRoutes[PageName.CellGroups]} element={<CellGroupsPage />} />
+                    <Route path={PageRoutes[PageName.SundaySchool]} element={<SundaySchoolPage />} />
+                    {/* Ministry */}
+                    <Route path={PageRoutes[PageName.Evangelism]} element={<EvangelismMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Hospitality]} element={<HospitalityMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Intercession]} element={<IntercessionMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Media]} element={<MediaMinistryPage />} />
+                    <Route path={PageRoutes[PageName.Worship]} element={<WorshipMinistryPage />} />
                 </Routes>
             </Box>
 

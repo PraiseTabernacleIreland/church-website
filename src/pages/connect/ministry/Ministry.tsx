@@ -1,11 +1,12 @@
 import React from "react";
 import { Box, Typography, Container, Grid, CardMedia, Button } from "@mui/material";
-import { Ministry } from "../../types";
-import Hero from "../../components/Hero";
+import { Ministry } from "../../../types";
+import Hero from "../../../components/Hero";
 import { useNavigate } from "react-router-dom";
-import { PageName, PageRoutes } from "../../utils/routes";
+import { PageName, PageRoutes } from "../../../utils/routes";
 
-const MinistryTemplate = (ministry: Ministry) => {
+const MinistryTemplate = (props: { ministry: Ministry}) => {
+    const { ministry } = props;
     const navigate = useNavigate();
     return (
         <>
