@@ -132,9 +132,9 @@ const ServiceTimesSection = () => {
                             {/* Sunday Service Details */}
                             <Grid container spacing={4} justifyContent="center" sx={{ mt: 4, width: "100%" }}>
                                 {[
-                                    { icon: <School sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />, title: "Sunday School", desc: "We offer engaging Sunday School sessions for kids of all ages during each service." },
-                                    { icon: <LocalParking sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />, title: "Parking", desc: "Dedicated parking available onsite, with additional spaces nearby." },
-                                    { icon: <Coffee sx={{ fontSize: 40, color: "#D2AA48", mb: 1 }} />, title: "Coffee & Fellowship", desc: "Stay after the service for coffee and connection in our welcoming space." }
+                                    { icon: <School sx={{ fontSize: 40, color: "#42A5F5", mb: 1 }} />, title: "Sunday School", desc: "We offer engaging Sunday School sessions for kids of all ages during each service." },
+                                    { icon: <LocalParking sx={{ fontSize: 40, color: "#42A5F5", mb: 1 }} />, title: "Parking", desc: "Dedicated parking available onsite, with additional spaces nearby." },
+                                    { icon: <Coffee sx={{ fontSize: 40, color: "#42A5F5" , mb: 1 }} />, title: "Coffee & Fellowship", desc: "Stay after the service for coffee and connection in our welcoming space." }
                                 ].map((item, index) => (
                                     <Grid item xs={12} sm={4} key={index} sx={{ textAlign: "center" }}>
                                         {item.icon}
