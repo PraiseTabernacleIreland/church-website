@@ -55,7 +55,7 @@ const MenuButton = ({ text, route, dropdownItems, isScrolled, closeMenus }) => {
                 <ClickAwayListener onClickAway={handleClose}>
                     <Paper sx={{ position: "absolute", top: "100%", left: 0, zIndex: 9999, minWidth: 200, mt: 1 }}>
                         {dropdownItems.map((item) => (
-                            <SubMenuItem key={item.text} item={item} closeMenus={closeMenus} />
+                            <SubMenuItem key={item.text} item={item} closeMenus={() => { closeMenus();   setOpen(false); }}  />
                         ))}
                     </Paper>
                 </ClickAwayListener>
