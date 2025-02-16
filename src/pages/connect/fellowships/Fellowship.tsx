@@ -3,6 +3,7 @@ import {Box, Typography, Container, Grid, Button, Card, CardMedia, CardContent} 
 import {useNavigate} from "react-router-dom";
 import Hero from "../../../components/Hero";
 import {Fellowship} from "../../../types";
+import {PageRoutes} from "../../../utils/routes";
 
 const FellowshipTemplate = (props: { fellowship: Fellowship }) => {
     const {fellowship} = props;
@@ -92,7 +93,7 @@ const FellowshipTemplate = (props: { fellowship: Fellowship }) => {
                             "&:hover": {backgroundColor: "#ddd"}
                         }}
                         size="large"
-                        onClick={() => navigate("/join-fellowship")}
+                        onClick={() => navigate(PageRoutes.Contact)}
                     >
                         Get Involved
                     </Button>

@@ -3,6 +3,7 @@ import { Box, Typography, Container, Grid, Button, Card, CardMedia, CardContent 
 import { useNavigate } from "react-router-dom";
 import Hero from "../../../components/Hero";
 import {GrowthGroup} from "../../../types";
+import {PageRoutes} from "../../../utils/routes";
 
 const GrowthTemplate = (props: { growth: GrowthGroup }) => {
     const { growth } = props;
@@ -81,7 +82,7 @@ const GrowthTemplate = (props: { growth: GrowthGroup }) => {
                             "&:hover": { backgroundColor: "#ddd" }
                         }}
                         size="large"
-                        onClick={() => navigate("/join-growth")}
+                        onClick={() => navigate(PageRoutes.Contact)}
                     >
                         Join Now
                     </Button>

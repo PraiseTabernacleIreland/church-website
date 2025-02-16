@@ -3,7 +3,7 @@ import { Box, Typography, Container, Grid, CardMedia, Button } from "@mui/materi
 import { Ministry } from "../../../types";
 import Hero from "../../../components/Hero";
 import { useNavigate } from "react-router-dom";
-import { PageName, PageRoutes } from "../../../utils/routes";
+import { PageRoutes } from "../../../utils/routes";
 
 const MinistryTemplate = (props: { ministry: Ministry}) => {
     const { ministry } = props;
@@ -55,7 +55,7 @@ const MinistryTemplate = (props: { ministry: Ministry}) => {
                             '&:hover': { backgroundColor: "#033d6c" }
                         }}
                         size="large"
-                        onClick={() => navigate(PageRoutes[PageName.Contact])}
+                        onClick={() => navigate(PageRoutes.Contact)}
                     >
                         Get Involved
                     </Button>
