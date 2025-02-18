@@ -5,11 +5,21 @@ const PastorMessage = () => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleMessage = () => {
-        setIsExpanded(!isExpanded);
+        setIsExpanded((prev) => {
+            if (prev) {
+                // Scroll to the top of the message section when collapsing
+                const messageSection = document.getElementById("pastor-message-section");
+                if (messageSection) {
+                    messageSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }
+            return !prev;
+        });
     };
 
     return (
         <Box
+            id="pastor-message-section"
             sx={{
                 position: "relative",
                 textAlign: "center",
@@ -30,8 +40,8 @@ const PastorMessage = () => {
                     sx={{
                         p: 6,
                         borderRadius: "16px",
-                        background: "rgba(255, 255, 255, 0.97)", // Ensure contrast
-                        backdropFilter: "blur(8px)", // Soft effect
+                        background: "rgba(255, 255, 255, 0.97)",
+                        backdropFilter: "blur(8px)",
                         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.1)",
                     }}
                 >
