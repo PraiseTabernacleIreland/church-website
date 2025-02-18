@@ -4,7 +4,8 @@ import { Box, Typography, Grid, Card, CardMedia, CardContent } from "@mui/materi
 import Button from "@mui/material/Button";
 import { useYoutubeChannelDetails } from "../../hooks/useYoutubeChannelDetails";
 import { useLocation } from "react-router-dom";
-import {decodeHTMLEntities} from "../../utils/strings";
+import { decodeHTMLEntities } from "../../utils/strings";
+import {YOUTUBE_CHANNEL} from "../../utils/constants";
 
 const YouTubePage = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -165,6 +166,12 @@ const YouTubePage = () => {
                     </Grid>
                 ))}
             </Grid>
+
+            <Box sx={{ textAlign: "center", marginTop: 4 }}>
+                <Button variant="contained" color="primary" href={`https://www.youtube.com/${YOUTUBE_CHANNEL}`} target="_blank" sx={{ textTransform: "none", fontWeight: "bold" }}>
+                    View More on YouTube
+                </Button>
+            </Box>
         </Box>
     );
 };
