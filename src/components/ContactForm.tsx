@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Grid, Divider } from '@mui/material';
+import { TextField, Button, Box, Grid, Divider, Link } from '@mui/material';
 import Typography from "@mui/material/Typography";
 import { LocationOn, Phone } from '@mui/icons-material';
+
+const location = "Praise Tabernacle Apostolic Faith Mission, 1, 8 Portland Row, Mountjoy, Dublin";
+const url = `https://www.google.com/maps?q=${encodeURIComponent(location)}`;
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -46,14 +49,18 @@ const ContactForm = () => {
             <Divider sx={{ mb: 3 }} />
 
             <Box sx={{ mb: 3 }}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Phone sx={{ color: '#055594', mr: 1 }} />
-                        <Typography variant="body2" sx={{ color: '#333' }}>(209) 555-0104</Typography>
+                <Grid container spacing={2} justifyContent="center">
+                    <Grid item xs={12} sm={6} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <Phone sx={{ color: "#055594", mr: 1 }} />
+                        <Link href="tel:+12095550104" variant="body2" sx={{ color: "#333", textDecoration: "none", "&:hover": { color: "#055594" } }}>
+                            (209) 555-0104
+                        </Link>
                     </Grid>
-                    <Grid item xs={12} sm={6} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <LocationOn sx={{ color: '#055594', mr: 1 }} />
-                        <Typography variant="body2" sx={{ color: '#333' }}>9 Portland Row, Mountjoy, Dublin 1</Typography>
+                    <Grid item xs={12} sm={6} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <LocationOn sx={{ color: "#055594", mr: 1 }} />
+                        <Link href={url} target="_blank" variant="body2" sx={{ color: "#333", textDecoration: "none", "&:hover": { color: "#055594" } }}>
+                            8 Portland Row, Mountjoy, Dublin 1
+                        </Link>
                     </Grid>
                 </Grid>
             </Box>

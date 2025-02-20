@@ -35,7 +35,7 @@ export interface YoutubeSearchResults {
 
 const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 const CHANNEL_ID = "UCahHVAvlRT-fe7-JmGzZpTw";
-const MAX_NUMBER_OF_RESULTS = 5;
+const MAX_NUMBER_OF_RESULTS = 6;
 
 export const useYoutubeChannelDetails = () => {
     const [videos, setVideos] = useState<YoutubeSearchResult[]>([]);
