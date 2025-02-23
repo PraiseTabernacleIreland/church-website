@@ -4,7 +4,7 @@ import { PageName } from "../utils/routes";
 export const FELLOWSHIPS: { [fellowshipName in FellowshipName]: Fellowship } = {
     [FellowshipName.Men]: {
         name: PageName.Men,
-        heroImage: `${process.env.PUBLIC_URL}/assets/men_fellowship.jpg`,
+        heroImage: `${process.env.PUBLIC_URL}/assets/img_12.png`,
         description: "Empowering men through faith, leadership, and community service.",
         about: "The Men's Fellowship is a community of men striving for spiritual growth, accountability, and service. Through Bible studies, mentorship, and outreach programs, we build strong, Christ-centered leaders in our homes and society.",
         activities: [
@@ -29,7 +29,7 @@ export const FELLOWSHIPS: { [fellowshipName in FellowshipName]: Fellowship } = {
 
     [FellowshipName.Women]: {
         name: PageName.Women,
-        heroImage: `${process.env.PUBLIC_URL}/assets/women_fellowship.jpg`,
+        heroImage: `${process.env.PUBLIC_URL}/assets/img_13.png`,
         description: "Encouraging and supporting women in their faith journey.",
         about: "The Women's Fellowship provides a space for women to grow spiritually, find mentorship, and build strong relationships rooted in faith.",
         activities: [
@@ -54,7 +54,7 @@ export const FELLOWSHIPS: { [fellowshipName in FellowshipName]: Fellowship } = {
 
     [FellowshipName.Youth]: {
         name: PageName.Youth,
-        heroImage: `${process.env.PUBLIC_URL}/assets/men_fellowship.jpg`,
+        heroImage: `${process.env.PUBLIC_URL}/assets/img_14.png`,
         description: "Building the next generation of faith-driven leaders.",
         about: "The Youth Fellowship is a vibrant community where young people grow in faith, develop leadership skills, and build lifelong friendships.",
         activities: [
@@ -79,7 +79,7 @@ export const FELLOWSHIPS: { [fellowshipName in FellowshipName]: Fellowship } = {
 
     [FellowshipName.Family]: {
         name: PageName.Family,
-        heroImage: `${process.env.PUBLIC_URL}/assets/women_fellowship.jpg`,
+        heroImage: `${process.env.PUBLIC_URL}/assets/img_15.png`,
         description: "Strengthening families through faith-based support and fellowship.",
         about: "The Family Fellowship is a place for parents, couples, and children to grow together in Christ. We provide resources and support to build strong Christian homes.",
         activities: [

@@ -14,7 +14,7 @@ const FellowshipTemplate = (props: { fellowship: Fellowship }) => {
             {/* Hero Section */}
             <Hero
                 backGroundImageSrc={`url(${fellowship.heroImage})`}
-                height="50vh"
+                height="40vh"
                 title={fellowship.name}
                 message={fellowship.description}
             />

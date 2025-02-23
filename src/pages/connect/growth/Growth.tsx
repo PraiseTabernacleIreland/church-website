@@ -14,7 +14,7 @@ const GrowthTemplate = (props: { growth: GrowthGroup }) => {
             {/* Hero Section */}
             <Hero
                 backGroundImageSrc={`url(${growth.heroImage})`}
-                height="50vh"
+                height="40vh"
                 title={growth.name}
                 message={growth.description}
             />

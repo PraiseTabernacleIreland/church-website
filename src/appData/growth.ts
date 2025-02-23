@@ -5,7 +5,7 @@ export const GROWTH_GROUPS: { [growthGroupName in GrowthGroupName]: GrowthGroup 
     [GrowthGroupName.CellGroups]: {
         name: PageName.CellGroups,
         description: "Cell groups are small, intimate gatherings where members can grow spiritually, build relationships, and support one another in faith.",
-        heroImage: `${process.env.PUBLIC_URL}/assets/outreach.jpg`,
+        heroImage: `${process.env.PUBLIC_URL}/assets/img_16.png`,
         whyItMatters: "Cell groups provide a space for deep fellowship, prayer, and Bible study in a more personal and nurturing setting. They foster strong spiritual connections and accountability within the church community.",
         activities: [
             {
@@ -30,7 +30,7 @@ export const GROWTH_GROUPS: { [growthGroupName in GrowthGroupName]: GrowthGroup 
     [GrowthGroupName.SundaySchool]: {
         name: PageName.SundaySchool,
         description: "Sunday School provides a strong biblical foundation for children, teaching them about God's love, faith, and the importance of living a Christ-centered life.",
-        heroImage: `${process.env.PUBLIC_URL}/assets/outreach.jpg`,
+        heroImage: `${process.env.PUBLIC_URL}/assets/img_17.png`,
         whyItMatters: "Investing in the next generation is crucial. Sunday School equips children with biblical knowledge, helps them develop a personal relationship with Jesus, and instills godly values that shape their future.",
         activities: [
             {
