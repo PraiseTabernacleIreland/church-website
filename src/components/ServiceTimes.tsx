@@ -19,7 +19,7 @@ const NavigationButton = ({ isExternal, index, button, service }) => {
                 border: button.variant === "outlined" ? `1px solid #055594` : "none",
                 mr: { xs: 0, sm: 1 },
                 mb: 1,
-                width: { xs: "100%", sm: "auto" }, // Makes buttons full-width on mobile
+                width: { xs: "100%", sm: "auto" }, // Full width buttons on mobile
                 '&:hover': {
                     backgroundColor: button.variant === "contained" ? "#033d6c" : "rgba(0, 0, 0, 0.05)",
                 },
@@ -39,7 +39,7 @@ const NavigationButton = ({ isExternal, index, button, service }) => {
                     border: button.variant === "outlined" ? `1px solid #055594` : "none",
                     mr: { xs: 0, sm: 1 },
                     mb: 1,
-                    width: { xs: "100%", sm: "auto" }, // Makes buttons full-width on mobile
+                    width: { xs: "100%", sm: "auto" },
                     '&:hover': {
                         backgroundColor: button.variant === "contained" ? "#033d6c" : "rgba(0, 0, 0, 0.05)",
                     },
@@ -107,7 +107,7 @@ const ServiceTimesSection = () => {
                                 left: 0,
                                 width: "100%",
                                 height: "100%",
-                                background: "rgba(0, 0, 0, 0.6)", // Increased Darkness
+                                background: "rgba(0, 0, 0, 0.6)",
                                 zIndex: 1,
                             },
                         }}
@@ -117,10 +117,10 @@ const ServiceTimesSection = () => {
                             <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2, textShadow: "2px 2px 5px rgba(0, 0, 0, 0.8)" }}>
                                 Sunday Morning Worship
                             </Typography>
-                            <Typography variant="h6" sx={{ mb: 2, textShadow: "1px 1px 4px rgba(0, 0, 0, 0.8)" }}>
+                            <Typography variant="h6" sx={{ mb: 2 }}>
                                 {services[0].time}
                             </Typography>
-                            <Typography variant="body1" sx={{ mb: 3, textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)" }}>
+                            <Typography variant="body1" sx={{ mb: 3 }}>
                                 {services[0].description}
                             </Typography>
                             <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
@@ -130,15 +130,15 @@ const ServiceTimesSection = () => {
                             </Box>
 
                             {/* Sunday Service Details */}
-                            <Grid container spacing={4} justifyContent="center" sx={{ mt: 4, width: "100%" }}>
+                            <Grid container justifyContent="center" sx={{ mt: 4, width: "100%", rowGap: { xs: 2, sm: 4 } }}>
                                 {[
                                     { icon: <School sx={{ fontSize: 40, color: "#42A5F5", mb: 1 }} />, title: "Sunday School", desc: "We offer engaging Sunday School sessions for kids of all ages during each service." },
                                     { icon: <LocalParking sx={{ fontSize: 40, color: "#42A5F5", mb: 1 }} />, title: "Parking", desc: "Dedicated parking available onsite, with additional spaces nearby." },
-                                    { icon: <Coffee sx={{ fontSize: 40, color: "#42A5F5" , mb: 1 }} />, title: "Coffee & Fellowship", desc: "Stay after the service for coffee and connection in our welcoming space." }
+                                    { icon: <Coffee sx={{ fontSize: 40, color: "#42A5F5", mb: 1 }} />, title: "Coffee & Fellowship", desc: "Stay after the service for coffee and connection in our welcoming space." }
                                 ].map((item, index) => (
                                     <Grid item xs={12} sm={4} key={index} sx={{ textAlign: "center" }}>
                                         {item.icon}
-                                        <Typography variant="h6" sx={{ fontWeight: "bold", textShadow: "1px 1px 3px rgba(0, 0, 0, 0.6)" }}>
+                                        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                                             {item.title}
                                         </Typography>
                                         <Typography variant="body2" sx={{ color: "#f5f5f5" }}>
@@ -158,28 +158,22 @@ const ServiceTimesSection = () => {
                     <Grid item xs={12} sm={6} md={4} key={index}>
                         <Card
                             sx={{
-                                background: "#ffffff",
-                                border: "1px solid #e0e0e0",
-                                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                                textAlign: "center",
                                 borderRadius: "16px",
                                 overflow: "hidden",
-                                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                transition: "transform 0.3s ease",
                                 '&:hover': {
                                     transform: "scale(1.05)",
-                                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.2)",
                                 },
                             }}
                         >
                             <CardMedia component="img" height="160" image={service.image} alt={service.title} />
-                            <CardContent sx={{ textAlign: "center" }}>
-                                <Typography variant="h5" sx={{ fontWeight: "bold", color: "#333", mb: 1 }}>
+                            <CardContent>
+                                <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
                                     {service.title}
                                 </Typography>
-                                <Typography variant="body1" sx={{ color: "#555", mb: 2 }}>
+                                <Typography variant="body1" sx={{ mb: 2 }}>
                                     {service.time}
-                                </Typography>
-                                <Typography variant="body2" sx={{ color: "#777", mb: 2 }}>
-                                    {service.description}
                                 </Typography>
                                 <Box>
                                     {service.buttons.map((button, i) => (
