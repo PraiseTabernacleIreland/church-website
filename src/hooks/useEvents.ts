@@ -49,16 +49,16 @@ const events = [
     },
     {
         id: 7,
-        title: "Revival Seminar",
-        description: "A day for revival and miracles",
+        title: "Women Seminar",
+        description: "An evening of fun and spiritual growth for women.",
         date: "2025-04-09",
         image: `${process.env.PUBLIC_URL}/assets/event_4.jpg`,
         link: "/events/3",
     },
     {
         id: 8,
-        title: "Revival Seminar",
-        description: "A day for revival and miracles",
+        title: "Youth Fellowship Night",
+        description: "An evening of fun and spiritual growth for our youth.",
         date: "2025-05-10",
         image: `${process.env.PUBLIC_URL}/assets/event_5.jpg`,
         link: "/events/3",
@@ -66,8 +66,20 @@ const events = [
 ];
 
 
+const getUpcomingEvents = () => {
+    const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+
+    return events
+        .filter(event => event.date >= today) // Filter only future events
+        .sort((a, b) => new Date(a.date) - new Date(b.date)); // Sort by ascending date
+};
+
 export const useEvents = () => {
-   return {
-       events
+
+    const futureEvents = getUpcomingEvents();
+
+    return {
+       events,
+       futureEvents
    }
 }

@@ -5,7 +5,7 @@ import EventIcon from "@mui/icons-material/Event";
 
 const LatestEvent = () => {
     const navigate = useNavigate();
-    const { events } = useEvents();
+    const { futureEvents } = useEvents();
 
     return (
         <Box
@@ -61,7 +61,7 @@ const LatestEvent = () => {
                     },
                 }}
             >
-                {events.slice(0, 2).map((event, index) => (
+                {futureEvents.slice(0, 5).map((event, index) => (
                     <Box
                         key={event.id}
                         sx={{
