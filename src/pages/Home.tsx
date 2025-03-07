@@ -8,6 +8,14 @@ import PastorMessage from "../components/PastorMessage";
 import StayConnected from "../components/StayConnected";
 
 function HeroSection() {
+    const videos = [
+        `${process.env.PUBLIC_URL}/assets/hero_1.mp4`,
+        `${process.env.PUBLIC_URL}/assets/Pastor Alex 2.mp4`,
+        `${process.env.PUBLIC_URL}/assets/Praise.mp4`
+    ]
+
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+
     return (
         <Box
             sx={{
@@ -34,7 +42,7 @@ function HeroSection() {
             />
             {/* Video background */}
             <video
-                src={`${process.env.PUBLIC_URL}/assets/hero_1.mp4`}  // Replace with your video URL
+                src={randomVideo}  // Replace with your video URL
                 type="video/mp4"
                 autoPlay
                 loop
