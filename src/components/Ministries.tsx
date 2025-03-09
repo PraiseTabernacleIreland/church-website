@@ -4,7 +4,6 @@ import { Groups, Church, School, ExpandMore, ExpandLess } from "@mui/icons-mater
 import { useNavigate } from "react-router-dom";
 import { PageRoutes, PageName } from "../utils/routes";
 
-// Define CSS patterns and styles for better contrast
 const connectGroups = [
     {
         title: "Ministries",
@@ -48,13 +47,11 @@ const ConnectSection = () => {
     const [expandedItems, setExpandedItems] = useState({});
     const navigate = useNavigate();
 
-    // Toggle Groups (Only one can be open at a time)
     const handleGroupToggle = (groupIndex) => {
         setExpandedGroup(expandedGroup === groupIndex ? null : groupIndex);
-        setExpandedItems({}); // Collapse all inner items when switching groups
+        setExpandedItems({});
     };
 
-    // Toggle Items within a group
     const handleItemToggle = (groupIndex, itemIndex) => {
         setExpandedItems((prevState) => ({
             ...prevState,
@@ -64,7 +61,6 @@ const ConnectSection = () => {
 
     return (
         <Box sx={{ py: 10, px: { xs: 2, md: 4 }, textAlign: "center" }}>
-            {/* Section Title & Call-to-Action */}
             <Box sx={{ mb: 6, maxWidth: "800px", mx: "auto" }}>
                 <Typography variant="h3" sx={{ fontWeight: "bold", color: "#333", mb: 2 }}>
                     Get Involved & Grow
@@ -74,8 +70,7 @@ const ConnectSection = () => {
                 </Typography>
             </Box>
 
-            {/* Main Grid Layout */}
-            <Grid container spacing={4} justifyContent="center">
+            <Grid container spacing={4} justifyContent="center" alignItems="flex-start">
                 {connectGroups.map((group, groupIndex) => (
                     <Grid item xs={12} md={4} key={groupIndex}>
                         <Paper
@@ -91,10 +86,8 @@ const ConnectSection = () => {
                                 backgroundSize: "cover, 150px 150px",
                                 backgroundBlendMode: "overlay, normal",
                                 color: group.textColor,
-                                height: "auto", // ✅ Ensures it grows with content
                             }}
                         >
-                            {/* Group Title - Click to Expand */}
                             <Button
                                 fullWidth
                                 onClick={() => handleGroupToggle(groupIndex)}
@@ -102,7 +95,6 @@ const ConnectSection = () => {
                                     fontSize: "20px",
                                     fontWeight: "bold",
                                     textTransform: "none",
-                                    // backgroundColor: "rgba(255, 255, 255, 0.3)",
                                     borderRadius: "8px",
                                     py: 2,
                                     mb: 2,
@@ -114,15 +106,16 @@ const ConnectSection = () => {
                                 {expandedGroup === groupIndex ? <ExpandLess sx={{ ml: 1 }} /> : <ExpandMore sx={{ ml: 1 }} />}
                             </Button>
 
-                            {/* Collapsible Items within the Group */}
-                            <Collapse in={expandedGroup === groupIndex} timeout="250">
-                                <Box sx={{
-                                    position: "relative",
-                                    zIndex: 2,
-                                    pb: 4,
-                                    minHeight: "auto",  // ✅ Dynamically expands with content
-                                    overflow: "visible" // ✅ Ensures no content gets cut off
-                                }}> {/* FIX: Added padding-bottom */}
+                            <Collapse in={expandedGroup === groupIndex} timeout="auto" unmountOnExit>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        overflow: "visible",
+                                        pb: 6, // ✅ Prevents bottom content from getting clipped
+                                        position: "relative",
+                                    }}
+                                >
                                     {group.items.map((item, itemIndex) => (
                                         <Box key={itemIndex} sx={{ mb: 2 }}>
                                             <Button
@@ -138,16 +131,26 @@ const ConnectSection = () => {
                                                     py: 1.5,
                                                     fontWeight: "bold",
                                                     textTransform: "none",
-                                                    color: group.textColor
+                                                    color: group.textColor,
                                                 }}
                                             >
                                                 {item.icon} <Typography>{item.name}</Typography>
                                                 {expandedItems[`${groupIndex}-${itemIndex}`] ? <ExpandLess /> : <ExpandMore />}
                                             </Button>
-                                            <Collapse in={expandedItems[`${groupIndex}-${itemIndex}`]} timeout="250">
-                                                <Box sx={{ p: 2, background: "rgba(255, 255, 255, 0.9)", borderRadius: "8px" }}>
+                                            <Collapse in={expandedItems[`${groupIndex}-${itemIndex}`]} timeout="auto" unmountOnExit>
+                                                <Box
+                                                    sx={{
+                                                        p: 2,
+                                                        background: "rgba(255, 255, 255, 0.9)",
+                                                        borderRadius: "8px",
+                                                        position: "relative",
+                                                        zIndex: 2,
+                                                    }}
+                                                >
                                                     <Typography variant="body2">{item.description}</Typography>
-                                                    <Button fullWidth variant="contained" onClick={() => navigate(item.route)}>Learn More</Button>
+                                                    <Button fullWidth variant="contained" onClick={() => navigate(item.route)}>
+                                                        Learn More
+                                                    </Button>
                                                 </Box>
                                             </Collapse>
                                         </Box>
