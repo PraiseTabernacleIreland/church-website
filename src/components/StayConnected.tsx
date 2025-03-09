@@ -121,7 +121,7 @@ const SocialEngagement = () => {
                                 rel="noopener noreferrer"
                                 sx={{
                                     width: "100%",
-                                    backgroundColor: "#E42C2C",
+                                    backgroundImage: "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
                                     color: "#fff",
                                     fontWeight: "bold",
                                     textTransform: "none",
@@ -129,7 +129,11 @@ const SocialEngagement = () => {
                                     borderRadius: "8px",
                                     fontSize: "16px",
                                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                                    "&:hover": { backgroundColor: "#b71c1c", transform: "scale(1.05)", boxShadow: "0 4px 12px rgba(255,255,255,0.3)" },
+                                    "&:hover": {
+                                        transform: "scale(1.05)",
+                                        boxShadow: "0 4px 12px rgba(255, 255, 255, 0.3)",
+                                        backgroundImage: "linear-gradient(45deg, #e6683c 0%, #dc2743 25%, #cc2366 50%, #bc1888 75%, #9b1b96 100%)"
+                                    },
                                 }}
                             >
                                 Instagram
