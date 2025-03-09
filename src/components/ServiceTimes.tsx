@@ -167,7 +167,11 @@ const ServiceTimesSection = () => {
                                 },
                             }}
                         >
-                            <CardMedia component="img" height="160" image={service.image} alt={service.title} />
+                            <CardMedia
+                                component="img"
+                                style={{ width: "100%", objectFit: "cover" }}
+                                height="160"
+                                image={service.image} alt={service.title} />
                             <CardContent>
                                 <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
                                     {service.title}

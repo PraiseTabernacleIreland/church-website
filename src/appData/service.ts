@@ -18,10 +18,10 @@ export const SERVICE_DATA: Service[] = [
         color: "#ad5a2f",
     },
     {
-        title: "Wednesday Bible Study",
+        title: "Wednesday Faith School",
         time: "7:00 PM - 8:00 PM",
         description: "An evening of learning and spiritual growth.",
-        image: `${process.env.PUBLIC_URL}/assets/img_1.png`,
+        image: `${process.env.PUBLIC_URL}/assets/faith-school.jpg`,
         buttons: [{
             text: "Join Online",
             link: ZOOM_LINK,
@@ -34,7 +34,7 @@ export const SERVICE_DATA: Service[] = [
         title: "Friday Prayer Meeting",
         time: "8:00 PM - 9:00 PM",
         description: "A dedicated time of prayer and reflection.",
-        image: `${process.env.PUBLIC_URL}/assets/img_2.png`,
+        image: `${process.env.PUBLIC_URL}/assets/friday-prayer.jpg`,
         buttons: [{
             text: "Join Online",
             link: ZOOM_LINK,
