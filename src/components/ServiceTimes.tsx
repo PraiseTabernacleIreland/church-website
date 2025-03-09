@@ -162,9 +162,6 @@ const ServiceTimesSection = () => {
                                 borderRadius: "16px",
                                 overflow: "hidden",
                                 transition: "transform 0.3s ease",
-                                '&:hover': {
-                                    transform: "scale(1.05)",
-                                },
                             }}
                         >
                             <CardMedia

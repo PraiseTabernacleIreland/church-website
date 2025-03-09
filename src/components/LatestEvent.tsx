@@ -12,7 +12,7 @@ const LatestEvent = () => {
             sx={{
                 textAlign: "center",
                 position: "relative",
-                py: 10,
+                py: 8,
                 px: 4,
                 overflow: "hidden",
                 backgroundColor: "#f4f7fb",
@@ -107,10 +107,6 @@ const LatestEvent = () => {
                                 boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                                 borderRadius: "12px",
                                 transition: "transform 0.3s ease",
-                                "&:hover": {
-                                    transform: "scale(1.03)",
-                                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.2)",
-                                },
                             }}
                         >
                             <Typography variant="h6" sx={{ fontWeight: "bold", color: "#055594", mb: 1 }}>
