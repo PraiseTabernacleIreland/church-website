@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Typography, Modal, CardMedia, IconButton, useMediaQuery, Tooltip, Divider } from "@mui/material";
+import { Box, Typography, Modal, CardMedia, IconButton, useMediaQuery, Tooltip } from "@mui/material";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -14,15 +14,28 @@ import { useEvents } from "../hooks/useEvents";
 import Hero from "../components/Hero";
 
 /**
- * Generate calendar event links.
+ * Format a date range (e.g., "March 10 - 12, 2025")
+ */
+const formatDateRange = (start, end) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const startDate = new Date(start).toLocaleDateString("en-US", options);
+    const endDate = new Date(end).toLocaleDateString("en-US", options);
+
+    return start === end ? startDate : `${startDate} - ${endDate}`;
+};
+
+const TITLE_PREFIX = 'AFM Praise Tabernacle';
+
+/**
+ * Generate calendar event links with proper date range.
  */
 const generateCalendarLink = (event) => {
-    const startDate = new Date(event.date).toISOString().replace(/-|:|\.\d+/g, "");
-    const endDate = new Date(new Date(event.date).setHours(new Date(event.date).getHours() + 2))
+    const startDate = new Date(event.date.from).toISOString().replace(/-|:|\.\d+/g, "");
+    const endDate = new Date(new Date(event.date.to).setHours(23, 59, 59)) // Ensures full-day event
         .toISOString()
         .replace(/-|:|\.\d+/g, "");
 
-    const title = `AFM Praise Tabernacle - ${event.title}`;
+    const title = `${TITLE_PREFIX} - ${event.title}`;
 
     return {
         google: `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
@@ -47,7 +60,7 @@ END:VCALENDAR`,
  * Generate social media share links.
  */
 const generateShareLinks = (event) => {
-    const message = ` AFM Praise Tabernacle - ${event.title} - ${event.description} on ${new Date(event.date).toDateString()}`;
+    const message = `${TITLE_PREFIX} - ${event.title} - ${event.description} on ${formatDateRange(event.date.from, event.date.to)}`;
     return {
         whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`,
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -77,7 +90,10 @@ const EventsPage = () => {
     const handleEventClick = (info) => {
         setSelectedEvent({
             title: info.event.title,
-            date: info.event.startStr,
+            date: {
+                from: info.event.startStr,
+                to: info.event.endStr || info.event.startStr, // Ensures date range
+            },
             description: info.event.extendedProps.description,
             image: info.event.extendedProps.image,
         });
@@ -128,13 +144,14 @@ const EventsPage = () => {
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%, -50%)",
-                        width: { xs: "90%", md: "60%" },
+                        width: { xs: "90%", md: "50%" },
                         bgcolor: "background.paper",
                         boxShadow: 24,
                         p: 3,
                         borderRadius: 2,
                         maxHeight: "90vh",
                         overflowY: "auto",
+                        textAlign: "center",
                     }}
                 >
                     <IconButton
@@ -153,67 +170,57 @@ const EventsPage = () => {
                                 sx={{
                                     width: "100%",
                                     height: "auto",
-                                    maxHeight: "300px",
-                                    objectFit: "contain",
+                                    maxHeight: "220px",
+                                    objectFit: "cover",
                                     mb: 2,
                                     borderRadius: 2,
                                 }}
                             />
-                            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1, textAlign: "center" }}>
+                            <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                                 {selectedEvent.title}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: "#555", mb: 2, textAlign: "center" }}>
-                                {new Date(selectedEvent.date).toLocaleDateString("en-US", {
-                                    weekday: "long",
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                })}
+                            <Typography variant="body2" sx={{ color: "#555", mb: 1 }}>
+                                {formatDateRange(selectedEvent.date.from, selectedEvent.date.to)}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: "#777", textAlign: "center" }}>
+                            <Typography variant="body2" sx={{ color: "#777", mb: 2 }}>
                                 {selectedEvent.description}
                             </Typography>
 
-                            {/* Calendar Section */}
-                            <Typography variant="h6" sx={{ mt: 3, mb: 1, textAlign: "center", fontWeight: "bold" }}>
-                                Add to Calendar
-                            </Typography>
-                            <Divider sx={{ mb: 2 }} />
-                            <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
-                                <Tooltip title="Google Calendar">
-                                    <IconButton href={generateCalendarLink(selectedEvent).google} target="_blank">
-                                        <GoogleIcon color="primary" />
-                                    </IconButton>
-                                </Tooltip>
-                                <Tooltip title="Outlook Calendar">
-                                    <IconButton href={generateCalendarLink(selectedEvent).outlook} target="_blank">
-                                        <EventIcon color="secondary" />
-                                    </IconButton>
-                                </Tooltip>
-                                <Tooltip title="Apple Calendar">
-                                    <a
-                                        href={`data:text/calendar;charset=utf8,${encodeURIComponent(
-                                            generateCalendarLink(selectedEvent).apple
-                                        )}`}
-                                        download="event.ics"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        <IconButton>
-                                            <AppleIcon color="action" />
-                                        </IconButton>
-                                    </a>
-                                </Tooltip>
-                            </Box>
+                            {/* Actions Row - Add to Calendar & Share */}
+                            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2 }}>
+                                {/* Add to Calendar Icons */}
+                                <Box sx={{ textAlign: "center" }}>
+                                    <Typography variant="body2" sx={{ fontWeight: "bold", mb: 1 }}>Add to Calendar</Typography>
+                                    <Box sx={{ display: "flex", gap: 1 }}>
+                                        <Tooltip title="Google Calendar">
+                                            <IconButton href={generateCalendarLink(selectedEvent).google} target="_blank"><GoogleIcon color="primary" /></IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Outlook Calendar">
+                                            <IconButton href={generateCalendarLink(selectedEvent).outlook} target="_blank"><EventIcon color="secondary" /></IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Apple Calendar">
+                                            <a href={`data:text/calendar;charset=utf8,${encodeURIComponent(generateCalendarLink(selectedEvent).apple)}`} download="event.ics">
+                                                <IconButton><AppleIcon color="action" /></IconButton>
+                                            </a>
+                                        </Tooltip>
+                                    </Box>
+                                </Box>
 
-                            {/* Share Section */}
-                            <Typography variant="h6" sx={{ mt: 3, mb: 1, textAlign: "center", fontWeight: "bold" }}>
-                                Share Event
-                            </Typography>
-                            <Divider sx={{ mb: 2 }} />
-                            <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
-                                <IconButton href={generateShareLinks(selectedEvent).whatsapp} target="_blank"><WhatsAppIcon color="success" /></IconButton>
-                                <IconButton href={generateShareLinks(selectedEvent).facebook} target="_blank"><FacebookIcon color="primary" /></IconButton>
-                                <IconButton href={generateShareLinks(selectedEvent).twitter} target="_blank"><TwitterIcon color="info" /></IconButton>
+                                {/* Share Icons */}
+                                <Box sx={{ textAlign: "center" }}>
+                                    <Typography variant="body2" sx={{ fontWeight: "bold", mb: 1 }}>Share</Typography>
+                                    <Box sx={{ display: "flex", gap: 1 }}>
+                                        <Tooltip title="Share on WhatsApp">
+                                            <IconButton href={generateShareLinks(selectedEvent).whatsapp} target="_blank"><WhatsAppIcon color="success" /></IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Share on Facebook">
+                                            <IconButton href={generateShareLinks(selectedEvent).facebook} target="_blank"><FacebookIcon color="primary" /></IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Share on Twitter">
+                                            <IconButton href={generateShareLinks(selectedEvent).twitter} target="_blank"><TwitterIcon color="info" /></IconButton>
+                                        </Tooltip>
+                                    </Box>
+                                </Box>
                             </Box>
                         </>
                     )}
