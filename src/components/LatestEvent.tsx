@@ -1,6 +1,6 @@
 import { Box, Typography, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useEvents } from "../hooks/useEvents";
+import {formatDate, useEvents } from "../hooks/useEvents";
 import EventIcon from "@mui/icons-material/Event";
 
 const LatestEvent = () => {
@@ -92,12 +92,7 @@ const LatestEvent = () => {
                                     display: "inline-block",
                                 }}
                             >
-                                {new Date(event.date).toLocaleDateString("en-US", {
-                                    weekday: "long",
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                })}
+                                {formatDate(event)}
                             </Typography>
                         </Box>
 
