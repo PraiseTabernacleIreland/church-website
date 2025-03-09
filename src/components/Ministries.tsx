@@ -140,15 +140,41 @@ const ConnectSection = () => {
                                             <Collapse in={expandedItems[`${groupIndex}-${itemIndex}`]} timeout="auto" unmountOnExit>
                                                 <Box
                                                     sx={{
-                                                        p: 2,
-                                                        background: "rgba(255, 255, 255, 0.9)",
-                                                        borderRadius: "8px",
-                                                        position: "relative",
-                                                        zIndex: 2,
+                                                        p: 3,
+                                                        background: `${group.background}`, // Uses group's background
+                                                        backgroundImage: `${group.pattern}`, // Uses group's pattern
+                                                        backdropFilter: "blur(10px)", // Subtle glass effect
+                                                        borderRadius: "12px",
+                                                        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Soft shadow for depth
+                                                        transition: "0.3s ease-in-out",
+                                                        "&:hover": {
+                                                            transform: "scale(1.02)",
+                                                            boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.15)",
+                                                        },
+                                                        textAlign: "center",
                                                     }}
                                                 >
-                                                    <Typography variant="body2">{item.description}</Typography>
-                                                    <Button fullWidth variant="contained" onClick={() => navigate(item.route)}>
+                                                    <Typography variant="body2" sx={{ mt: 1, color: "#444" }}>
+                                                        {item.description}
+                                                    </Typography>
+                                                    <Button
+                                                        fullWidth
+                                                        variant="contained"
+                                                        sx={{
+                                                            mt: 2,
+                                                            borderRadius: "8px",
+                                                            fontWeight: "bold",
+                                                            py: 1.5,
+                                                            fontSize: "14px",
+                                                            background: `linear-gradient(135deg, ${group.textColor}, ${group.textColor}AA)`, // Uses text color for the gradient
+                                                            transition: "0.3s ease-in-out",
+                                                            "&:hover": {
+                                                                background: `linear-gradient(135deg, ${group.textColor}AA, ${group.textColor})`, // Reverse for hover effect
+                                                                transform: "scale(1.05)",
+                                                            },
+                                                        }}
+                                                        onClick={() => navigate(item.route)}
+                                                    >
                                                         Learn More
                                                     </Button>
                                                 </Box>
