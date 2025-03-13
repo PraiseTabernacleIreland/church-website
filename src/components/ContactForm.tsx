@@ -59,8 +59,8 @@ const ContactForm = () => {
                     <Grid container spacing={2} justifyContent="center">
                         <Grid item xs={12} sm={6} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                             <Phone sx={{ color: "#055594", mr: 1 }} />
-                            <Link href="tel:+12095550104" variant="body2" sx={{ color: "#333", textDecoration: "none", "&:hover": { color: "#055594" } }}>
-                                (209) 555-0104
+                            <Link href="tel:+353874590738" variant="body2" sx={{ color: "#333", textDecoration: "none", "&:hover": { color: "#055594" } }}>
+                                (+353) 87 459 0738
                             </Link>
                         </Grid>
                         <Grid item xs={12} sm={6} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>

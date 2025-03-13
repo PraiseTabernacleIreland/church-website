@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, Grid, Card, CardContent, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { QRCodeCanvas } from "qrcode.react";
-import {AccountBalance, VolunteerActivism, HelpOutline, Info} from "@mui/icons-material";
+import {AccountBalance, VolunteerActivism, Info} from "@mui/icons-material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Hero from "../components/Hero";
 
@@ -79,8 +79,8 @@ const GivePage = () => {
                 <Typography variant="h6" sx={{ color: "#333" }}>Other Ways to Give</Typography>
                 <Typography variant="body1" sx={{ color: "#555" }}>
                     For any questions or assistance, please contact us at {" "}
-                    <a href="mailto:contact@yourchurch.com" style={{ color: "#1976d2", textDecoration: "none" }}>
-                        contact@yourchurch.com
+                    <a href="mailto:pastor@praisetabernacle.ie" style={{ color: "#1976d2", textDecoration: "none" }}>
+                        pastor@praisetabernacle.ie
                     </a>.
                 </Typography>
             </Box>

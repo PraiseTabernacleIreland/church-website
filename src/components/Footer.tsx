@@ -34,8 +34,8 @@ const Footer = () => {
                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", mb: 1 }}>
                             <Phone sx={{ mr: 1, color: "#B1D0E0" }} />
                             <Typography variant="body2">
-                                <a href="tel:+2095550104" style={{ color: "#B1D0E0", textDecoration: "none" }}>
-                                    (209) 555-0104
+                                <a href="tel:+353874590738" style={{ color: "#B1D0E0", textDecoration: "none" }}>
+                                    (+353) 87 459 0738
                                 </a>
                             </Typography>
                         </Box>
@@ -55,7 +55,7 @@ const Footer = () => {
                             <IconButton href={INSTAGRAM_LINK} target="_blank" sx={{ color: "#B1D0E0", mx: 1 }}>
                                 <Instagram />
                             </IconButton>
-                            <IconButton href="mailto:info@example.com" sx={{ color: "#B1D0E0", mx: 1 }}>
+                            <IconButton href="mailto:pastor@praisetabernacle.ie" sx={{ color: "#B1D0E0", mx: 1 }}>
                                 <Email />
                             </IconButton>
                         </Box>
