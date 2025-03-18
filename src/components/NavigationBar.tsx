@@ -4,7 +4,6 @@ import {
     Toolbar,
     Box,
     Button,
-    Menu,
     MenuItem,
     IconButton,
     Drawer,
@@ -23,15 +22,109 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NavigationRoutes, PageName, PageRoutes } from "../utils/routes";
 import logo from "../assets/logo.svg";
 
-// ✅ **Desktop Dropdown Menu**
+/**
+ * Custom logic for placeholders (`"#"`) and partial expansions:
+ * - If route = "/", match exactly for Home
+ * - If route = "#", skip direct matching, check children only
+ * - Else do partial match with startsWith
+ */
+function isActiveItem(item, currentPath) {
+    if (!item) return false;
+
+    if (item.route === "/") {
+        return currentPath === "/";
+    }
+
+    // If route is "#", never directly match, just check if any child is active
+    if (item.route === "#") {
+        if (item.dropdownItems) {
+            return item.dropdownItems.some((child) => isActiveItem(child, currentPath));
+        }
+        return false;
+    }
+
+    // Otherwise, partial
+    if (currentPath.includes(item.route)) {
+        return true;
+    }
+
+    // Also check children
+    if (item.dropdownItems) {
+        return item.dropdownItems.some((child) => isActiveItem(child, currentPath));
+    }
+    return false;
+}
+
+/* -----------------------------
+   Desktop SubMenuItem
+------------------------------ */
+const SubMenuItem = ({ item, closeMenus }) => {
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const isSelected = isActiveItem(item, location.pathname);
+
+    // Auto-expand if active
+    useEffect(() => {
+        if (item.dropdownItems && isSelected) {
+            setOpen(true);
+        }
+    }, [item.dropdownItems, isSelected]);
+
+    const handleClick = () => {
+        if (item.dropdownItems) {
+            setOpen((prev) => !prev);
+        } else {
+            // If it has a real route, navigate
+            if (item.route && item.route !== "#") {
+                navigate(item.route);
+            }
+            closeMenus();
+        }
+    };
+
+    return (
+        <Box>
+            <MenuItem
+                onClick={handleClick}
+                sx={{
+                    fontWeight: isSelected ? "bold" : "normal",
+                    backgroundColor: isSelected ? "#f0f0f0" : "transparent",
+                }}
+            >
+                {item.text}
+                {item.dropdownItems && (open ? <ExpandLess sx={{ ml: 1 }} /> : <ExpandMore sx={{ ml: 1 }} />)}
+            </MenuItem>
+
+            {item.dropdownItems && open && (
+                <Box sx={{ pl: 2, backgroundColor: "#f8f9fa" }}>
+                    {item.dropdownItems.map((subItem) => (
+                        <SubMenuItem key={subItem.text} item={subItem} closeMenus={closeMenus} />
+                    ))}
+                </Box>
+            )}
+        </Box>
+    );
+};
+
+/* -----------------------------
+   Desktop MenuButton
+------------------------------ */
 const MenuButton = ({ text, route, dropdownItems, isScrolled, closeMenus }) => {
     const [open, setOpen] = useState(false);
     const anchorRef = useRef(null);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // If route='#', check child activity
+    const isSelected = isActiveItem({ route, dropdownItems }, location.pathname);
 
     const handleClick = () => {
         if (!dropdownItems) {
-            navigate(route);
+            if (route && route !== "#") {
+                navigate(route);
+            }
             closeMenus();
         } else {
             setOpen((prevOpen) => !prevOpen);
@@ -47,15 +140,40 @@ const MenuButton = ({ text, route, dropdownItems, isScrolled, closeMenus }) => {
 
     return (
         <Box ref={anchorRef} sx={{ position: "relative" }}>
-            <Button onClick={handleClick} sx={{ fontWeight: "bold", color: isScrolled ? "black" : "white" }}>
-                {text.toUpperCase()} {dropdownItems && (open ? <ExpandLess sx={{ ml: 1 }} /> : <ExpandMore sx={{ ml: 1 }} />)}
+            <Button
+                onClick={handleClick}
+                sx={{
+                    fontWeight: "bold",
+                    color: isScrolled ? "black" : "white",
+                    // White underline if active
+                    borderBottom: isSelected ? "2px solid #fff" : "none",
+                }}
+            >
+                {text.toUpperCase()}{" "}
+                {dropdownItems && (open ? <ExpandLess sx={{ ml: 1 }} /> : <ExpandMore sx={{ ml: 1 }} />)}
             </Button>
 
             {dropdownItems && open && (
                 <ClickAwayListener onClickAway={handleClose}>
-                    <Paper sx={{ position: "absolute", top: "100%", left: 0, zIndex: 9999, minWidth: 200, mt: 1 }}>
-                        {dropdownItems.map((item) => (
-                            <SubMenuItem key={item.text} item={item} closeMenus={() => { closeMenus();   setOpen(false); }}  />
+                    <Paper
+                        sx={{
+                            position: "absolute",
+                            top: "100%",
+                            left: 0,
+                            zIndex: 9999,
+                            minWidth: 200,
+                            mt: 1,
+                        }}
+                    >
+                        {dropdownItems.map((subItem) => (
+                            <SubMenuItem
+                                key={subItem.text}
+                                item={subItem}
+                                closeMenus={() => {
+                                    closeMenus();
+                                    setOpen(false);
+                                }}
+                            />
                         ))}
                     </Paper>
                 </ClickAwayListener>
@@ -64,48 +182,39 @@ const MenuButton = ({ text, route, dropdownItems, isScrolled, closeMenus }) => {
     );
 };
 
-// ✅ **Recursive SubMenu for Desktop**
-const SubMenuItem = ({ item, closeMenus }) => {
-    const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        if (item.dropdownItems) {
-            setOpen((prev) => !prev);
-        } else {
-            navigate(item.route);
-            closeMenus();
-        }
-    };
-
-    return (
-        <Box>
-            <MenuItem onClick={handleClick}>
-                {item.text} {item.dropdownItems && (open ? <ExpandLess sx={{ ml: 1 }} /> : <ExpandMore sx={{ ml: 1 }} />)}
-            </MenuItem>
-
-            {item.dropdownItems && open && (
-                <Box sx={{ pl: 2, backgroundColor: "#f8f9fa" }}>
-                    {item.dropdownItems.map((subItem) => (
-                        <SubMenuItem key={subItem.text} item={subItem} closeMenus={closeMenus} />
-                    ))}
-                </Box>
-            )}
-        </Box>
-    );
-};
-
-// ✅ **Mobile Menu Item (Handles Multi-Level Menus)**
-const MobileMenuItem = ({ item, openSubMenus, toggleSubMenu, closeDrawer }) => {
+/* -----------------------------
+   MobileMenuItem
+------------------------------ */
+// 'level=0' => top-level => exclusive toggle
+// 'level>0' => sub-level => open/close independently
+const MobileMenuItem = ({ item, openSubMenus, toggleSubMenu, closeDrawer, level = 0 }) => {
     const navigate = useNavigate();
     const location = useLocation();
+
+    // EXACT highlight
     const isSelected = location.pathname === item.route;
+    // PARTIAL expand if active
+    const isActive = isActiveItem(item, location.pathname);
+
+    // Avoid infinite toggles
+    const [autoExpanded, setAutoExpanded] = useState(false);
+
+    // If active => auto expand once
+    useEffect(() => {
+        if (!autoExpanded && item.dropdownItems && isActive && !openSubMenus[item.text]) {
+            toggleSubMenu(item.text, level === 0);
+            setAutoExpanded(true);
+        }
+    }, [autoExpanded, isActive, item.dropdownItems, item.text, level, openSubMenus, toggleSubMenu]);
 
     const handleClick = () => {
         if (item.dropdownItems) {
-            toggleSubMenu(item.text);
+            toggleSubMenu(item.text, level === 0);
         } else {
-            navigate(item.route);
+            // Only navigate if route != "#"
+            if (item.route && item.route !== "#") {
+                navigate(item.route);
+            }
             closeDrawer();
         }
     };
@@ -116,20 +225,22 @@ const MobileMenuItem = ({ item, openSubMenus, toggleSubMenu, closeDrawer }) => {
                 button
                 onClick={handleClick}
                 sx={{
-                    pl: 2,
+                    pl: 2 + level * 8,
                     fontWeight: isSelected ? "bold" : "normal",
                     backgroundColor: isSelected ? "#f0f0f0" : "transparent",
                     transition: "background 0.2s",
                 }}
             >
-                <ListItemText primary={item.text} sx={{ fontWeight: isSelected ? "bold" : "normal" }} />
+                <ListItemText
+                    primary={item.text}
+                    sx={{ fontWeight: isSelected ? "bold" : "normal" }}
+                />
                 {item.dropdownItems && (openSubMenus[item.text] ? <ExpandLess /> : <ExpandMore />)}
             </ListItem>
 
-            {/* ✅ **Third-Level Menu Fix** */}
             {item.dropdownItems && (
                 <Collapse in={openSubMenus[item.text]} timeout="auto" unmountOnExit>
-                    <List disablePadding sx={{ pl: 3 }}>
+                    <List disablePadding>
                         {item.dropdownItems.map((subItem) => (
                             <MobileMenuItem
                                 key={subItem.text}
@@ -137,6 +248,7 @@ const MobileMenuItem = ({ item, openSubMenus, toggleSubMenu, closeDrawer }) => {
                                 openSubMenus={openSubMenus}
                                 toggleSubMenu={toggleSubMenu}
                                 closeDrawer={closeDrawer}
+                                level={level + 1}
                             />
                         ))}
                     </List>
@@ -146,11 +258,14 @@ const MobileMenuItem = ({ item, openSubMenus, toggleSubMenu, closeDrawer }) => {
     );
 };
 
-// ✅ **Main Navigation Component**
+/* -----------------------------
+   Main NavBar
+------------------------------ */
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [openSubMenus, setOpenSubMenus] = useState({}); // Ensures multiple levels work
+    // keep track of open menus in an 'accordion' style for top-level
+    const [openSubMenus, setOpenSubMenus] = useState({});
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -160,13 +275,22 @@ const NavBar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const toggleMobileDrawer = () => setMobileOpen(!mobileOpen);
+    const toggleMobileDrawer = () => {
+        setMobileOpen((prev) => !prev);
+    };
 
-    const toggleSubMenu = (menuText) => {
-        setOpenSubMenus((prev) => ({
-            ...prev,
-            [menuText]: !prev[menuText]
-        }));
+    const toggleSubMenu = (menuText, exclusive) => {
+        setOpenSubMenus((prev) => {
+            const next = { ...prev };
+            if (exclusive) {
+                // close all top-level
+                Object.keys(next).forEach((key) => {
+                    next[key] = false;
+                });
+            }
+            next[menuText] = !prev[menuText];
+            return next;
+        });
     };
 
     return (
@@ -186,23 +310,35 @@ const NavBar = () => {
                         <img src={logo} alt="Logo" style={{ height: "40px" }} />
                     </Link>
 
-                    {/* **Desktop Navigation (Unchanged)** */}
+                    {/* DESKTOP NAV */}
                     {!isMobile && (
                         <Box sx={{ display: "flex", gap: "20px", flexGrow: 1, justifyContent: "center" }}>
-                            {NavigationRoutes.map((item) => (
-                                <MenuButton key={item.text} text={item.text} route={item.route} isScrolled={isScrolled} dropdownItems={item.dropdownItems} closeMenus={() => setOpenSubMenus({})} />
+                            {NavigationRoutes.map((navItem) => (
+                                <MenuButton
+                                    key={navItem.text}
+                                    text={navItem.text}
+                                    route={navItem.route}
+                                    isScrolled={isScrolled}
+                                    dropdownItems={navItem.dropdownItems}
+                                    closeMenus={() => setOpenSubMenus({})}
+                                />
                             ))}
                         </Box>
                     )}
 
-                    {/* **Mobile Menu Button** */}
-                    <IconButton color="inherit" edge="start" onClick={toggleMobileDrawer} sx={{ display: { xs: "block", md: "none" } }}>
+                    {/* MOBILE ICON */}
+                    <IconButton
+                        color="inherit"
+                        edge="start"
+                        onClick={toggleMobileDrawer}
+                        sx={{ display: { xs: "block", md: "none" } }}
+                    >
                         <MenuIcon />
                     </IconButton>
                 </Toolbar>
             </AppBar>
 
-            {/* **Mobile Drawer** */}
+            {/* MOBILE DRAWER */}
             <Drawer anchor="right" open={mobileOpen} onClose={toggleMobileDrawer}>
                 <Box sx={{ width: "80vw", maxWidth: 300, paddingTop: 2, backgroundColor: "#fff", height: "100%" }}>
                     <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
@@ -210,13 +346,14 @@ const NavBar = () => {
                     </Box>
                     <Divider sx={{ my: 2 }} />
                     <List>
-                        {NavigationRoutes.map((item) => (
+                        {NavigationRoutes.map((navItem) => (
                             <MobileMenuItem
-                                key={item.text}
-                                item={item}
+                                key={navItem.text}
+                                item={navItem}
                                 openSubMenus={openSubMenus}
                                 toggleSubMenu={toggleSubMenu}
                                 closeDrawer={toggleMobileDrawer}
+                                level={0}
                             />
                         ))}
                     </List>
