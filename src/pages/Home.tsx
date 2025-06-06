@@ -9,8 +9,8 @@ import StayConnected from "../components/StayConnected";
 
 function HeroSection() {
     const videos = [
-        `${process.env.PUBLIC_URL}/assets/Pastor%20Gerard.mp4`,
-        `${process.env.PUBLIC_URL}/assets/Pastor%20Alex%202.mp4`,
+        `${process.env.PUBLIC_URL}/assets/Pastor_Gerard.mp4`,
+        `${process.env.PUBLIC_URL}/assets/Pastor_Alex_2.mp4`,
         `${process.env.PUBLIC_URL}/assets/Praise.mp4`
     ]
 
