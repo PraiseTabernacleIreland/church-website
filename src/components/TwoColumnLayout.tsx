@@ -25,7 +25,7 @@ const TwoColumnLayout = () => {
                         </Typography>
                         <Box sx={{marginTop: 2}}>
                             <img
-                                src={`${process.env.PUBLIC_URL}/assets/revival1.jpg`}
+                                src={`/assets/revival1.jpg`}
                                 alt="Worship Service"
                                 style={{width: '30%', height: 'auto', borderRadius: '8px'}}
                             />
@@ -46,7 +46,7 @@ const TwoColumnLayout = () => {
                         </Typography>
                         <Box sx={{marginTop: 2}}>
                             <img
-                                src={`${process.env.PUBLIC_URL}/assets/revival2.jpg`}
+                                src={`/assets/revival2.jpg`}
                                 alt="Church Community"
                                 style={{width: '30%', height: 'auto', borderRadius: '8px'}}
                             />

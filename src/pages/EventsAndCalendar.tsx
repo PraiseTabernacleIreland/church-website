@@ -234,7 +234,7 @@ export const EventsAndCalendar = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/calendar_1.jpg)`}
+                backGroundImageSrc={`url(/assets/calendar_1.jpg)`}
                 height={'40vh'}
                 title={'Events & Calendar'}
                 message={'Explore our upcoming events and gatherings designed to inspire, uplift, and bring our community closer together.'}

@@ -11,7 +11,7 @@ const SocialEngagement = () => {
         <Box
             sx={{
                 position: "relative",
-                backgroundImage: `url(${process.env.PUBLIC_URL}/assets/img_3.png)`,
+                backgroundImage: `url(/assets/img_3.png)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 py: { xs: 10, md: 12 },

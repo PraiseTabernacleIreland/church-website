@@ -41,13 +41,13 @@ const countyCoordinates = {
 };
 
 const cellLeaders = {
-    'Dublin': { name: 'John Doe', contact: 'john.doe@example.com', image: `${process.env.PUBLIC_URL}/assets/gerard.jpg` },
-    'Wicklow': { name: 'Jane Smith', contact: 'jane.smith@example.com', image: `${process.env.PUBLIC_URL}/assets/gerard.jpg` },
-    'Kildare': { name: 'Michael Brown', contact: 'michael.brown@example.com', image: `${process.env.PUBLIC_URL}/assets/gerard.jpg` },
-    'Meath': { name: 'Sarah Johnson', contact: 'sarah.johnson@example.com', image: `${process.env.PUBLIC_URL}/assets/gerard.jpg` },
-    'Galway': { name: 'Sarah Bopsy', contact: 'sarah.johnson@example.com', image: `${process.env.PUBLIC_URL}/assets/gerard.jpg` },
-    'Donegal': { name: 'Sarah Bopsy', contact: 'sarah.johnson@example.com', image: `${process.env.PUBLIC_URL}/assets/gerard.jpg` },
-    'Louth': { name: 'Sarah Bopsy', contact: 'sarah.johnson@example.com', image: `${process.env.PUBLIC_URL}/assets/gerard.jpg` },
+    'Dublin': { name: 'John Doe', contact: 'john.doe@example.com', image: `/assets/gerard.jpg` },
+    'Wicklow': { name: 'Jane Smith', contact: 'jane.smith@example.com', image: `/assets/gerard.jpg` },
+    'Kildare': { name: 'Michael Brown', contact: 'michael.brown@example.com', image: `/assets/gerard.jpg` },
+    'Meath': { name: 'Sarah Johnson', contact: 'sarah.johnson@example.com', image: `/assets/gerard.jpg` },
+    'Galway': { name: 'Sarah Bopsy', contact: 'sarah.johnson@example.com', image: `/assets/gerard.jpg` },
+    'Donegal': { name: 'Sarah Bopsy', contact: 'sarah.johnson@example.com', image: `/assets/gerard.jpg` },
+    'Louth': { name: 'Sarah Bopsy', contact: 'sarah.johnson@example.com', image: `/assets/gerard.jpg` },
     // Add more counties and leaders here
 };
 

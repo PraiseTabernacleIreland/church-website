@@ -249,7 +249,7 @@ export const Registration = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/img_1.png)`}
+                backGroundImageSrc={`url(/assets/img_1.png)`}
                 height={'40vh'}
                 title={'Join Our Church Family'}
                 message={'Fill out the form below to become a part of our church community. We look forward to welcoming you!'}

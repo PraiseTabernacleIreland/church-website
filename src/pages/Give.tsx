@@ -177,7 +177,7 @@ export const Give = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/events.jpg)`}
+                backGroundImageSrc={`url(/assets/events.jpg)`}
                 height={'40vh'}
                 title={'Support Our Mission'}
                 message={'Your generosity helps us continue our mission to serve the community. Thank you for your support!'}

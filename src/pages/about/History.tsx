@@ -8,31 +8,31 @@ const historyEvents = [
         year: "1908",
         title: "AFM is Founded in South Africa",
         description: "John G. Lake and Thomas Hezmalhalch establish AFM in Johannesburg, South Africa. The first meeting at Central Tabernacle in Bree Street, Johannesburg, took place on May 25, 1908.",
-        image: `${process.env.PUBLIC_URL}/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
+        image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
     },
     {
         year: "1915",
         title: "AFM Spreads to Zimbabwe",
         description: "By 1915, AFM had spread to Zimbabwe through a concert led by Zacharias Manamela. The church expanded across Africa, Europe, and beyond, culminating in the formation of AFM International in 1996.",
-        image: `${process.env.PUBLIC_URL}/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
+        image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
     },
     {
         year: "2001",
         title: "AFM Comes to Ireland",
         description: "In 2001, Mrs. J. Chimbganda, widow of Pastor Chimbganda, moved from Zimbabwe to Ireland. Soon after, her family joined her, including her son, Gerard T. Chimbganda. In 2004, they founded Praise Tabernacle Apostolic Faith Ministries.",
-        image: `${process.env.PUBLIC_URL}/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
+        image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
     },
     {
         year: "2004",
         title: "Praise Tabernacle is Founded",
         description: "The first meeting of Praise Tabernacle Apostolic Faith Ministries was held in a rented hotel basement in Ireland. The church quickly grew into a thriving faith community.",
-        image: `${process.env.PUBLIC_URL}/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
+        image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
     },
     {
         year: "2015",
         title: "A New Home for Praise Tabernacle",
         description: "In 2015, under God’s direction, Praise Tabernacle moved into its current location. Today, it stands as a beacon of faith, community, and outreach in Ireland, continuing to spread the gospel of Jesus Christ.",
-        image: `${process.env.PUBLIC_URL}/assets/AFM-at-Word_And_Life_Boksburg.jpg`
+        image: `/assets/AFM-at-Word_And_Life_Boksburg.jpg`
     }
 ];
 
@@ -80,7 +80,7 @@ export const History = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/about.jpg)`}
+                backGroundImageSrc={`url(/assets/about.jpg)`}
                 height={'40vh'}
                 title={'Our Church History'}
                 message={'Discover how our journey of faith began and continues to grow.'}

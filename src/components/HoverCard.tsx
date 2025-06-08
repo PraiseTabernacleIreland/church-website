@@ -13,7 +13,7 @@ function HoverCard() {
                 <Box sx={{position: 'relative', height: 200}}>
                     <CardMedia
                         component="img"
-                        image={`${process.env.PUBLIC_URL}/assets/revival3.jpg`}  // Your background image
+                        image={`/assets/revival3.jpg`}  // Your background image
                         alt="background"
                         sx={{
                             height: '100%',

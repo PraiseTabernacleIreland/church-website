@@ -49,7 +49,7 @@ const PastorMessage = () => {
                         <Grid item xs={12} md={4}>
                             <CardMedia
                                 component="img"
-                                image={`${process.env.PUBLIC_URL}/assets/gerard.jpg`}
+                                image={`/assets/gerard.jpg`}
                                 alt="Pastor Gerard Chimbganda"
                                 sx={{
                                     width: "100%",

@@ -7,7 +7,7 @@ const events = [
             from: "2025-03-08",
             to: "2025-03-08",
         },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -18,7 +18,7 @@ const events = [
             from: "2025-04-12",
             to: "2025-04-12",
         },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -29,7 +29,7 @@ const events = [
             from: "2025-05-03",
             to: "2025-05-03"
         },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -37,7 +37,7 @@ const events = [
         title: "Ladies Fellowship (in person)",
         description: "Join us for an in-person Ladies Fellowship, where we connect, encourage, and grow together in faith",
         date: { from: "2025-06-07", to: "2025-06-07" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -45,7 +45,7 @@ const events = [
         title: "Ladies Fellowship (in person)",
         description: "Join us for an in-person Ladies Fellowship, where we connect, encourage, and grow together in faith",
         date: { from: "2025-07-05", to: "2025-07-05" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -53,7 +53,7 @@ const events = [
         title: "Ladies Fellowship (in person)",
         description: "Join us for an in-person Ladies Fellowship, where we connect, encourage, and grow together in faith",
         date: { from: "2025-08-02", to: "2025-08-02" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -61,7 +61,7 @@ const events = [
         title: "Ladies Fellowship (online)",
         description: "Distance won’t stop us from growing together! Join our online Ladies Fellowship for an uplifting time of prayer, discussion, and encouragement from the comfort of your home",
         date: { from: "2025-09-13", to: "2025-09-13" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -69,7 +69,7 @@ const events = [
         title: "Ladies Conference",
         description: "A powerful gathering of women to worship, learn, and grow in faith. This conference is designed to equip, inspire, and encourage every woman in her walk with God",
         date: { from: "2025-10-10", to: "2025-10-12" },
-        image: `${process.env.PUBLIC_URL}/assets/revival_2025.jpg`,
+        image: `/assets/revival_2025.jpg`,
         link: "/events/3",
     },
     {
@@ -77,7 +77,7 @@ const events = [
         title: "Ladies Fellowship (online)",
         description: "Distance won’t stop us from growing together! Join our online Ladies Fellowship for an uplifting time of prayer, discussion, and encouragement from the comfort of your home",
         date: { from: "2025-11-08", to: "2025-11-08" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -85,7 +85,7 @@ const events = [
         title: "Men's Fellowship",
         description: "A time for men to gather, share, and grow in their faith and leadership. This fellowship is about brotherhood, encouragement, and sharpening one another as we walk in our purpose.",
         date: { from: "2025-03-29", to: "2025-03-29" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -93,7 +93,7 @@ const events = [
         title: "Christmas Party",
         description: "It’s that time of the year! Join us for a festive celebration filled with joy and fellowship.",
         date: { from: "2025-12-14", to: "2025-12-14" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -101,7 +101,7 @@ const events = [
         title: "Easter Conference",
         description: "Come and experience a life-changing Easter Conference as we celebrate the death and resurrection of Jesus Christ.",
         date: { from: "2025-04-18", to: "2025-04-20" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -109,7 +109,7 @@ const events = [
         title: "Easter Conference (Youth)",
         description: "This youth-focused Easter Conference is a time for young people to grow in faith, worship passionately, and connect with other believers. ",
         date: { from: "2025-04-18", to: "2025-04-21" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -117,7 +117,7 @@ const events = [
         title: "All Night Prayer",
         description: "Join us for an All Night Prayer as we seek God’s presence, intercede for our families, and stand in faith for breakthroughs.",
         date: { from: "2025-04-05", to: "2025-04-05" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
     {
@@ -125,7 +125,7 @@ const events = [
         title: "Helsinki Conference",
         description: "Join believers from across the region for a powerful time of worship, teaching, and spiritual renewal.",
         date: { from: "2025-06-15", to: "2025-06-15" },
-        image: `${process.env.PUBLIC_URL}/assets/event-placeholder.jpg`,
+        image: `/assets/event-placeholder.jpg`,
         link: "/events/1",
     },
 ];

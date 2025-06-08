@@ -7,22 +7,22 @@ const reports = [
     {
         year: 2024,
         documents: [
-            { title: "AGM Minutes", file: `${process.env.PUBLIC_URL}/assets/AGM_1 December 2024_Agenda.pdf` },
-            { title: "Financial Report", file: `${process.env.PUBLIC_URL}/assets/AFM Ireland_2023 audited accounts.pdf` },
+            { title: "AGM Minutes", file: `/assets/AGM_1 December 2024_Agenda.pdf` },
+            { title: "Financial Report", file: `/assets/AFM Ireland_2023 audited accounts.pdf` },
         ],
     },
     {
         year: 2023,
         documents: [
-            { title: "AGM Minutes", file: `${process.env.PUBLIC_URL}/assets/AFM Ireland_2023 AGM minutes.pdf` },
-            { title: "Financial Report", file: `${process.env.PUBLIC_URL}/assets/AFM Ireland_2023 audited accounts.pdf` },
+            { title: "AGM Minutes", file: `/assets/AFM Ireland_2023 AGM minutes.pdf` },
+            { title: "Financial Report", file: `/assets/AFM Ireland_2023 audited accounts.pdf` },
         ],
     },
     {
         year: 2022,
         documents: [
-            { title: "AGM Minutes", file: `${process.env.PUBLIC_URL}/assets/AFM Ireland_2023 AGM minutes.pdf` },
-            { title: "Financial Report", file: `${process.env.PUBLIC_URL}/assets/AFM Ireland_2023 audited accounts.pdf` },
+            { title: "AGM Minutes", file: `/assets/AFM Ireland_2023 AGM minutes.pdf` },
+            { title: "Financial Report", file: `/assets/AFM Ireland_2023 audited accounts.pdf` },
         ],
     },
 ];
@@ -108,7 +108,7 @@ const ReportsAndDocumentsPage = () => {
 export const ReportsPage = () => {
     return (
         <>
-            <Hero backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/reports-bg.jpg)`} height={'60vh'} />
+            <Hero backGroundImageSrc={`url(/assets/reports-bg.jpg)`} height={'60vh'} />
             <ReportsAndDocuments />
         </>
     );
@@ -120,7 +120,7 @@ export const ReportsAndDocuments = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/reports.jpg)`}
+                backGroundImageSrc={`url(/assets/reports.jpg)`}
                 height={'40vh'}
                 title={'Reports & Documents'}
                 message={'Download our annual reports and official documents to stay informed about our activities, finances, and goals.'}

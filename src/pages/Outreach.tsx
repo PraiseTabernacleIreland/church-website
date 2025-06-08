@@ -9,7 +9,7 @@ const HeroSection = () => {
             <Box
                 sx={{
                     height: "100vh", // Full viewport height
-                    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/outreach.jpg)`, // Replace with your image path
+                    backgroundImage: `url(/assets/outreach.jpg)`, // Replace with your image path
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundAttachment: "fixed", // Key for the parallax effect
@@ -103,7 +103,7 @@ const HelpingCommunity = () => {
                     <Card sx={{ boxShadow: 0 }}>
                         <CardMedia
                             component="img"
-                            image={`${process.env.PUBLIC_URL}/assets/img.png`} // Replace with your image path
+                            image={`/assets/img.png`} // Replace with your image path
                             alt="Helping the needy"
                             sx={{ borderRadius: 2 }}
                         />
@@ -113,7 +113,7 @@ const HelpingCommunity = () => {
                     <Card sx={{ boxShadow: 0 }}>
                         <CardMedia
                             component="img"
-                            image={`${process.env.PUBLIC_URL}/assets/img_1.png`} // Replace with your image path
+                            image={`/assets/img_1.png`} // Replace with your image path
                             alt="Donation box"
                             sx={{ borderRadius: 2 }}
                         />
@@ -123,7 +123,7 @@ const HelpingCommunity = () => {
                     <Card sx={{ boxShadow: 0 }}>
                         <CardMedia
                             component="img"
-                            image={`${process.env.PUBLIC_URL}/assets/img_2.png`} // Replace with your image path
+                            image={`/assets/img_2.png`} // Replace with your image path
                             alt="Hands together"
                             sx={{ borderRadius: 2 }}
                         />
@@ -167,7 +167,7 @@ const HelpingCommunity = () => {
 export const Outreach = () => {
     return (
         <>
-            <Hero backGroundImageSrc={`url(${process.env.PUBLIC_URL}/assets/outreach.jpg)`} height={'60vh'}/>
+            <Hero backGroundImageSrc={`url(/assets/outreach.jpg)`} height={'60vh'}/>
             {/*<HeroSection/>*/}
             <HelpingCommunity/>
         </>

@@ -9,9 +9,9 @@ import StayConnected from "../components/StayConnected";
 
 function HeroSection() {
     const videos = [
-        `${process.env.PUBLIC_URL}/assets/Pastor_Gerard.mp4`,
-        `${process.env.PUBLIC_URL}/assets/Pastor_Alex_2.mp4`,
-        `${process.env.PUBLIC_URL}/assets/Praise.mp4`
+        `/assets/Pastor_Gerard.mp4`,
+        `/assets/Pastor_Alex_2.mp4`,
+        `/assets/Praise.mp4`
     ]
 
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
