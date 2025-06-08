@@ -61,9 +61,6 @@ function App() {
                     <Route path={PageRoutes[PageName.ReportsAndDocuments]} element={<ReportsAndDocuments />} />
                     <Route path={PageRoutes[PageName.Give]} element={<Give />} />
                     <Route path={PageRoutes[PageName.Team]} element={<Team />} />
-                    <Route path={PageRoutes[PageName.Registration]} element={<Registration />} />
-                    <Route path={PageRoutes[PageName.Registration]} element={<Registration />} />
-                    <Route path={PageRoutes[PageName.Registration]} element={<Registration />} />
                     {/* Fellowship */}
                     <Route path={PageRoutes[PageName.Men]} element={<MenFellowshipPage />} />
                     <Route path={PageRoutes[PageName.Women]} element={<WomenFellowshipPage />} />

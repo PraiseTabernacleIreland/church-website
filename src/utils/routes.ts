@@ -20,7 +20,6 @@ export enum PageName {
     Youth = 'Youth & Young Adults',
     Men = 'Men',
     Women = 'Women',
-    Registration = 'Registration',
     CellGroups = 'Cell Groups',
     Family = 'Family & Couples',
     Media = 'Media & Creative',
@@ -37,7 +36,6 @@ export const PageRoutes: Route = {
     [PageName.Events]: "/events",
     [PageName.Contact]: "/contact",
     [PageName.Give]: "/give",
-    [PageName.Registration]: "/registration",
     // resources
     [PageName.Sermons]: "/resources/sermons",
     [PageName.ReportsAndDocuments]: "/resources/reports",

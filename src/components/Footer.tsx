@@ -64,7 +64,7 @@ const Footer = () => {
                     {/* General & Resources */}
                     <Grid item xs={6} sm={6} md={2}>
                         <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2, color: "#F0F5F9" }}>General</Typography>
-                        {[PageName.Home, PageName.Events, PageName.Contact, PageName.Give, PageName.Registration].map((pageName, index) => (
+                        {[PageName.Home, PageName.Events, PageName.Contact, PageName.Give].map((pageName, index) => (
                             <Typography key={index} sx={{ mb: 1 }}>
                                 <Link to={PageRoutes[pageName]} style={{ textDecoration: "none", color: "#B1D0E0" }}>
                                     {pageName.replace(/_/g, " ")}
