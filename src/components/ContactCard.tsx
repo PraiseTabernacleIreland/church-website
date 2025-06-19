@@ -13,8 +13,8 @@ const ContactCard = ({ contact }) => {
             {/* Circular Image with Black & White Effect */}
             <Box
                 sx={{
-                    width: "180px",
-                    height: "180px",
+                    width: "200px",
+                    height: "200px",
                     margin: "0 auto",
                     borderRadius: "50%",
                     overflow: "hidden",
@@ -29,6 +29,7 @@ const ContactCard = ({ contact }) => {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
+                        objectPosition: "top center"
                     }}
                 />
             </Box>
@@ -43,18 +44,19 @@ const ContactCard = ({ contact }) => {
                 </Typography>
 
                 {/* Email */}
-                <Typography
+                {contact.email && <Typography
                     variant="body2"
                     sx={{ mt: 1, color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
                     onClick={() => window.location.href = `mailto:${contact.email}`}
                 >
                     {contact.email}
                 </Typography>
+                }
 
                 {/* Description */}
-                <Typography variant="body2" sx={{ mt: 2, color: "#555" }}>
-                    {contact.description}
-                </Typography>
+                {/*<Typography variant="body2" sx={{ mt: 2, color: "#555" }}>*/}
+                {/*    {contact.description}*/}
+                {/*</Typography>*/}
             </CardContent>
         </Card>
     );

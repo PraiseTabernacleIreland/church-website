@@ -4,57 +4,47 @@ import { PageName } from "../utils/routes";
 export const FELLOWSHIPS: { [fellowshipName in FellowshipName]: Fellowship } = {
     [FellowshipName.Men]: {
         name: PageName.Men,
-        heroImage: `/assets/img_12.png`,
+        heroImage: `/assets/men-1.webp`,
         description: "Empowering men through faith, leadership, and community service.",
         about: "The Men's Fellowship is a community of men striving for spiritual growth, accountability, and service. Through Bible studies, mentorship, and outreach programs, we build strong, Christ-centered leaders in our homes and society.",
         activities: [
             {
                 name: "Men's Breakfast & Devotion",
                 description: "A time of fellowship, prayer, and study of God's Word over breakfast.",
-                image: `/assets/placeholder_1.png`,
+                image: `/assets/men-2.webp`,
             },
             {
                 name: "Leadership Development",
                 description: "Training men in leadership, mentoring, and discipleship for family and church roles.",
-                image: `/assets/placeholder_1.png`,
-            },
-            {
-                name: "Community Outreach",
-                description: "Serving the community through mentorship programs, charity work, and evangelism.",
-                image: `/assets/placeholder_1.png`,
-            },
+                image: `/assets/men-3.webp`,
+            }
         ],
         joinInstructions: "Be part of our regular gatherings, Bible studies, and service projects. Connect with the fellowship leader after service or sign up online.",
     },
 
     [FellowshipName.Women]: {
         name: PageName.Women,
-        heroImage: `/assets/img_13.png`,
+        heroImage: `/assets/women-1.webp`,
         description: "Encouraging and supporting women in their faith journey.",
         about: "The Women's Fellowship provides a space for women to grow spiritually, find mentorship, and build strong relationships rooted in faith.",
         activities: [
             {
                 name: "Women's Bible Study",
                 description: "In-depth Bible study sessions focused on spiritual growth and encouragement.",
-                image: `/assets/placeholder_1.png`,
+                image: `/assets/women.webp`,
             },
             {
                 name: "Prayer & Intercession",
                 description: "Gathering to pray for the church, families, and personal needs.",
-                image: `/assets/placeholder_1.png`,
-            },
-            {
-                name: "Ladies' Retreat",
-                description: "A time of reflection, renewal, and connection with God and each other.",
-                image: `/assets/placeholder_1.png`,
-            },
+                image: `/assets/women-3.webp`,
+            }
         ],
         joinInstructions: "Join our weekly gatherings, special events, and prayer meetings. Connect with a leader after service to get involved.",
     },
 
     [FellowshipName.Youth]: {
         name: PageName.Youth,
-        heroImage: `/assets/img_14.png`,
+        heroImage: `/assets/youth-1.webp`,
         description: "Building the next generation of faith-driven leaders.",
         about: "The Youth Fellowship is a vibrant community where young people grow in faith, develop leadership skills, and build lifelong friendships.",
         activities: [

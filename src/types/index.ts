@@ -82,7 +82,7 @@ export interface Person {
     name: string,
     title: string,
     team: TeamName,
-    email: string,
+    email?: string,
     description: string,
 }
 

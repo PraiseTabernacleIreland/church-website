@@ -14,25 +14,25 @@ const historyEvents = [
         year: "1915",
         title: "AFM Spreads to Zimbabwe",
         description: "By 1915, AFM had spread to Zimbabwe through a concert led by Zacharias Manamela. The church expanded across Africa, Europe, and beyond, culminating in the formation of AFM International in 1996.",
-        image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
+        // image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
     },
     {
         year: "2001",
         title: "AFM Comes to Ireland",
         description: "In 2001, Mrs. J. Chimbganda, widow of Pastor Chimbganda, moved from Zimbabwe to Ireland. Soon after, her family joined her, including her son, Gerard T. Chimbganda. In 2004, they founded Praise Tabernacle Apostolic Faith Ministries.",
-        image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
+        // image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
     },
     {
         year: "2004",
         title: "Praise Tabernacle is Founded",
         description: "The first meeting of Praise Tabernacle Apostolic Faith Ministries was held in a rented hotel basement in Ireland. The church quickly grew into a thriving faith community.",
-        image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
+        // image: `/assets/John_G._Lake_and_Thomas_Hezmalhalch-2.jpg`
     },
     {
         year: "2015",
         title: "A New Home for Praise Tabernacle",
         description: "In 2015, under God’s direction, Praise Tabernacle moved into its current location. Today, it stands as a beacon of faith, community, and outreach in Ireland, continuing to spread the gospel of Jesus Christ.",
-        image: `/assets/AFM-at-Word_And_Life_Boksburg.jpg`
+        // image: `/assets/AFM-at-Word_And_Life_Boksburg.jpg`
     }
 ];
 
@@ -51,18 +51,18 @@ const ChurchHistory = () => {
                             </TimelineSeparator>
                             <TimelineContent>
                                 <Grid container spacing={2} alignItems="center" direction={isMobile && index % 2 === 0 ? "row-reverse" : "row"}>
-                                    <Grid item xs={12} md={6}>
+                                    <Grid item xs={12} >
                                         <Typography variant="h5" sx={{ fontWeight: "bold", color: "#333" }}>{event.year}</Typography>
                                         <Typography variant="h6" sx={{ fontWeight: "bold", color: "#055594" }}>{event.title}</Typography>
                                         <Typography variant="body1" sx={{ color: "#555", mt: 1 }}>{event.description}</Typography>
                                     </Grid>
                                     <Grid item xs={12} md={6}>
-                                        <CardMedia
+                                        {event.image && <CardMedia
                                             component="img"
                                             image={event.image}
                                             alt={event.title}
                                             sx={{ width: "100%", borderRadius: "12px", boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)" }}
-                                        />
+                                        />}
                                     </Grid>
                                 </Grid>
                             </TimelineContent>
