@@ -4,7 +4,7 @@ export const TEAMS: Teams = {
     [TeamName.Pastoral]: [
         {
             image: `/assets/pastor-gerard-sibo-headshot.webp`,
-            name: 'Gerard + Sibo Chimbganda',
+            name: 'Gerard and Sibo Chimbganda',
             title: 'Main Pastors',
             team: TeamName.Pastoral,
             // email: 'gerardchimb@gmail.com',
@@ -12,7 +12,7 @@ export const TEAMS: Teams = {
         },
         {
             image: `/assets/pastor-alex-tari-headshot.webp`,
-            name: 'Alex + Tariro Kadonzvo',
+            name: 'Alex and Tari Kadonzvo',
             title: 'Associate Pastors',
             team: TeamName.Pastoral,
             // email: 'ufumelims@yahoo.co.uk',
