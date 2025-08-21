@@ -129,7 +129,7 @@ export default BeliefsPage;
 export const Beliefs = () => {
     return (
         <>
-            <Hero backGroundImageSrc={`url(/assets/about.jpg)`} height={'40vh'} title={'What We Believe'}/>
+            <Hero backGroundImageSrc={`url(/assets/belief_hero.jpg)`} height={'60vh'} title={'What We Believe'}/>
             <BeliefsPage/>
         </>
     )

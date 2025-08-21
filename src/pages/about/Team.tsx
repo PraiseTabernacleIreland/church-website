@@ -6,8 +6,8 @@ export const Team = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={`url(/assets/contact.jpg)`}
-                height={'40vh'}
+                backGroundImageSrc={`url(/assets/team_hero.jpg)`}
+                height={'60vh'}
                 title={'Meet Our Team'}
             />
             <TeamContainer/>

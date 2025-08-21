@@ -120,8 +120,8 @@ export const ReportsAndDocuments = () => {
     return (
         <>
             <Hero
-                backGroundImageSrc={`url(/assets/reports.jpg)`}
-                height={'40vh'}
+                backGroundImageSrc={`url(/assets/reports_hero.jpg)`}
+                height={'60vh'}
                 title={'Reports & Documents'}
                 message={'Download our annual reports and official documents to stay informed about our activities, finances, and goals.'}
             />

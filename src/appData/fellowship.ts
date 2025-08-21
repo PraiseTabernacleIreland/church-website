@@ -51,43 +51,23 @@ export const FELLOWSHIPS: { [fellowshipName in FellowshipName]: Fellowship } = {
             {
                 name: "Youth Night",
                 description: "Fun, fellowship, and worship tailored for young believers.",
-                image: `${process.env.PUBLIC_URL}/assets/placeholder_1.png`,
-            },
-            {
-                name: "Bible Study & Discussions",
-                description: "Interactive discussions to help youth apply Biblical principles to everyday life.",
-                image: `${process.env.PUBLIC_URL}/assets/placeholder_1.png`,
-            },
-            {
-                name: "Mission & Outreach",
-                description: "Serving the community through outreach projects, evangelism, and charity work.",
-                image: `${process.env.PUBLIC_URL}/assets/placeholder_1.png`,
-            },
+                image: `${process.env.PUBLIC_URL}/assets/youth_baptism.webp`,
+            }
         ],
         joinInstructions: "If you’re a young person looking to grow spiritually and connect with like-minded believers, join us at our weekly Youth Night!",
     },
 
     [FellowshipName.Family]: {
         name: PageName.Family,
-        heroImage: `${process.env.PUBLIC_URL}/assets/img_15.png`,
+        heroImage: `${process.env.PUBLIC_URL}/assets/couples_hero.jpg`,
         description: "Strengthening families through faith-based support and fellowship.",
         about: "The Family Fellowship is a place for parents, couples, and children to grow together in Christ. We provide resources and support to build strong Christian homes.",
         activities: [
             {
                 name: "Marriage Enrichment",
                 description: "Workshops and counseling to strengthen marriages and relationships.",
-                image: `${process.env.PUBLIC_URL}/assets/placeholder_1.png`,
-            },
-            {
-                name: "Family Bible Study",
-                description: "Interactive sessions for families to study God’s Word together.",
-                image: `${process.env.PUBLIC_URL}/assets/placeholder_1.png`,
-            },
-            {
-                name: "Parenting Workshops",
-                description: "Equipping parents with Biblical principles for raising children.",
-                image: `${process.env.PUBLIC_URL}/assets/placeholder_1.png`,
-            },
+                image: `${process.env.PUBLIC_URL}/assets/couples_1.jpg`,
+            }
         ],
         joinInstructions: "Families are welcome to participate in our gatherings, workshops, and support groups. Contact us to find out how to get involved!",
     }

@@ -81,7 +81,7 @@ export const History = () => {
         <>
             <Hero
                 backGroundImageSrc={`url(/assets/about.jpg)`}
-                height={'40vh'}
+                height={'60vh'}
                 title={'Our Church History'}
                 message={'Discover how our journey of faith began and continues to grow.'}
             />

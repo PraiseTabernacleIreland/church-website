@@ -179,7 +179,7 @@ const YouTubePage = () => {
 export const Sermons = () => {
     return (
         <>
-            <Hero backGroundImageSrc={`url(/assets/sermon.jpg)`} height={'40vh'} title={'Sermons'} />
+            <Hero backGroundImageSrc={`url(/assets/sermon_hero2.jpg)`} height={'60vh'} title={'Sermons'} />
             <YouTubePage />
         </>
     );

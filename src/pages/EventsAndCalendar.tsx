@@ -235,7 +235,7 @@ export const EventsAndCalendar = () => {
         <>
             <Hero
                 backGroundImageSrc={`url(/assets/calendar_1.jpg)`}
-                height={'40vh'}
+                height={'60vh'}
                 title={'Events & Calendar'}
                 message={'Explore our upcoming events and gatherings designed to inspire, uplift, and bring our community closer together.'}
             />

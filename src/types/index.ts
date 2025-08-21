@@ -46,7 +46,7 @@ export interface Ministry {
     heroImage: string;
     name: string;
     description: string;
-    relatedImages: string[];  // Array of image URLs for past events
+    relatedImages?: string[];  // Array of image URLs for past events
     joinInstructions: string;
     route: string;
 }
@@ -70,7 +70,7 @@ export interface GrowthGroup {
     description: string;
     whyItMatters: string;
     activities: {
-        image: string;
+        image?: string;
         name: string;
         description: string;
     }[],

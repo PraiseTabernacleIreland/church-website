@@ -12,7 +12,7 @@ const MinistryTemplate = (props: { ministry: Ministry}) => {
         <>
             <Hero
                 backGroundImageSrc={`url(${ministry.heroImage})`}
-                height={'40vh'}
+                height={'60vh'}
                 title={ministry.name}
                 message={ministry.description}
             />

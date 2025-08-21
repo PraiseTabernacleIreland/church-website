@@ -14,7 +14,7 @@ const GrowthTemplate = (props: { growth: GrowthGroup }) => {
             {/* Hero Section */}
             <Hero
                 backGroundImageSrc={`url(${growth.heroImage})`}
-                height="40vh"
+                height="60vh"
                 title={growth.name}
                 message={growth.description}
             />
@@ -41,12 +41,12 @@ const GrowthTemplate = (props: { growth: GrowthGroup }) => {
                         {growth.activities.map((activity, index) => (
                             <Grid item xs={12} sm={6} md={4} key={index}>
                                 <Card sx={{ borderRadius: "12px", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", textAlign: "center", p: 2 }}>
-                                    <CardMedia
+                                    { activity.image && <CardMedia
                                         component="img"
                                         image={activity.image}
                                         alt={activity.name}
                                         sx={{ height: "180px", objectFit: "cover", borderRadius: "8px" }}
-                                    />
+                                    />}
                                     <CardContent>
                                         <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1, color: "#333" }}>
                                             {activity.name}
