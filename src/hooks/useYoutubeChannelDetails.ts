@@ -1,6 +1,9 @@
-import {useEffect, useState} from "react";
-import {getWithExpiry, setWithExpiry} from "../utils/storage";
+import { useEffect, useState } from "react";
+import { getWithExpiry, setWithExpiry } from "../utils/storage";
 
+/**
+ * Represents a single YouTube search result from the YouTube Data API v3
+ */
 export interface YoutubeSearchResult {
     "kind": "youtube#searchResult",
     "etag": string,
@@ -24,35 +27,56 @@ export interface YoutubeSearchResult {
         },
         "channelTitle": string,
         "liveBroadcastContent": string
-
     }
 }
 
+/**
+ * Response structure from YouTube Data API v3 search endpoint
+ */
 export interface YoutubeSearchResults {
     "items": YoutubeSearchResult[]
 }
 
-
 const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 const CHANNEL_ID = "UCahHVAvlRT-fe7-JmGzZpTw";
 const MAX_NUMBER_OF_RESULTS = 6;
+const CACHE_DURATION = 3600000; // 1 hour in milliseconds
 
+/**
+ * Custom hook to fetch and manage YouTube channel videos and live streams
+ * 
+ * This hook fetches videos from a specific YouTube channel using the YouTube Data API v3.
+ * It implements local storage caching with a 1-hour TTL to minimize API calls and improve performance.
+ * The hook automatically detects and separates live streaming videos from regular uploads.
+ * 
+ * @returns {Object} An object containing:
+ * - videos: Array of all video results from the channel
+ * - liveVideo: The currently live streaming video (if any), null otherwise
+ * - loading: Boolean indicating if data is being fetched
+ * - error: Error message string if fetch fails, null otherwise
+ * 
+ * @example
+ * const { videos, liveVideo, loading, error } = useYoutubeChannelDetails();
+ * 
+ * if (loading) return <Spinner />;
+ * if (error) return <Error message={error} />;
+ * if (liveVideo) return <LiveStream video={liveVideo} />;
+ * 
+ * @requires REACT_APP_GOOGLE_API_KEY environment variable must be set
+ */
 export const useYoutubeChannelDetails = () => {
     const [videos, setVideos] = useState<YoutubeSearchResult[]>([]);
     const [liveVideo, setLiveVideo] = useState<YoutubeSearchResult | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
     useEffect(() => {
         const fetchVideos = async () => {
-
             const cachedData = getWithExpiry('praise-data');
 
             if (cachedData) {
-                console.log("Using cached data from localStorage");
-
-                setLiveVideo(cachedData.live || null); // Update live video
-                setVideos(cachedData.videos); // Update video list
-
+                setLiveVideo(cachedData.live || null);
+                setVideos(cachedData.videos);
                 setLoading(false);
             } else {
                 if (!GOOGLE_API_KEY || !CHANNEL_ID) {
@@ -74,32 +98,30 @@ export const useYoutubeChannelDetails = () => {
                     const data: YoutubeSearchResults = await response.json();
 
                     if (data.items) {
-                        // Find the live stream video
                         const liveStream = data.items.find(
                             (item) => item.snippet.liveBroadcastContent === "live"
                         );
 
-                        setLiveVideo(liveStream || null); // Update live video
-                        setVideos(data.items); // Update video list
+                        setLiveVideo(liveStream || null);
+                        setVideos(data.items);
 
                         setWithExpiry('praise-data', {
                             live: liveStream,
                             videos: data.items
-                        }, 3600000);
+                        }, CACHE_DURATION);
                     }
                 } catch (error) {
                     console.error("Error fetching YouTube videos:", error);
                     setError((error as Error).message);
                 } finally {
-                    setLoading(false); // Ensure loading state is set to false
+                    setLoading(false);
                 }
             }
         };
 
         fetchVideos();
-    }, []); // Empty dependency array to ensure this runs only on mount
+    }, []);
 
-    // Expose state variables and return values
     return {
         videos,
         liveVideo,

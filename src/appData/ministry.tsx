@@ -1,6 +1,13 @@
 import { Ministry, MinistryName } from "../types";
 import { PageName, PageRoutes } from "../utils/routes";
 
+/**
+ * Church ministry data
+ * 
+ * This file contains information about all church ministries including media, worship,
+ * hospitality, evangelism, and intercession. Each ministry includes description, images,
+ * and instructions for joining.
+ */
 export const MINISTRIES: { [ministryName in MinistryName]: Ministry } = {
     [MinistryName.Media]: {
         name: PageName.Media,
@@ -8,9 +15,6 @@ export const MINISTRIES: { [ministryName in MinistryName]: Ministry } = {
         heroImage: `/assets/church_media.jpg`,
         joinInstructions: "If you are passionate about media production, photography, or live streaming, join our team and help bring worship to life.",
         route: PageRoutes[PageName.Media],
-        // relatedImages: [
-        //     `/assets/placeholder_1.png`,
-        // ]
     },
 
     [MinistryName.Worship]: {
@@ -30,9 +34,6 @@ export const MINISTRIES: { [ministryName in MinistryName]: Ministry } = {
         heroImage: `/assets/hospitality.jpg`,
         joinInstructions: "If you love making people feel welcome and serving others, join our hospitality team and make a lasting impact.",
         route: PageRoutes[PageName.Hospitality],
-        // relatedImages: [
-        //     `/assets/placeholder_1.png`,
-        // ]
     },
 
     [MinistryName.Evangelism]: {
@@ -41,10 +42,6 @@ export const MINISTRIES: { [ministryName in MinistryName]: Ministry } = {
         heroImage: `/assets/evangelism_hero2.jpg`,
         joinInstructions: "Are you passionate about sharing the Good News? Join our evangelism team and help lead people to Christ.",
         route: PageRoutes[PageName.Evangelism],
-        // relatedImages: [
-        //     `/assets/placeholder_1.png`,
-        //     `/assets/placeholder_1.png`,
-        // ]
     },
 
     [MinistryName.Intercession]: {
@@ -53,11 +50,5 @@ export const MINISTRIES: { [ministryName in MinistryName]: Ministry } = {
         heroImage: `/assets/intercession.jpg`,
         joinInstructions: "If you believe in the power of prayer and intercession, join us in lifting up the church, community, and world in prayer.",
         route: PageRoutes[PageName.Intercession],
-        // relatedImages: [
-        //     `/assets/placeholder_1.png`,
-        //     `/assets/placeholder_1.png`,
-        //     `/assets/placeholder_1.png`,
-        //     `${process.env.PUBLIC_URL}/assets/placeholder_1.png`,
-        // ]
     },
 };

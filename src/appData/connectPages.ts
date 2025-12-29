@@ -4,7 +4,23 @@ import { GROWTH_GROUPS } from "./growth";
 import { MINISTRIES } from "./ministry";
 import { PageRoutes, PageName } from "../utils/routes";
 
-// Build fellowship pages
+/**
+ * Connect page configuration builder
+ * 
+ * This file dynamically generates page configurations for all fellowship, growth, and ministry pages.
+ * Each page is composed of reusable sections (hero, text blocks, grid cards, CTAs) assembled from
+ * the data defined in fellowship.ts, growth.ts, and ministry.ts.
+ * 
+ * This approach enables:
+ * - Content-driven page generation without duplicating code
+ * - Consistent page structure across all connect pages
+ * - Easy addition of new pages by simply adding data to source files
+ */
+
+/**
+ * Generate fellowship pages from fellowship data
+ * Each fellowship page includes: hero section, about text, activities grid, and join CTA
+ */
 const fellowshipPages: ConnectPage[] = Object.entries(FELLOWSHIPS).map(([key, fellowship]) => ({
   category: "fellowship",
   slug: key.toLowerCase(),
@@ -47,7 +63,10 @@ const fellowshipPages: ConnectPage[] = Object.entries(FELLOWSHIPS).map(([key, fe
   ],
 }));
 
-// Build growth pages
+/**
+ * Generate growth group pages from growth data
+ * Each growth page includes: hero section, purpose text, activities grid, and join CTA
+ */
 const growthPages: ConnectPage[] = Object.entries(GROWTH_GROUPS).map(([key, growth]) => ({
   category: "growth",
   slug: key.toLowerCase(),
@@ -90,7 +109,10 @@ const growthPages: ConnectPage[] = Object.entries(GROWTH_GROUPS).map(([key, grow
   ],
 }));
 
-// Build ministry pages
+/**
+ * Generate ministry pages from ministry data
+ * Each ministry page includes: hero section, image gallery, and join CTA
+ */
 const ministryPages: ConnectPage[] = Object.entries(MINISTRIES).map(([key, ministry]) => ({
   category: "ministries",
   slug: key.toLowerCase(),
@@ -108,7 +130,7 @@ const ministryPages: ConnectPage[] = Object.entries(MINISTRIES).map(([key, minis
       type: "gridCards",
       props: {
         heading: `A Glimpse into ${ministry.name}`,
-        items: ministry.relatedImages.map((img) => ({ image: img, name: "", description: "" })),
+        items: ministry.relatedImages?.map((img) => ({ image: img, name: "", description: "" })) || [],
         backgroundColor: "#f9f9f9",
       },
     },
@@ -126,6 +148,10 @@ const ministryPages: ConnectPage[] = Object.entries(MINISTRIES).map(([key, minis
   ],
 }));
 
+/**
+ * Combined array of all connect pages (fellowships, growth groups, and ministries)
+ * Used by the ConnectPage component to dynamically render pages based on route
+ */
 export const CONNECT_PAGES: ConnectPage[] = [
   ...fellowshipPages,
   ...growthPages,

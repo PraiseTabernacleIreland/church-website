@@ -2,6 +2,31 @@ import React from 'react';
 import { Box, Container, Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
 import { GridCardsSectionProps } from '../../types/connect';
 
+/**
+ * Grid cards section component for displaying a collection of items in a responsive card layout
+ * 
+ * This component renders a grid of cards, each containing an image, name, and description.
+ * The grid is responsive, adjusting from 1 column on mobile to 3 columns on desktop.
+ * Perfect for showcasing ministries, activities, team members, or any collection of related items.
+ * 
+ * @param {GridCardsSectionProps} props - Component props
+ * @param {string} props.heading - Main heading text displayed above the card grid
+ * @param {Array} props.items - Array of items to display in cards
+ * @param {string} props.items[].image - Image URL for the card
+ * @param {string} props.items[].name - Title/name for the card
+ * @param {string} props.items[].description - Description text for the card
+ * @param {string} [props.backgroundColor='transparent'] - Optional background color for the section
+ * 
+ * @example
+ * <GridCardsSection
+ *   heading="Our Ministries"
+ *   items={[
+ *     { image: '/assets/worship.jpg', name: 'Worship', description: 'Join our praise team' },
+ *     { image: '/assets/youth.jpg', name: 'Youth Ministry', description: 'For ages 13-18' }
+ *   ]}
+ *   backgroundColor="#f9f9f9"
+ * />
+ */
 const GridCardsSection: React.FC<GridCardsSectionProps> = ({ heading, items, backgroundColor }) => (
   <Box sx={{ py: 6, backgroundColor: backgroundColor || 'transparent', width: '100%' }}>
     <Container>

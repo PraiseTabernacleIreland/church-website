@@ -1,5 +1,12 @@
-import {TeamName, Teams} from "../types";
+import { TeamName, Teams } from "../types";
 
+/**
+ * Church leadership and team member data
+ * 
+ * This file contains information about the church's leadership structure including
+ * pastoral staff, administration, and elders. Each team member includes their role,
+ * contact information, and description.
+ */
 export const TEAMS: Teams = {
     [TeamName.Pastoral]: [
         {
@@ -7,7 +14,6 @@ export const TEAMS: Teams = {
             name: 'Gerard and Sibo Chimbganda',
             title: 'Main Pastors',
             team: TeamName.Pastoral,
-            // email: 'gerardchimb@gmail.com',
             description: 'Main Pastors',
         },
         {
@@ -15,7 +21,6 @@ export const TEAMS: Teams = {
             name: 'Alex and Tari Kadonzvo',
             title: 'Associate Pastors',
             team: TeamName.Pastoral,
-            // email: 'ufumelims@yahoo.co.uk',
             description: 'Associate Pastors',
         }
     ],
@@ -39,46 +44,6 @@ export const TEAMS: Teams = {
             description: 'Oversees church policies and financial decisions.',
         }
     ],
-    // [TeamName.Deacons]: [
-    //     {
-    //         image: `/assets/moses.jpg`,
-    //         name: 'Moses Ufumeli',
-    //         title: 'Secretary',
-    //         team: TeamName.Deacons,
-    //         email: 'ufumelims@yahoo.co.uk',
-    //         description: 'Manages church records and administrative operations.',
-    //     },
-    //     {
-    //         image: `/assets/kerina.jpg`,
-    //         name: 'Kerina Ufumeli',
-    //         title: 'Secretary',
-    //         team: TeamName.Deacons,
-    //         email: 'ufumelims@yahoo.co.uk',
-    //         description: 'Manages church records and administrative operations.',
-    //     },
-    //     {
-    //         image: `/assets/sani-headshot.webp`,
-    //         name: 'Brian + Sani Mirimi',
-    //         title: 'Deacon',
-    //         team: TeamName.Deacons,
-    //         // email: 'mudehwes@yahoo.co.uk',
-    //         description: 'Oversees church policies and financial decisions.',
-    //     },
-    //     {
-    //         image: `/assets/brian.jpg`,
-    //         name: 'Brian Mirimi',
-    //         title: 'Deacon',
-    //         team: TeamName.Deacons,
-    //         // email: 'johndoe@example.com',
-    //         description: 'Leads the congregation in spiritual growth, provides counseling, and oversees church operations.',
-    //     },
-    //     {
-    //         image: `/assets/thuli.jpg`,
-    //         name: 'Thuli',
-    //         title: 'Deacon',
-    //         team: TeamName.Deacons,
-    //         // email: 'ufumelims@yahoo.co.uk',
-    //         description: 'Leads the worship team, organizes praise sessions, and ensures a vibrant worship experience.',
-    //     },
-    // ],
+    [TeamName.Deacons]: [],
+    [TeamName.Cell_Leaders]: [],
 };
