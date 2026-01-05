@@ -4,6 +4,7 @@
 backend:
   name: git-gateway
   branch: main  # Your default Git branch
+  site_url: https://praise-tabernacle-admin.netlify.app
 
 # Local development backend (comment out in production or use 'npm start' to test)
 # local_backend: true
