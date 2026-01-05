@@ -1,0 +1,15 @@
+{
+  "title": "Wednesday Faith School",
+  "time": "7:00 PM - 8:00 PM",
+  "description": "An evening of learning and spiritual growth.",
+  "image": "/assets/faith-school.jpg",
+  "color": "#785749",
+  "buttons": [
+    {
+      "text": "Join Online",
+      "link": "https://zoom.us/",
+      "variant": "outlined",
+      "isExternal": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": 5,
+  "title": "Ladies Fellowship (in person)",
+  "description": "Join us for an in-person Ladies Fellowship, where we connect, encourage, and grow together in faith",
+  "date": {
+    "from": "2025-07-05",
+    "to": "2025-07-05"
+  },
+  "image": "/assets/event-placeholder.jpg",
+  "link": "/events/1"
+}

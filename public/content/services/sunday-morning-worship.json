@@ -1,0 +1,21 @@
+{
+  "title": "Sunday Morning Worship",
+  "time": "10:00 AM - 2:00 PM",
+  "description": "A time to gather in worship and fellowship.",
+  "image": "/assets/img_3.png",
+  "color": "#ad5a2f",
+  "buttons": [
+    {
+      "text": "Join In-Person",
+      "link": "https://www.google.com/maps?q=Praise+Tabernacle+Apostolic+Faith+Mission%2C+1%2C+8+Portland+Row%2C+Mountjoy%2C+Dublin",
+      "variant": "contained",
+      "isExternal": true
+    },
+    {
+      "text": "Watch Online",
+      "link": "/resources/sermons",
+      "variant": "outlined",
+      "isExternal": false
+    }
+  ]
+}

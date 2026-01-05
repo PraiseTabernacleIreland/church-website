@@ -1,0 +1,10 @@
+{
+  "name": "Worship",
+  "description": "Leading the congregation in spirit-filled worship through music and song.",
+  "heroImage": "/assets/worship_hero.jpg",
+  "joinInstructions": "If you have a gift in singing, playing instruments, or leading worship, we invite you to be part of our dynamic worship team.",
+  "route": "/connect/ministries/worship",
+  "relatedImages": [
+    "/assets/worship_1.jpg"
+  ]
+}

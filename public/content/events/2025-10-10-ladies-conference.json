@@ -1,0 +1,11 @@
+{
+  "id": 8,
+  "title": "Ladies Conference",
+  "description": "A powerful gathering of women to worship, learn, and grow in faith. This conference is designed to equip, inspire, and encourage every woman in her walk with God",
+  "date": {
+    "from": "2025-10-10",
+    "to": "2025-10-12"
+  },
+  "image": "/assets/revival_2025.jpg",
+  "link": "/events/3"
+}

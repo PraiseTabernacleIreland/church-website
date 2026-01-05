@@ -1,0 +1,21 @@
+{
+  "name": "Sunday School",
+  "description": "Sunday School provides a strong biblical foundation for children, teaching them about God's love, faith, and the importance of living a Christ-centered life.",
+  "whyItMatters": "Investing in the next generation is crucial. Sunday School equips children with biblical knowledge, helps them develop a personal relationship with Jesus, and instills godly values that shape their future.",
+  "heroImage": "/assets/sunday_hero.jpg",
+  "activities": [
+    {
+      "name": "Interactive Bible Lessons",
+      "description": "Engaging and age-appropriate teachings to help children understand and apply biblical truths."
+    },
+    {
+      "name": "Children's Worship",
+      "description": "A lively, fun-filled worship experience designed for kids to express their love for God through music and dance."
+    },
+    {
+      "name": "Creative Activities & Games",
+      "description": "Hands-on crafts, storytelling, and fun games that reinforce biblical lessons in an exciting way."
+    }
+  ],
+  "joinInstructions": "Enroll your child in Sunday School today! Classes are held during Sunday services for various age groups."
+}

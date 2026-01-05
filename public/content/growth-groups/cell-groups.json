@@ -1,0 +1,13 @@
+{
+  "name": "Cell Groups",
+  "description": "Cell groups are small, intimate gatherings where members can grow spiritually, build relationships, and support one another in faith.",
+  "whyItMatters": "Cell groups provide a space for deep fellowship, prayer, and Bible study in a more personal and nurturing setting. They foster strong spiritual connections and accountability within the church community.",
+  "heroImage": "/assets/cell_hero.jpg",
+  "activities": [
+    {
+      "name": "Weekly Bible Study",
+      "description": "A time to dive into Scripture, discuss key biblical themes, and apply them to everyday life."
+    }
+  ],
+  "joinInstructions": "Join a Cell Group near you and experience meaningful spiritual growth in a supportive community. Speak to a leader after service or sign up online."
+}

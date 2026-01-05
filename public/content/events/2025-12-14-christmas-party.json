@@ -1,0 +1,11 @@
+{
+  "id": 13,
+  "title": "Christmas Party",
+  "description": "It's that time of the year! Join us for a festive celebration filled with joy and fellowship.",
+  "date": {
+    "from": "2025-12-14",
+    "to": "2025-12-14"
+  },
+  "image": "/assets/event-placeholder.jpg",
+  "link": "/events/1"
+}

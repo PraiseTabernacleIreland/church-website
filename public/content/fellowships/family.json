@@ -1,0 +1,14 @@
+{
+  "name": "Family",
+  "description": "Strengthening families through faith-based support and fellowship.",
+  "about": "The Family Fellowship is a place for parents, couples, and children to grow together in Christ. We provide resources and support to build strong Christian homes.",
+  "heroImage": "/assets/couples_hero.jpg",
+  "activities": [
+    {
+      "name": "Marriage Enrichment",
+      "description": "Workshops and counseling to strengthen marriages and relationships.",
+      "image": "/assets/couples_1.jpg"
+    }
+  ],
+  "joinInstructions": "Families are welcome to participate in our gatherings, workshops, and support groups. Contact us to find out how to get involved!"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Men",
+  "description": "Empowering men through faith, leadership, and community service.",
+  "about": "The Men's Fellowship is a community of men striving for spiritual growth, accountability, and service. Through Bible studies, mentorship, and outreach programs, we build strong, Christ-centered leaders in our homes and society.",
+  "heroImage": "/assets/men-1.webp",
+  "activities": [
+    {
+      "name": "Men's Breakfast & Devotion",
+      "description": "A time of fellowship, prayer, and study of God's Word over breakfast.",
+      "image": "/assets/men-2.webp"
+    },
+    {
+      "name": "Leadership Development",
+      "description": "Training men in leadership, mentoring, and discipleship for family and church roles.",
+      "image": "/assets/men-3.webp"
+    }
+  ],
+  "joinInstructions": "Be part of our regular gatherings, Bible studies, and service projects. Connect with the fellowship leader after service or sign up online."
+}

@@ -1,0 +1,267 @@
+# Decap CMS Configuration
+# WARNING: YAML is STRICT about indentation - use 2 spaces, NOT tabs!
+
+backend:
+  name: git-gateway
+  branch: main  # Your default Git branch
+
+# Local development backend (comment out in production or use 'npm start' to test)
+# local_backend: true
+
+# Media files configuration - images reference existing assets
+media_folder: "public/assets"  # Where images are stored
+public_folder: "/assets"       # How to reference them in content
+
+# Collections define the content types that editors can manage
+collections:
+  # ============================================
+  # EVENTS COLLECTION (Priority) - Folder Based
+  # ============================================
+  - name: "events"
+    label: "Events"
+    label_singular: "Event"
+    folder: "public/content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "ID", name: "id", widget: "number", value_type: "int", min: 1, required: true }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - label: "Date"
+        name: "date"
+        widget: "object"
+        fields:
+          - { label: "Start Date", name: "from", widget: "date", format: "YYYY-MM-DD", required: true }
+          - { label: "End Date", name: "to", widget: "date", format: "YYYY-MM-DD", required: true }
+      - label: "Image"
+        name: "image"
+        widget: "select"
+        options:
+          - { label: "Event Placeholder", value: "/assets/event-placeholder.jpg" }
+          - { label: "Revival 2025", value: "/assets/revival_2025.jpg" }
+          - { label: "Revival 1", value: "/assets/revival1.jpg" }
+          - { label: "Revival 2", value: "/assets/revival2.jpg" }
+          - { label: "Revival 3", value: "/assets/revival3.jpg" }
+          - { label: "Big Sunday", value: "/assets/big_sunday.jpg" }
+          - { label: "Event 2", value: "/assets/event_2.jpg" }
+          - { label: "Event 3", value: "/assets/event_3.jpg" }
+          - { label: "Event 4", value: "/assets/event_4.jpg" }
+          - { label: "Event 5", value: "/assets/event_5.jpg" }
+        default: "/assets/event-placeholder.jpg"
+        required: true
+      - { label: "Link", name: "link", widget: "string", default: "/events/1", required: false }
+
+  # ============================================
+  # SERVICES COLLECTION
+  # ============================================
+  - name: "services"
+    label: "Services"
+    label_singular: "Service"
+    folder: "public/content/services"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Time", name: "time", widget: "string", required: true }
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - label: "Image"
+        name: "image"
+        widget: "select"
+        options:
+          - { label: "Sunday Morning", value: "/assets/img_3.png" }
+          - { label: "Faith School", value: "/assets/faith-school.jpg" }
+          - { label: "Friday Prayer", value: "/assets/friday-prayer.jpg" }
+          - { label: "Sunday Service", value: "/assets/sunday_hero.jpg" }
+          - { label: "Bible Study", value: "/assets/bible_study.jpg" }
+        required: true
+      - { label: "Color", name: "color", widget: "string", default: "#ad5a2f", required: true, hint: "Hex color code (e.g., #ad5a2f)" }
+      - label: "Buttons"
+        name: "buttons"
+        widget: "list"
+        fields:
+          - { label: "Button Text", name: "text", widget: "string", required: true }
+          - { label: "Link", name: "link", widget: "string", required: true }
+          - label: "Variant"
+            name: "variant"
+            widget: "select"
+            options: ["contained", "outlined"]
+            default: "contained"
+          - { label: "Is External Link", name: "isExternal", widget: "boolean", default: false }
+
+  # ============================================
+  # TEAMS COLLECTION (People)
+  # ============================================
+  - name: "teams"
+    label: "Team Members"
+    label_singular: "Team Member"
+    folder: "public/content/teams"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Name", name: "name", widget: "string", required: true }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - label: "Team"
+        name: "team"
+        widget: "select"
+        options: ["Pastoral", "Administration", "Elders", "Deacons", "Cell Leaders"]
+        required: true
+      - label: "Image"
+        name: "image"
+        widget: "select"
+        options:
+          - { label: "Pastor Gerard", value: "/assets/pastor-gerard-sibo-headshot.webp" }
+          - { label: "Pastor Alex", value: "/assets/pastor-alex-tari-headshot.webp" }
+          - { label: "Sani", value: "/assets/sani-headshot.webp" }
+          - { label: "Moses", value: "/assets/moses.jpg" }
+          - { label: "Jonah", value: "/assets/jonah.jpg" }
+          - { label: "Placeholder", value: "/assets/placeholder.jpg" }
+        required: true
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+
+  # ============================================
+  # MINISTRIES COLLECTION
+  # ============================================
+  - name: "ministries"
+    label: "Ministries"
+    label_singular: "Ministry"
+    folder: "public/content/ministries"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    editor:
+      preview: false
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "select"
+        options: ["Media", "Worship", "Hospitality", "Evangelism", "Intercession"]
+        required: true
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - label: "Hero Image"
+        name: "heroImage"
+        widget: "select"
+        options:
+          - { label: "Church Media", value: "/assets/church_media.jpg" }
+          - { label: "Worship Hero", value: "/assets/worship_hero.jpg" }
+          - { label: "Hospitality", value: "/assets/hospitality.jpg" }
+          - { label: "Evangelism Hero", value: "/assets/evangelism_hero.jpg" }
+          - { label: "Evangelism Hero 2", value: "/assets/evangelism_hero2.jpg" }
+          - { label: "Intercession", value: "/assets/intercession.jpg" }
+        required: true
+      - { label: "Join Instructions", name: "joinInstructions", widget: "text", required: true }
+      - { label: "Route", name: "route", widget: "string", required: true, hint: "Page URL (e.g., /connect/ministries/worship)" }
+      - label: "Related Images"
+        name: "relatedImages"
+        widget: "list"
+        required: false
+        field:
+          label: "Image"
+          name: "image"
+          widget: "select"
+          options:
+            - { label: "Worship 1", value: "/assets/worship_1.jpg" }
+            - { label: "Evangelism 1", value: "/assets/evangelism_1.jpg" }
+            - { label: "Evangelism 2", value: "/assets/evangelism_2.jpg" }
+            - { label: "Evangelism 3", value: "/assets/evangelism_3.jpg" }
+
+  # ============================================
+  # FELLOWSHIPS COLLECTION
+  # ============================================
+  - name: "fellowships"
+    label: "Fellowships"
+    label_singular: "Fellowship"
+    folder: "public/content/fellowships"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    editor:
+      preview: false
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "select"
+        options: ["Men", "Women", "Youth", "Family"]
+        required: true
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - { label: "About", name: "about", widget: "text", required: true }
+      - label: "Hero Image"
+        name: "heroImage"
+        widget: "select"
+        options:
+          - { label: "Men 1", value: "/assets/men-1.webp" }
+          - { label: "Men 2", value: "/assets/men-2.webp" }
+          - { label: "Women 1", value: "/assets/women-1.webp" }
+          - { label: "Women", value: "/assets/women.webp" }
+          - { label: "Youth 1", value: "/assets/youth-1.webp" }
+          - { label: "Couples Hero", value: "/assets/couples_hero.jpg" }
+        required: true
+      - label: "Activities"
+        name: "activities"
+        widget: "list"
+        fields:
+          - { label: "Activity Name", name: "name", widget: "string", required: true }
+          - { label: "Description", name: "description", widget: "text", required: true }
+          - label: "Image"
+            name: "image"
+            widget: "select"
+            options:
+              - { label: "Men 2", value: "/assets/men-2.webp" }
+              - { label: "Men 3", value: "/assets/men-3.webp" }
+              - { label: "Women", value: "/assets/women.webp" }
+              - { label: "Women 3", value: "/assets/women-3.webp" }
+              - { label: "Youth Baptism", value: "/assets/youth_baptism.webp" }
+              - { label: "Couples 1", value: "/assets/couples_1.jpg" }
+            required: true
+      - { label: "Join Instructions", name: "joinInstructions", widget: "text", required: true }
+
+  # ============================================
+  # GROWTH GROUPS COLLECTION
+  # ============================================
+  - name: "growthGroups"
+    label: "Growth Groups"
+    label_singular: "Growth Group"
+    folder: "public/content/growth-groups"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    editor:
+      preview: false
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "select"
+        options: ["Cell Groups", "Sunday School"]
+        required: true
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - { label: "Why It Matters", name: "whyItMatters", widget: "text", required: true }
+      - label: "Hero Image"
+        name: "heroImage"
+        widget: "select"
+        options:
+          - { label: "Cell Hero", value: "/assets/cell_hero.jpg" }
+          - { label: "Sunday Hero", value: "/assets/sunday_hero.jpg" }
+          - { label: "Children 1", value: "/assets/children.jpg" }
+          - { label: "Children 2", value: "/assets/children_2.jpg" }
+        required: true
+      - label: "Activities"
+        name: "activities"
+        widget: "list"
+        fields:
+          - { label: "Activity Name", name: "name", widget: "string", required: true }
+          - { label: "Description", name: "description", widget: "text", required: true }
+          - label: "Image (Optional)"
+            name: "image"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Bible Study", value: "/assets/bible_study.jpg" }
+              - { label: "Children 1", value: "/assets/children.jpg" }
+              - { label: "Children 2", value: "/assets/children_2.jpg" }
+      - { label: "Join Instructions", name: "joinInstructions", widget: "text", required: true }

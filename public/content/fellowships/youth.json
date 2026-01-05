@@ -1,0 +1,14 @@
+{
+  "name": "Youth",
+  "description": "Building the next generation of faith-driven leaders.",
+  "about": "The Youth Fellowship is a vibrant community where young people grow in faith, develop leadership skills, and build lifelong friendships.",
+  "heroImage": "/assets/youth-1.webp",
+  "activities": [
+    {
+      "name": "Youth Night",
+      "description": "Fun, fellowship, and worship tailored for young believers.",
+      "image": "/assets/youth_baptism.webp"
+    }
+  ],
+  "joinInstructions": "If you're a young person looking to grow spiritually and connect with like-minded believers, join us at our weekly Youth Night!"
+}

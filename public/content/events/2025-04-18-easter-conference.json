@@ -1,0 +1,11 @@
+{
+  "id": 14,
+  "title": "Easter Conference",
+  "description": "Come and experience a life-changing Easter Conference as we celebrate the death and resurrection of Jesus Christ.",
+  "date": {
+    "from": "2025-04-18",
+    "to": "2025-04-20"
+  },
+  "image": "/assets/event-placeholder.jpg",
+  "link": "/events/1"
+}
